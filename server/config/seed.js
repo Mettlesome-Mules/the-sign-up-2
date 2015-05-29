@@ -7,7 +7,7 @@
 
 var Thing = require('../api/thing/thing.model');
 var User = require('../api/user/user.model');
-
+var Service = require('../api/service/service.model')
 Thing.find({}).remove(function() {
   Thing.create({
     name : 'Development Tools',
@@ -24,9 +24,45 @@ Thing.find({}).remove(function() {
   },  {
     name : 'Optimized Build',
     info : 'Build process packs up your templates as a single JavaScript payload, minifies your scripts/css/images, and rewrites asset names for caching.'
-  },{
+  },  {
     name : 'Deployment Ready',
     info : 'Easily deploy your app to Heroku or Openshift with the heroku and openshift subgenerators'
+  });
+});
+
+Service.find({}).remove(function() {
+  Service.create({
+    name: 'Pegasus',
+    category: 'Transportation',
+    info: '9-5 and other info',
+    location: 'Downtown',
+    description: 'We give bike rides on bike pegs.',
+    price: 99,
+    active: true
+  },  {
+    name: 'Uber For Horses',
+    category: 'Transportation',
+    info: '9-5 and other info',
+    location: 'Downtown',
+    description: 'Horse rides by horse peoplee. neigh.',
+    price: 99,
+    active: false
+  },  {
+    name: 'Uber for Personal Chefs',
+    category: 'Food',
+    info: 'I make the curry',
+    location: 'My kitchen',
+    description: 'Vegetable curries on the rice.',
+    price: 99,
+    active: true
+  },  {
+    name: 'Cage Fight',
+    category: 'Arts & Leisure',
+    info: '9-5 and other info',
+    location: 'My House',
+    description: 'Rage Cage ... Nicolas Cage and You. A seminar.',
+    price: 99,
+    active: true
   });
 });
 

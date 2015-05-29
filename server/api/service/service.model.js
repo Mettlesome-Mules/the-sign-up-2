@@ -13,4 +13,4 @@ var ServiceSchema = new Schema({
   active: Boolean
 });
 
-module.exports = mongoose.model('Service', ThingSchema);
+module.exports = mongoose.model('Service', ServiceSchema);
