@@ -1,0 +1,28 @@
+<div ng-include="'components/navbar/navbar.html'"></div>
+
+<header class="hero-unit" id="banner">
+  <div class="container">
+    <h1>Welcome to The Sign Up</h1>
+    <p class="lead">Click on a category to find a service.</p>
+    <img src="assets/images/yeoman.png" alt="I'm Yeoman">
+  </div>
+</header>
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12">
+      <h1 class="page-header">Categories:</h1>
+      <ul class="nav nav-tabs nav-stacked col-md-4 col-lg-4 col-sm-6" ng-repeat="category in categories">
+        <li><a href="#" ng-click="filterCategory({{category.name}})">{{category.name}}</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="container">
+  <div class="row">
+    <div class="col-lg-12">
+      <!-- something where we render service providers based on category -->
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,32 @@
+'use strict';
+
+angular.module('theSignUp2App')
+  .controller('ServiceCrtl', function ($scope, $http, socket) {
+    $scope.awesomeThings = [];
+
+    $http.get('/api/things').success(function(awesomeThings) {
+      $scope.awesomeThings = awesomeThings;
+      socket.syncUpdates('thing', $scope.awesomeThings);
+    });
+
+    $scope.filterCategory = function(PASSEDINCLICK) {
+      //make a get request to the database
+        //success:  query
+    };
+
+    $scope.addThing = function() {
+      if($scope.newThing === '') {
+        return;
+      }
+      $http.post('/api/things', { name: $scope.newThing });
+      $scope.newThing = '';
+    };
+
+    $scope.deleteThing = function(thing) {
+      $http.delete('/api/things/' + thing._id);
+    };
+
+    $scope.$on('$destroy', function () {
+      socket.unsyncUpdates('thing');
+    });
+  });
