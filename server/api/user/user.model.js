@@ -12,6 +12,10 @@ var UserSchema = new Schema({
     type: String,
     default: 'user'
   },
+  // meta: {
+  //   credibility: Number,
+  //   favs:  Number
+  // },
   hashedPassword: String,
   provider: String,
   salt: String,

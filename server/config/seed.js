@@ -8,6 +8,7 @@
 var Thing = require('../api/thing/thing.model');
 var User = require('../api/user/user.model');
 var Service = require('../api/service/service.model')
+var Message = require('../api/message/message.model')
 Thing.find({}).remove(function() {
   Thing.create({
     name : 'Development Tools',
@@ -29,6 +30,38 @@ Thing.find({}).remove(function() {
     info : 'Easily deploy your app to Heroku or Openshift with the heroku and openshift subgenerators'
   });
 });
+
+Message.find({}).remove(function(){
+  Message.create({
+    title:  'Hello BOB',
+    author: 'userIDhere',
+    body:   'this is the message',
+    comments: [{ body: 'this is a comment', date: Date() }],
+    date: { type: Date, default: Date.now() },
+    hidden: false
+  },{
+    title:  'Hello BOB',
+    author: 'userIDhere',
+    body:   'this is the message',
+    comments: [{ body: 'this is a comment', date: Date() }],
+    date: { type: Date, default: Date.now() },
+    hidden: false
+  },{
+    title:  'Hello BOB',
+    author: 'userIDhere',
+    body:   'this is the message',
+    comments: [{ body: 'this is a comment', date: Date() }],
+    date: { type: Date, default: Date.now() },
+    hidden: false
+  },{
+    title:  'Hello BOB',
+    author: 'userIDhere',
+    body:   'this is the message',
+    comments: [{ body: 'this is a comment', date: Date() }],
+    date: { type: Date, default: Date.now() },
+    hidden: false
+  })
+})
 
 Service.find({}).remove(function() {
   Service.create({
