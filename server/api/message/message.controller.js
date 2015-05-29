@@ -6,7 +6,6 @@
  * PUT     /messages/:id          ->  update
  * DELETE  /messages/:id          ->  destroy
  */
-
 'use strict';
 
 var _ = require('lodash');
