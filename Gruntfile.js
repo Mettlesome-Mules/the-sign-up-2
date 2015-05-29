@@ -5,6 +5,7 @@ module.exports = function (grunt) {
   var localConfig;
   try {
     localConfig = require('./server/config/local.env');
+    console.log(localConfig)
   } catch(e) {
     localConfig = {};
   }

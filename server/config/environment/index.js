@@ -54,8 +54,9 @@ var all = {
   },
 
   google: {
-    clientID:     process.env.GOOGLE_ID || 'id',
-    clientSecret: process.env.GOOGLE_SECRET || 'secret',
+    // this is not correct it should be in ../local.env.js and grunt is suppose to pull this in with grunt env:all
+    clientID:     process.env.GOOGLE_ID || 'THISSHOULDBETHEGOOGLEID',
+    clientSecret: process.env.GOOGLE_SECRET || 'THISSHOULDBETHEGOOGLESECRET',
     callbackURL:  (process.env.DOMAIN || '') + '/auth/google/callback'
   }
 };
