@@ -107,10 +107,21 @@ User.find({}).remove(function() {
     password: 'test'
   }, {
     provider: 'local',
+    name: 'Test2 User',
+    email: 'test2@test2.com',
+    password: 'test2'
+  }, {
+    provider: 'local',
     role: 'admin',
     name: 'Admin',
     email: 'admin@admin.com',
     password: 'admin'
+  }, {
+    provider: 'local',
+    role: 'admin',
+    name: 'mettle',
+    email: 'mettlesome.mules.dev@gmail.com',
+    password: 'neigh123'
   }, function() {
       console.log('finished populating users');
     }
