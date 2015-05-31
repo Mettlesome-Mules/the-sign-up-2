@@ -38,6 +38,48 @@ angular.module('theSignUp2App')
 
     return {
 
+      getServices: function(callback){
+        var cb = callback || angular.noop;
+        var deferred = $q.defer();
+        $http.get('/api/services', {
+          // email: user.email,
+          // password: user.password
+        }).
+        success(function(data) {
+          // $cookieStore.put('token', data.token);
+          // currentUser = User.get();
+          deferred.resolve(data);
+          return cb();
+        }).
+        error(function(err) {
+          // this.logout();
+          deferred.reject(err);
+          return cb(err);
+        }.bind(this));
+
+        return deferred.promise;
+      },
+      getMessages: function(callback){
+        var cb = callback || angular.noop;
+        var deferred = $q.defer();
+        $http.get('/api/messages', {
+          // email: user.email,
+          // password: user.password
+        }).
+        success(function(data) {
+          // $cookieStore.put('token', data.token);
+          // currentUser = User.get();
+          deferred.resolve(data);
+          return cb();
+        }).
+        error(function(err) {
+          // this.logout();
+          deferred.reject(err);
+          return cb(err);
+        }.bind(this));
+
+        return deferred.promise;
+      },
       /**
        * Authenticate user and save token
        *
