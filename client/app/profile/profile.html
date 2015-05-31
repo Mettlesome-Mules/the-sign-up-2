@@ -1,0 +1,14 @@
+<div ng-include="'components/navbar/navbar.html'"></div>
+
+<div class="container">
+	<div class="col-sm-12">
+	  <h3>Show Password</h3>
+	</div>
+	<div id="container">
+		<form ng-submit='showPassword()' ng-controller='ProfileCtrl'>
+	    	<button class="btn btn-sm btn-primary" type="submit">Show Password</button>
+	    </form>
+	    <div ng-show='isPressed'><h1>{{ currentUser._id }}</h1></div>
+	</div>
+
+</div>
