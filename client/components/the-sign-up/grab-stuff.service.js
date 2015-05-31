@@ -7,45 +7,45 @@ angular.module('theSignUp2App')
 
     return {
 
-      // /**
-      //  * Authenticate user and save token
-      //  *
-      //  * @param  {Object}   user     - login info
-      //  * @param  {Function} callback - optional
-      //  * @return {Promise}
-      //  */
-      // login: function(user, callback) {
-      //   var cb = callback || angular.noop;
-      //   var deferred = $q.defer();
+      /**
+       * Authenticate user and save token
+       *
+       * @param  {Object}   user     - login info
+       * @param  {Function} callback - optional
+       * @return {Promise}
+       */
+      login: function(user, callback) {
+        var cb = callback || angular.noop;
+        var deferred = $q.defer();
 
-      //   $http.post('/auth/local', {
-      //     email: user.email,
-      //     password: user.password
-      //   }).
-      //   success(function(data) {
-      //     $cookieStore.put('token', data.token);
-      //     currentUser = User.get();
-      //     deferred.resolve(data);
-      //     return cb();
-      //   }).
-      //   error(function(err) {
-      //     this.logout();
-      //     deferred.reject(err);
-      //     return cb(err);
-      //   }.bind(this));
+        $http.post('/auth/local', {
+          email: user.email,
+          password: user.password
+        }).
+        success(function(data) {
+          $cookieStore.put('token', data.token);
+          currentUser = User.get();
+          deferred.resolve(data);
+          return cb();
+        }).
+        error(function(err) {
+          this.logout();
+          deferred.reject(err);
+          return cb(err);
+        }.bind(this));
 
-      //   return deferred.promise;
-      // },
+        return deferred.promise;
+      },
 
-      // /**
-      //  * Delete access token and user info
-      //  *
-      //  * @param  {Function}
-      //  */
-      // logout: function() {
-      //   $cookieStore.remove('token');
-      //   currentUser = {};
-      // },
+      /**
+       * Delete access token and user info
+       *
+       * @param  {Function}
+       */
+      logout: function() {
+        $cookieStore.remove('token');
+        currentUser = {};
+      },
 
       /**
        * Create a new user
@@ -54,20 +54,23 @@ angular.module('theSignUp2App')
        * @param  {Function} callback - optional
        * @return {Promise}
        */
-      // createUser: function(user, callback) {
-      //   var cb = callback || angular.noop;
-
-      //   return User.save(user,
-      //     function(data) {
-      //       $cookieStore.put('token', data.token);
-      //       currentUser = User.get();
-      //       return cb(user);
-      //     },
-      //     function(err) {
-      //       this.logout();
-      //       return cb(err);
-      //     }.bind(this)).$promise;
-      // },
+      createUser: function(user, callback) {
+        var cb = callback || angular.noop;
+        // **********************************//
+        // This is using angulars $resource injector
+        // to handle $http as a $promise
+        // **********************************//
+        return User.save(user,
+          function(data) {
+            $cookieStore.put('token', data.token);
+            currentUser = User.get();
+            return cb(user);
+          },
+          function(err) {
+            this.logout();
+            return cb(err);
+          }.bind(this)).$promise;
+      },
 
       /**
        * Change password
@@ -76,19 +79,19 @@ angular.module('theSignUp2App')
        * @param  {String}   newPassword
        * @param  {Function} callback    - optional
        * @return {Promise}
-      //  */
-      // changePassword: function(oldPassword, newPassword, callback) {
-      //   var cb = callback || angular.noop;
+       */
+      changePassword: function(oldPassword, newPassword, callback) {
+        var cb = callback || angular.noop;
 
-      //   return User.changePassword({ id: currentUser._id }, {
-      //     oldPassword: oldPassword,
-      //     newPassword: newPassword
-      //   }, function(user) {
-      //     return cb(user);
-      //   }, function(err) {
-      //     return cb(err);
-      //   }).$promise;
-      // },
+        return User.changePassword({ id: currentUser._id }, {
+          oldPassword: oldPassword,
+          newPassword: newPassword
+        }, function(user) {
+          return cb(user);
+        }, function(err) {
+          return cb(err);
+        }).$promise;
+      },
 
       /**
        * Gets all available info on authenticated user
