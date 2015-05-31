@@ -5,7 +5,13 @@ angular.module('theSignUp2App')
     $scope.menu = [{
       'title': 'Home',
       'link': '/'
-    }];
+    },
+    // TODO: complete services view
+    // {
+    //   'title': 'services',
+    //   'link': '/services'
+    // }
+    ];
 
     $scope.isCollapsed = true;
     $scope.isLoggedIn = Auth.isLoggedIn;
