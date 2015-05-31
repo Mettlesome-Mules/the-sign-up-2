@@ -6,7 +6,7 @@
 	</div>
 	<div id="container" ng-controller='ProfileCtrl'>
 		<form >
-			<button class="btn btn-sm btn-primary" ng-click='showPassword()' type="submit">Show Password</button>
+			<button class="btn btn-sm btn-primary" ng-click='showPassword()' type="submit">Show User Info</button>
 		</form>
 		<div ng-show='isPressed'>
 			<ul>
@@ -38,6 +38,18 @@
 					<p>google: {{ currentUser.google }}</p>
 				</li>
 			</ul>
+		</div>
+		<form >
+			<button class="btn btn-sm btn-primary" ng-click='showMessages()' type="submit">Show Messages</button>
+		</form>
+		<div ng-show='isMessagePressed'>
+		yis
+		</div>
+		<form >
+			<button class="btn btn-sm btn-primary" ng-click='showServices()' type="submit">Show Services</button>
+		</form>
+		<div ng-show='isServicesPressed'>
+		pizza
 		</div>
 	</div>
 
