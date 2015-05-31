@@ -1,3 +1,34 @@
+'use strict';
+
+// ********************************8 //
+// This factory can be injected
+// much like Auth and User into a
+// controller. Giving access to functions
+// like User.save(...) Auth.login(...)
+// GrabStuff.someFunction(...)
+// ----------------------------------
+// We may want to consider scrapping
+// the copy paste from auth.service.js
+// and implementing a seperate factory
+// for "Message" and "Service" similar to
+// user.service.js or the "User" factory
+// by doing this it may make more sense
+// to manage later on.
+//
+// As we could do something like:
+		// return $resource('/api/messages/:id/:controller')
+		// AND/OR
+		// return $resource('/api/services/:id/:controller')
+// ------------------------------------
+// ":id" and ":controller" are placeholders that get replaced
+// by angular ... when submitted they would be replaced by
+// the message/service :id and the controller it should go to
+// on the server side.
+// SEE: server/api/{message,service,user}/{index.js,*.controller.js}
+// Credit Card Example: https://docs.angularjs.org/api/ngResource/service/$resource
+// ********************************8 //
+
+
 angular.module('theSignUp2App')
   .factory('GrabStuff', function Auth($location, $rootScope, $http, User, $cookieStore, $q) {
     var currentUser = {};
@@ -17,7 +48,11 @@ angular.module('theSignUp2App')
       login: function(user, callback) {
         var cb = callback || angular.noop;
         var deferred = $q.defer();
-
+        // ********************************//
+        // This is using regular $http to
+        // GrabStuff from the server
+        // and returning a deferred promise $q.defer()
+        // ********************************//
         $http.post('/auth/local', {
           email: user.email,
           password: user.password
@@ -59,6 +94,7 @@ angular.module('theSignUp2App')
         // **********************************//
         // This is using angulars $resource injector
         // to handle $http as a $promise
+        // See user.service.js
         // **********************************//
         return User.save(user,
           function(data) {
@@ -82,7 +118,11 @@ angular.module('theSignUp2App')
        */
       changePassword: function(oldPassword, newPassword, callback) {
         var cb = callback || angular.noop;
-
+        // **********************************//
+        // This is using angulars $resource injector
+        // to handle $http as a $promise
+        // See user.service.js
+        // **********************************//
         return User.changePassword({ id: currentUser._id }, {
           oldPassword: oldPassword,
           newPassword: newPassword
