@@ -162,6 +162,12 @@ var setupMessages = function(){
                 date: { type: Date, default: Date.now() },
                 hidden: false
               })
+          Message.find({body: 'How are you doing today Test2 User!? regards from Test User'}, function(err, msg1){
+            Message.find({body: 'Test User!? WHYYY!? Sincerly Test2 User'}, function(err, msg2){
+              console.log(user1, msg1,'\n', user2, msg2)
+              
+            })
+          })  
         })
       })
     })

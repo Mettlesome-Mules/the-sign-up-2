@@ -21,6 +21,7 @@ var UserSchema = new Schema({
   salt: String,
   profileInfo: {about: String, joindate: Date, personalUrl: String, profilePicUrl: String, phone: String},
   friends: [],
+  lastMessages: [],
   activity: {},
   facebook: {},
   twitter: {},
