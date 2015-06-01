@@ -5,7 +5,7 @@ angular.module('theSignUp2App')
     $stateProvider
       .state('profile', {
         url: '/profile',
-        templateUrl: 'app/profile/profile.html',
+        templateUrl: 'app/account/profile/profile.html',
         controller: 'ProfileCtrl'
       });
   });

@@ -1,43 +1,53 @@
 <div ng-include="'components/navbar/navbar.html'"></div>
 
 <div class="container">
-	<div class="col-sm-12">
-	  <h3>Show Password</h3>
-	</div>
 	<div id="container" ng-controller='ProfileCtrl'>
-		<form >
-			<button class="btn btn-sm btn-primary" ng-click='showPassword()' type="submit">Show User Info</button>
-		</form>
-		<div ng-show='isPressed'>
-			<ul>
-				<li>
-					<p>User Name: {{ currentUser.name }}</p>
-				</li>
-				<li>
+	<div class="col-sm-12">
+	  <h3>Hello {{ currentUser.name }}</h3>
+	</div>
+	<img src="{{ currentUser.profileInfo.profilePicUrl }}">
+	<form>
+		<input type='textarea' rows="10" cols="70">
+	</form>
+
+
+
+
+	<hr>
+	<div class='container'>
+		<div class='profile-btn'>
+			<form >
+				<button class="btn btn-sm btn-primary" ng-click='showPassword()' type="submit">Show User Info</button>
+			</form>
+			<div ng-show='isPressed'>
+				<div class='profile-username'>
+					<p>Hello: {{ currentUser.name }}</p>
+				</div>
+				<div class='profile-email'>
 					<p>User email: {{ currentUser.email }}</p>
-				</li>
-				<li>
+				</div>
+				<!-- <div>
 					<p>role: {{ currentUser.role }}</p>
-				</li>
-				<li>
+				</div> -->
+				<!-- <div>
 					<p>hashedPassword: {{ currentUser.hashedPassword }}</p>
-				</li>
-				<li>
+				</div>
+				<div>
 					<p>provider: {{ currentUser.provider }}</p>
-				</li>
-				<li>
+				</div> -->
+				<div>
 					<p>profileInfo: {{ currentUser.profileInfo }}</p>
-				</li>
-				<li>
-					<p>friends: {{ currentUser.friends }}</p>
-				</li>
-				<li>
+				</div>
+				<div>
+					<p>friends: {{ currentUser.friends.length }}</p>
+				</div>
+				<div>
 					<p>activity: {{ currentUser.activity }}</p>
-				</li>
-				<li>
+				</div>
+	<!-- 			<div>
 					<p>google: {{ currentUser.google }}</p>
-				</li>
-			</ul>
+				</div> -->
+			</div>
 		</div>
 		<form >
 			<button class="btn btn-sm btn-primary" ng-click='showMessages()' type="submit">Show Messages</button>
@@ -51,6 +61,7 @@
 		<div ng-show='isServicesPressed'>
 		{{services}}
 		</div>
+	</div>
 	</div>
 
 </div>

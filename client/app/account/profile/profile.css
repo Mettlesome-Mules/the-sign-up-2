@@ -1,0 +1,16 @@
+.container {
+    margin: 20px;
+}
+
+.profile-btn {
+    float:right;
+    padding: 10px;
+}
+.profile-username {
+    margin: 20px 0;
+}
+
+.profile-email {
+    border-bottom: none;
+    margin-top: -20px;
+}
