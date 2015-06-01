@@ -69,6 +69,7 @@ angular.module('theSignUp2App')
         success(function(data) {
           // $cookieStore.put('token', data.token);
           // currentUser = User.get();
+          console.log('Received Messages:', data)
           deferred.resolve(data);
           return cb();
         }).

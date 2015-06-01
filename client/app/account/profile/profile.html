@@ -11,7 +11,7 @@
 		<form>
 			<input type='textarea' rows="10" cols="70" placeholder="{{ currentUser.profileInfo.about }}" ng-model="currentUser.profileInfo.about">
 			<input type='textarea' rows="10" cols="70" placeholder="Phone Number">
-			<button class="btn btn-sm btn-primary" ng-click='updateProfileInfo(currentUser)' type="submit">Update Profile Info</button>
+			<button class="btn btn-sm btn-primary" ng-click='updateProfileInfo()' type="submit">Update Profile Info</button>
 		</form>
 		<div ng-show="updateSuccess">Profile Updated</div>
 	</div>

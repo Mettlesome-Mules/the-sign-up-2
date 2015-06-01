@@ -39,10 +39,10 @@ angular.module('theSignUp2App')
       //   authenticate: true,
       // });
       // TODO: 
-      // .state('messages', {
-      //   url: '/messages', 
-      //   templateUrl: 'app/account/messages/messages.html',
-      //   controller: 'MessagesCtrl',
-      //   authenticate: true,
-      // });
+      .state('messages', {
+        url: '/messages', 
+        templateUrl: 'app/account/messages/messages.html',
+        controller: 'MessagesCtrl',
+        authenticate: true,
+      });
   });
