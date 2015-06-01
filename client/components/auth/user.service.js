@@ -26,6 +26,12 @@ angular.module('theSignUp2App')
           controller:'password'
         }
       },
+      updateProfileInfo: {
+        method: 'PUT',
+        params: {
+          controller:'updateprofileinfo'
+        }
+      },
       get: {
         method: 'GET',
         params: {

@@ -176,6 +176,29 @@ angular.module('theSignUp2App')
       },
 
       /**
+       * Update Profile Info
+       *
+       * @param  {JSON}   newProfileInfo
+       * @param  {Function} callback    - optional
+       * @return {Promise}
+       */
+      updateProfileInfo: function(newProfileInfo, callback) {
+        var cb = callback || angular.noop;
+
+        console.log('grab-stuff.service.js: updateProfileInfo',newProfileInfo,'\nuser: ',currentUser)
+        return User.updateProfileInfo({ id: currentUser._id }, {
+          user: currentUser,
+          newProfileInfo: newProfileInfo
+        }, function(user) {
+          return cb(user);
+        }, function(err) {
+          return cb(err);
+        }).$promise;
+      },
+
+
+
+      /**
        * Gets all available info on authenticated user
        *
        * @return {Object} user

@@ -5,35 +5,9 @@ angular.module('theSignUp2App')
       $scope.errors = {};
       $scope.users = {};
       $scope.isPressed = false;
-      $scope.isMessagePressed = false;
-      $scope.isServicesPressed = false;
       $scope.currentUser = Auth.getCurrentUser();
-      $scope.services = {};
-      $scope.messages = {};
-      // ************************** *****//
-      // example of grabbing services
-      // ************************** *****//
-      GrabStuff.getServices()
-        .then( function(data) {
-          // Logged in, redirect to home
-          $scope.services = data;
-        })
-        .catch( function(err) {
-          $scope.errors.other = err.message;
-        });
-      // ************************** *****//
-      // ************************** *****//
-      // example of grabbing messages
-      // ************************** *****//
-      GrabStuff.getMessages()
-        .then( function(data) {
-          // Logged in, redirect to home
-          $scope.messages = data;
-        })
-        .catch( function(err) {
-          $scope.errors.other = err.message;
-        });
-      // ************************** *****//
+      $scope.currentUser.profileInfo.about = $scope.currentUser.profileInfo.about || 'About me';
+      $scope.updateSuccess = '';
       $scope.showPassword = function(e){
         if (!$scope.isPressed){
           $scope.isPressed = true
@@ -44,21 +18,19 @@ angular.module('theSignUp2App')
         console.log($scope.isPressed)
       };
 
-      $scope.showMessages = function(e){
+      $scope.updateProfileInfo = function(e){
         if (!$scope.isMessagePressed){
           $scope.isMessagePressed = true
         } else {
           $scope.isMessagePressed = false
         }
-        console.log($scope.isMessagePressed)
+        GrabStuff.updateProfileInfo($scope.currentUser.profileInfo)
+          .then( function(data) {
+            $scope.updateSuccess = data;
+          })
+          .catch( function(err) {
+            $scope.errors.other = err.message;
+          });        
       };
 
-      $scope.showServices = function(e){
-        if (!$scope.isServicesPressed){
-          $scope.isServicesPressed = true
-        } else {
-          $scope.isServicesPressed = false
-        }
-        console.log($scope.isServicesPressed)
-      };
   });

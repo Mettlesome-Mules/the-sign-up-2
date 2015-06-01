@@ -31,38 +31,6 @@ Thing.find({}).remove(function() {
   });
 });
 
-Message.find({}).remove(function(){
-  Message.create({
-    title:  'Hello BOB',
-    author: 'userIDhere',
-    body:   'this is the message',
-    comments: [{ body: 'this is a comment', date: Date() }],
-    date: { type: Date, default: Date.now() },
-    hidden: false
-  },{
-    title:  'Hello BOB',
-    author: 'userIDhere',
-    body:   'this is the message',
-    comments: [{ body: 'this is a comment', date: Date() }],
-    date: { type: Date, default: Date.now() },
-    hidden: false
-  },{
-    title:  'Hello BOB',
-    author: 'userIDhere',
-    body:   'this is the message',
-    comments: [{ body: 'this is a comment', date: Date() }],
-    date: { type: Date, default: Date.now() },
-    hidden: false
-  },{
-    title:  'Hello BOB',
-    author: 'userIDhere',
-    body:   'this is the message',
-    comments: [{ body: 'this is a comment', date: Date() }],
-    date: { type: Date, default: Date.now() },
-    hidden: false
-  })
-})
-
 Service.find({}).remove(function() {
   Service.create({
     name: 'Pegasus',
@@ -123,7 +91,79 @@ User.find({}).remove(function() {
     email: 'mettlesome.mules.dev@gmail.com',
     password: 'neigh123'
   }, function() {
+      User.find({ 'name': 'Test User'}, function(err, user1){
+        if (err){console.log(err)}
+        User.find({ 'name': 'Test2 User'}, function(err, user2){
+          user1[0].friends.push(user2[0]._id)
+          user2[0].friends.push(user1[0]._id)
+          user1[0].save(function (err) {
+            if (err) { console.log(err) }
+          })
+          user2[0].save(function (err) {
+            if (err) { console.log(err) }
+          })
+        })
+      })
       console.log('finished populating users');
+      setupMessages()
     }
   );
 });
+
+var setupMessages = function(){
+  Message.find({}).remove(function(){
+    Message.create({
+      title:  'Hello BOB',
+      author: 'userIDhere',
+      body:   'this is the message',
+      comments: [{ body: 'this is a comment', date: Date() }],
+      date: { type: Date, default: Date.now() },
+      hidden: false
+    },{
+      title:  'Hello BOB',
+      author: 'userIDhere',
+      body:   'this is the message',
+      comments: [{ body: 'this is a comment', date: Date() }],
+      date: { type: Date, default: Date.now() },
+      hidden: false
+    },{
+      title:  'Hello BOB',
+      author: 'userIDhere',
+      body:   'this is the message',
+      comments: [{ body: 'this is a comment', date: Date() }],
+      date: { type: Date, default: Date.now() },
+      hidden: false
+    },{
+      title:  'Hello BOB',
+      author: 'userIDhere',
+      body:   'this is the message',
+      comments: [{ body: 'this is a comment', date: Date() }],
+      date: { type: Date, default: Date.now() },
+      hidden: false
+    }, function(){
+      User.find({ 'name': 'Test User'}, function(err, user1){
+        if (err){console.log(err)}
+        User.find({ 'name': 'Test2 User'}, function(err, user2){
+          console.log('WHAT',user1, user2)
+          Message.create({
+                title:  'Hello'+user2[0].name,
+                fromUserId: user1[0]._id,
+                toUserId: user2[0]._id,
+                body:   'How are you doing today Test2 User!? regards from Test User',
+                comments: [{ body: 'this is a comment', date: Date() }],
+                date: { type: Date, default: Date.now() },
+                hidden: false
+              }, {
+                title:  'Hello'+user1[0].name,
+                fromUserId: user2[0]._id,
+                toUserId: user1[0]._id,
+                body:   'Test User!? WHYYY!? Sincerly Test2 User',
+                comments: [{ body: 'this is a comment', date: Date() }],
+                date: { type: Date, default: Date.now() },
+                hidden: false
+              })
+        })
+      })
+    })
+  })
+}

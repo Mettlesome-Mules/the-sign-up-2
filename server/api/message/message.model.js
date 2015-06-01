@@ -7,6 +7,8 @@ var mongoose = require('mongoose'),
 var MessageSchema = new Schema({
   title:  String,
   author: String,
+  fromUserId: String,//Schema.Types.ObjectId,
+  toUserId: String,//Schema.Types.ObjectId,
   body:   String,
   comments: [{ body: String, date: Date }],
   date: { type: Date, default: Date.now },

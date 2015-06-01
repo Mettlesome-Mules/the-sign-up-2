@@ -1,9 +1,13 @@
 .container {
+    
     margin: 20px;
 }
 
+.user {
+	display: inline;
+}
+
 .profile-btn {
-    float:right;
     padding: 10px;
 }
 .profile-username {

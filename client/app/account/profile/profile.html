@@ -2,14 +2,19 @@
 
 <div class="container">
 	<div id="container" ng-controller='ProfileCtrl'>
-	<div class="col-sm-12">
-	  <h3>Hello {{ currentUser.name }}</h3>
+	<div class="user">
+		<div class="col-sm-12">
+			  <h3>Hello {{ currentUser.name }}</h3>
+		</div>
+		<img src="{{ currentUser.profileInfo.profilePicUrl }}">
+		<div>Email: {{ currentUser.email }}</div>
+		<form>
+			<input type='textarea' rows="10" cols="70" placeholder="{{ currentUser.profileInfo.about }}" ng-model="currentUser.profileInfo.about">
+			<input type='textarea' rows="10" cols="70" placeholder="Phone Number">
+			<button class="btn btn-sm btn-primary" ng-click='updateProfileInfo(currentUser)' type="submit">Update Profile Info</button>
+		</form>
+		<div ng-show="updateSuccess">Profile Updated</div>
 	</div>
-	<img src="{{ currentUser.profileInfo.profilePicUrl }}">
-	<form>
-		<input type='textarea' rows="10" cols="70">
-	</form>
-
 
 
 
@@ -49,19 +54,5 @@
 				</div> -->
 			</div>
 		</div>
-		<form >
-			<button class="btn btn-sm btn-primary" ng-click='showMessages()' type="submit">Show Messages</button>
-		</form>
-		<div ng-show='isMessagePressed'>
-		{{messages}}
-		</div>
-		<form >
-			<button class="btn btn-sm btn-primary" ng-click='showServices()' type="submit">Show Services</button>
-		</form>
-		<div ng-show='isServicesPressed'>
-		{{services}}
-		</div>
 	</div>
-	</div>
-
 </div>
