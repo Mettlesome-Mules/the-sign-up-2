@@ -165,7 +165,22 @@ var setupMessages = function(){
           Message.find({body: 'How are you doing today Test2 User!? regards from Test User'}, function(err, msg1){
             Message.find({body: 'Test User!? WHYYY!? Sincerly Test2 User'}, function(err, msg2){
               console.log(user1, msg1,'\n', user2, msg2)
-              
+              user1.lastMessages = [{
+                fromPicUrl: user2.profileInfo.picUrl, 
+                msgBody: msg2.body,
+                timestamp: msg2.date,
+                fromUserName: user2.name,
+                fromUserId: msg2.fromUserId
+              }]
+              user2.lastMessages = [{
+                fromPicUrl: user1.profileInfo.picUrl, 
+                msgBody: msg1.body,
+                timestamp: msg1.date,
+                fromUserName: user1.name,
+                fromUserId: msg1.fromUserId
+              }]
+              user1.save()
+              user2.save()
             })
           })  
         })
