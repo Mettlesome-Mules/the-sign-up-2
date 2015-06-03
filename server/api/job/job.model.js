@@ -3,7 +3,7 @@
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
-var ServiceSchema = new Schema({
+var JobSchema = new Schema({
   name: String,
   category: String,
   info: String,
@@ -13,4 +13,4 @@ var ServiceSchema = new Schema({
   active: Boolean
 });
 
-module.exports = mongoose.model('Service', ServiceSchema);
+module.exports = mongoose.model('Job', JobSchema);

@@ -7,7 +7,7 @@
 
 var Thing = require('../api/thing/thing.model');
 var User = require('../api/user/user.model');
-var Service = require('../api/service/service.model')
+var Service = require('../api/job/job.model')
 var Message = require('../api/message/message.model')
 
 
