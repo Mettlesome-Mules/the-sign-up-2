@@ -7,10 +7,12 @@
 
 var Thing = require('../api/thing/thing.model');
 var User = require('../api/user/user.model');
-var Service = require('../api/job/job.model')
+var Job = require('../api/job/job.model')
 var Message = require('../api/message/message.model')
 
-
+//*******************************//
+// Called after users are created
+//*******************************//
 var setupMessages = function(){
   Message.find({}).remove(function(){
     Message.create({
@@ -120,6 +122,60 @@ var setupMessages = function(){
   })
 }
 
+//*******************************//
+// Called after users and messages are created
+//*******************************//
+var setupJobs = function(){
+  Job.find({}).remove(function(){
+    User.find({ 'name': 'Test User'}, function(err, user1){
+      if (err){console.log(err)}
+      User.find({ 'name': 'Test2 User'}, function(err, user2){
+        if (user1[0] && user2[0]){
+          Job.create({
+            byUserId: user1[0]._id,
+            name: 'Pegasus',
+            category: 'Transportation',
+            info: '9-5 and other info',
+            location: 'Downtown',
+            description: 'We give bike rides on bike pegs.',
+            price: 99,
+            active: true
+          },  {
+            byUserId: user1[0]._id,
+            name: 'Uber For Horses',
+            category: 'Transportation',
+            info: '9-5 and other info',
+            location: 'Downtown',
+            description: 'Horse rides by horse peoplee. neigh.',
+            price: 99,
+            active: false
+          },  {
+            byUserId: user2[0]._id,
+            name: 'Uber for Personal Chefs',
+            category: 'Food',
+            info: 'I make the curry',
+            location: 'My kitchen',
+            description: 'Vegetable curries on the rice.',
+            price: 99,
+            active: true
+          },  {
+            byUserId: user2[0]._id,
+            name: 'Cage Fight',
+            category: 'Arts & Leisure',
+            info: '9-5 and other info',
+            location: 'My House',
+            description: 'Rage Cage ... Nicolas Cage and You. A seminar.',
+            price: 99,
+            active: true
+          }, function(err) {
+            if(err){console.log(err)}
+            else{console.log('Jobs added')}
+          })
+        }
+      });
+    });
+  })
+}
 
 
 Thing.find({}).remove(function() {
@@ -144,41 +200,6 @@ Thing.find({}).remove(function() {
   });
 });
 
-Service.find({}).remove(function() {
-  Service.create({
-    name: 'Pegasus',
-    category: 'Transportation',
-    info: '9-5 and other info',
-    location: 'Downtown',
-    description: 'We give bike rides on bike pegs.',
-    price: 99,
-    active: true
-  },  {
-    name: 'Uber For Horses',
-    category: 'Transportation',
-    info: '9-5 and other info',
-    location: 'Downtown',
-    description: 'Horse rides by horse peoplee. neigh.',
-    price: 99,
-    active: false
-  },  {
-    name: 'Uber for Personal Chefs',
-    category: 'Food',
-    info: 'I make the curry',
-    location: 'My kitchen',
-    description: 'Vegetable curries on the rice.',
-    price: 99,
-    active: true
-  },  {
-    name: 'Cage Fight',
-    category: 'Arts & Leisure',
-    info: '9-5 and other info',
-    location: 'My House',
-    description: 'Rage Cage ... Nicolas Cage and You. A seminar.',
-    price: 99,
-    active: true
-  });
-});
 
 User.find({}).remove(function() {
   User.create({
@@ -221,8 +242,10 @@ User.find({}).remove(function() {
       })
       console.log('finished populating users');
       setupMessages()
+      setupJobs()
     }
   );
 });
+
 
 

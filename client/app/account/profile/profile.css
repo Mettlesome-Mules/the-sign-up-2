@@ -3,6 +3,11 @@
     margin: 20px;
 }
 
+.create-job {
+	padding: 15px;
+	display: block;
+}
+
 .user {
 	display: inline;
 }

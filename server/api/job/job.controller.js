@@ -12,6 +12,18 @@
 var _ = require('lodash');
 var Job = require('./job.model');
 
+// get myjobs
+exports.getmyjobs = function(req, res) {
+  console.log('job.controller.js: getmyjobs: req.params', req.params)
+  console.log('job.controller.js: getmyjobs: req.body', req.body)
+  Job.find({byUserId: req.params.id}, function (err, jobs) {
+    if(err) { return handleError(res, err); }
+    console.log('job.controller.js: getmyjobs: Job.find(...)', jobs)
+    if(!jobs) { return res.send(404); }
+    return res.json(200,jobs);
+  });
+};
+
 // Get list of jobs
 exports.index = function(req, res) {
   Job.find(function (err, jobs) {
@@ -31,8 +43,22 @@ exports.show = function(req, res) {
 
 // Creates a new job in the DB.
 exports.create = function(req, res) {
+  console.log('job.controller.js: create: req.body',req.body)
+  console.log(req.params)
   Job.create(req.body, function(err, job) {
     if(err) { return handleError(res, err); }
+    return res.json(201, job);
+  });
+};
+
+
+// Save a job to the database
+exports.createJob = function(req, res) {
+  console.log('job.controller.js: create: req.body',req.body)
+  console.log(req.params)
+  Job.create(req.body, function(err, job) {
+    if(err) { return handleError(res, err); }
+    console.log('job.controller.js: Job posted successfully')
     return res.json(201, job);
   });
 };
