@@ -9,6 +9,119 @@ var Thing = require('../api/thing/thing.model');
 var User = require('../api/user/user.model');
 var Service = require('../api/service/service.model')
 var Message = require('../api/message/message.model')
+
+
+var setupMessages = function(){
+  Message.find({}).remove(function(){
+    Message.create({
+        title:  'Hello BOB',
+        author: 'userIDhere',
+        body:   'this is the message',
+        comments: [{ body: 'this is a comment', date: Date() }],
+        date: { type: Date, default: Date.now() },
+        hidden: false 
+      }, {
+        title:  'Hello BOB',
+        author: 'userIDhere',
+        body:   'this is the message',
+        comments: [{ body: 'this is a comment', date: Date() }],
+        date: { type: Date, default: Date.now() },
+        hidden: false
+      },{
+        title:  'Hello BOB',
+        author: 'userIDhere',
+        body:   'this is the message',
+        comments: [{ body: 'this is a comment', date: Date() }],
+        date: { type: Date, default: Date.now() },
+        hidden: false
+      },{
+        title:  'Hello BOB',
+        author: 'userIDhere',
+        body:   'this is the message',
+        comments: [{ body: 'this is a comment', date: Date() }],
+        date: { type: Date, default: Date.now() },
+        hidden: false
+      }, 
+      function() {
+        User.find({ 'name': 'Test User'}, function(err, user1)
+        {
+          if (err){console.log(err)}
+          User.find({ 'name': 'Test2 User'}, function(err, user2){
+            if (user1[0] && user2[0])
+            {
+              Message.create(
+                {
+                  title:  'Hello'+user2[0].name,
+                  fromUserId: user1[0]._id,
+                  toUserId: user2[0]._id,
+                  body:   'How are you doing today Test2 User from Test User',
+                  comments: [{ body: 'this is a comment', date: Date() }],
+                  date: { type: Date, default: Date.now() },
+                  hidden: false
+                }, {
+                  title:  'Hello'+user2[0].name,
+                  fromUserId: user1[0]._id,
+                  toUserId: user2[0]._id,
+                  body:   'How are you doing today Test2 User from Test User',
+                  comments: [{ body: 'this is a comment', date: Date() }],
+                  date: { type: Date, default: Date.now() },
+                  hidden: false
+                }, {
+                  title:  'Hello'+user1[0].name,
+                  fromUserId: user2[0]._id,
+                  toUserId: user1[0]._id,
+                  body:   'Test User!? WHYYY!? Sincerly Test2 User',
+                  comments: [{ body: 'this is a comment', date: Date() }],
+                  date: { type: Date, default: Date.now() },
+                  hidden: false
+                }, 
+                function(err)
+                {
+                  if(err){console.log(err)}
+                  console.log('users found')
+                  Message.find({ title: 'HelloTest2 User' }, function(err, msg1)
+                  {
+                    if (err){console.log(err)}
+                    Message.find({ body: 'Test User!? WHYYY!? Sincerly Test2 User' }, function(err, msg2)
+                    {
+                      if ( msg1[0] && msg2[0] )
+                      {
+                        user1.lastMessages = [{
+                          fromPicUrl: user2[0].profileInfo.profilePicUrl, 
+                          msgBody: msg2.body,
+                          timestamp: msg2.date,
+                          fromUserName: user2.name,
+                          fromUserId: msg2.fromUserId
+                        }] 
+                        user2.lastMessages = [{
+                          fromPicUrl: user1[0].profileInfo.profilePicUrl, 
+                          msgBody: msg1.body,
+                          timestamp: msg1.date,
+                          fromUserName: user1.name,
+                          fromUserId: msg1.fromUserId
+                        }]  
+                        user1[0].save()
+                        user2[0].save()
+                        console.log('messages populated')       
+                      } 
+                      else 
+                      {
+                        console.log(msg1, msg2)
+                      }
+                    })
+                  })
+                }
+              )
+            }
+          })
+        })
+      }
+    )
+  })
+}
+
+
+
 Thing.find({}).remove(function() {
   Thing.create({
     name : 'Development Tools',
@@ -72,12 +185,14 @@ User.find({}).remove(function() {
     provider: 'local',
     name: 'Test User',
     email: 'test@test.com',
-    password: 'test'
+    password: 'test',
+    profileInfo: {profilePicUrl: './assets/images/grey_circle_user.png'}
   }, {
     provider: 'local',
     name: 'Test2 User',
     email: 'test2@test2.com',
-    password: 'test2'
+    password: 'test2',
+    profileInfo: {profilePicUrl: './assets/images/grey_circle_user.png'}
   }, {
     provider: 'local',
     role: 'admin',
@@ -110,81 +225,4 @@ User.find({}).remove(function() {
   );
 });
 
-var setupMessages = function(){
-  Message.find({}).remove(function(){
-    Message.create({
-      title:  'Hello BOB',
-      author: 'userIDhere',
-      body:   'this is the message',
-      comments: [{ body: 'this is a comment', date: Date() }],
-      date: { type: Date, default: Date.now() },
-      hidden: false
-    },{
-      title:  'Hello BOB',
-      author: 'userIDhere',
-      body:   'this is the message',
-      comments: [{ body: 'this is a comment', date: Date() }],
-      date: { type: Date, default: Date.now() },
-      hidden: false
-    },{
-      title:  'Hello BOB',
-      author: 'userIDhere',
-      body:   'this is the message',
-      comments: [{ body: 'this is a comment', date: Date() }],
-      date: { type: Date, default: Date.now() },
-      hidden: false
-    },{
-      title:  'Hello BOB',
-      author: 'userIDhere',
-      body:   'this is the message',
-      comments: [{ body: 'this is a comment', date: Date() }],
-      date: { type: Date, default: Date.now() },
-      hidden: false
-    }, function(){
-      User.find({ 'name': 'Test User'}, function(err, user1){
-        if (err){console.log(err)}
-        User.find({ 'name': 'Test2 User'}, function(err, user2){
-          console.log('WHAT',user1, user2)
-          Message.create({
-                title:  'Hello'+user2[0].name,
-                fromUserId: user1[0]._id,
-                toUserId: user2[0]._id,
-                body:   'How are you doing today Test2 User!? regards from Test User',
-                comments: [{ body: 'this is a comment', date: Date() }],
-                date: { type: Date, default: Date.now() },
-                hidden: false
-              }, {
-                title:  'Hello'+user1[0].name,
-                fromUserId: user2[0]._id,
-                toUserId: user1[0]._id,
-                body:   'Test User!? WHYYY!? Sincerly Test2 User',
-                comments: [{ body: 'this is a comment', date: Date() }],
-                date: { type: Date, default: Date.now() },
-                hidden: false
-              })
-          Message.find({body: 'How are you doing today Test2 User!? regards from Test User'}, function(err, msg1){
-            Message.find({body: 'Test User!? WHYYY!? Sincerly Test2 User'}, function(err, msg2){
-              console.log(user1, msg1,'\n', user2, msg2)
-              user1.lastMessages = [{
-                fromPicUrl: user2.profileInfo.picUrl, 
-                msgBody: msg2.body,
-                timestamp: msg2.date,
-                fromUserName: user2.name,
-                fromUserId: msg2.fromUserId
-              }]
-              user2.lastMessages = [{
-                fromPicUrl: user1.profileInfo.picUrl, 
-                msgBody: msg1.body,
-                timestamp: msg1.date,
-                fromUserName: user1.name,
-                fromUserId: msg1.fromUserId
-              }]
-              user1.save()
-              user2.save()
-            })
-          })  
-        })
-      })
-    })
-  })
-}
+
