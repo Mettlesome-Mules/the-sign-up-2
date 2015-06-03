@@ -15,14 +15,26 @@
 		</form>
 		<div ng-show="updateSuccess">Profile Updated</div>
 	</div>
-
+	<div class='myjobs' ng-init='showJobsCreated()'>
+		<h2>My Services</h2>
+		<ul ng-repeat="job in myJobs">
+			<li>
+				{{ job.name }}
+				{{ job.category }}
+				{{ job.info }}
+				{{ job.location }}
+				{{ job.description }}
+				{{ job.price }}
+			</li>
+		</ul>
+	</div>
 
 
 	<hr>
 	<div class='container'>
 		<div class='profile-btn'>
 			<form >
-				<button class="btn btn-sm btn-primary" ng-click='showPassword()' type="submit">Show User Info</button>
+				<button class="btn btn-sm btn-primary" ng-click='showUserInfo()' type="submit">Show User Info</button>
 			</form>
 			<div ng-show='isPressed'>
 				<div class='profile-username'>

@@ -6,10 +6,11 @@ angular.module('theSignUp2App')
       id: '@_id'
     },
     {
-      getJobs: {
+      getMyJobs: {
         method: 'GET',
+        isArray:true,
         params: {
-          controller:'index'
+          controller:'getmyjobs'
         }
       }
     });
