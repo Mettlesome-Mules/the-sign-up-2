@@ -79,6 +79,31 @@ exports.changePassword = function(req, res, next) {
   });
 };
 
+//******************  //
+// update user info
+//******************** //
+exports.updateProfileInfo = function(req, res, next) {
+  console.log('user.controller.updateProfileInfo: req.user', req.body.user)
+  var userId = req.body.user._id;
+  var newProfileInfo = req.body.newProfileInfo;
+  console.log('user.controller.updateProfileInfo', typeof newProfileInfo, newProfileInfo)
+  User.findById(userId, function (err, user) {
+    if(user) {
+      console.log('user.controller.updateProfileInfo: User.findById: user',typeof user)
+      console.log(user.profileInfo)
+      user.profileInfo = newProfileInfo;
+      user.save(function(err) {
+        if (err) return validationError(res, err);
+        res.send(200);
+      });
+    } else {
+      res.send(403);
+    }
+  });
+};
+
+
+
 /**
  * Get my info
  */
