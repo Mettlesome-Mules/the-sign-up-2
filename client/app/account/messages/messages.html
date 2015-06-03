@@ -1,12 +1,20 @@
-<!-- <div ng-include="'components/navbar/navbar.html'"></div>
+<div ng-include="'components/navbar/navbar.html'"></div>
 
-<div class="container">
+<div class="container" ng-controller='MessagesCtrl'>
   <div class="row">
     <div class="col-sm-12">
       <h1>Show Messages</h1>
     </div>
-	<div id="container">
-	     <!-- TODO 
-	</div>
+    <div id="container" ng-repeat='message in messages'>
+		{{ message.title }}
+		{{ message.author }}
+		{{ message.fromUserId }}
+		{{ message.toUserId }}
+		{{ message.body }}
+		{{ message.comments }}
+		{{ message.date }}
+		{{ message.hidden }}
+		<hr>
+    </div>
   </div>
-</div> -->
+</div>

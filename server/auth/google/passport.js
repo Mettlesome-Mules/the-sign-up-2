@@ -9,6 +9,7 @@ exports.setup = function (User, config) {
     },
     function(accessToken, refreshToken, profile, done) {
       console.log(profile)
+
       User.findOne({
         'google.id': profile.id
       }, function(err, user) {
@@ -18,9 +19,7 @@ exports.setup = function (User, config) {
             email: profile.emails[0].value,
             role: 'user',
             username: profile.username,
-            // TODO: jmunsch 
-            // profileInfo: {profilePicUrl: profile.photos[0].value}
-            // photos: [ { value: 'https://lh4.googleusercontent.com/-HSoA0PZpnMU/AAAAAAAAAAI/AAAAAAAAAOk/XRA0g20bT0A/photo.jpg?sz=50' } ],
+            profileInfo: {profilePicUrl: profile.photos[0].value.split('?')[0] || null},
             provider: 'google',
             google: profile._json
           });

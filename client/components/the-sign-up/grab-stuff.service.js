@@ -69,6 +69,7 @@ angular.module('theSignUp2App')
         success(function(data) {
           // $cookieStore.put('token', data.token);
           // currentUser = User.get();
+          console.log('Received Messages:', data)
           deferred.resolve(data);
           return cb();
         }).
@@ -174,6 +175,29 @@ angular.module('theSignUp2App')
           return cb(err);
         }).$promise;
       },
+
+      /**
+       * Update Profile Info
+       *
+       * @param  {JSON}   newProfileInfo
+       * @param  {Function} callback    - optional
+       * @return {Promise}
+       */
+      updateProfileInfo: function(newProfileInfo, callback) {
+        var cb = callback || angular.noop;
+
+        console.log('grab-stuff.service.js: updateProfileInfo',newProfileInfo,'\nuser: ',currentUser)
+        return User.updateProfileInfo({ id: currentUser._id }, {
+          user: currentUser,
+          newProfileInfo: newProfileInfo
+        }, function(user) {
+          return cb(user);
+        }, function(err) {
+          return cb(err);
+        }).$promise;
+      },
+
+
 
       /**
        * Gets all available info on authenticated user

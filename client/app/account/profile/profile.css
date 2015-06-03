@@ -1,0 +1,20 @@
+.container {
+    
+    margin: 20px;
+}
+
+.user {
+	display: inline;
+}
+
+.profile-btn {
+    padding: 10px;
+}
+.profile-username {
+    margin: 20px 0;
+}
+
+.profile-email {
+    border-bottom: none;
+    margin-top: -20px;
+}
