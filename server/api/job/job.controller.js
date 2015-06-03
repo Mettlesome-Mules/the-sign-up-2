@@ -43,8 +43,22 @@ exports.show = function(req, res) {
 
 // Creates a new job in the DB.
 exports.create = function(req, res) {
+  console.log('job.controller.js: create: req.body',req.body)
+  console.log(req.params)
   Job.create(req.body, function(err, job) {
     if(err) { return handleError(res, err); }
+    return res.json(201, job);
+  });
+};
+
+
+// Save a job to the database
+exports.createJob = function(req, res) {
+  console.log('job.controller.js: create: req.body',req.body)
+  console.log(req.params)
+  Job.create(req.body, function(err, job) {
+    if(err) { return handleError(res, err); }
+    console.log('job.controller.js: Job posted successfully')
     return res.json(201, job);
   });
 };
