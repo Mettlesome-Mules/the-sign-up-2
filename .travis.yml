@@ -4,6 +4,4 @@ node_js:
 before_script:
   - npm install -g bower grunt-cli
   - bower install
-scripts:
-  test: "grunt test"
 services: mongodb
