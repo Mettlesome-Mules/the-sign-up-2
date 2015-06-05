@@ -73,6 +73,7 @@ angular.module('theSignUp2App')
           deferred.resolve(data);
           return cb();
         }).
+        
         error(function(err) {
           // this.logout();
           deferred.reject(err);
@@ -82,11 +83,12 @@ angular.module('theSignUp2App')
         return deferred.promise;
       },
 
-      sendMessages: function(testMessage, callback){
+      sendMessages: function(usermsg, callback){
         var cb = callback || angular.noop;
         var deferred = $q.defer();
+        console.log("message-factory", usermsg)
         $http.post('/api/messages/sendmessage', {
-          message: testMessage
+          message: usermsg
           // email: user.email,
           // password: user.password
         }).

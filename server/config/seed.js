@@ -86,7 +86,7 @@ var setupMessages = function(){
                     {
                       if ( msg1[0] && msg2[0] )
                       {
-                        user1.lastMessages = [{
+                        user1[0].lastMessages = [{
                           fromPicUrl: user2[0].profileInfo.profilePicUrl, 
                           msgBody: msg2.body,
                           timestamp: msg2.date,

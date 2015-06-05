@@ -1,0 +1,54 @@
+#sidebar {
+   	position: absolute;
+	color: blue;
+	border: 1px solid #000;
+	width: 300px;
+	height: 84%;
+	overflow: scroll
+}
+.lastMessageWindow {
+	width: 280px;
+	border: 1px solid #000;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 10px;
+	overflow: scroll;
+}
+
+
+.messagesWindow {
+	position: absolute;
+	width: 550px;
+	left: 325px;
+	color: blue;
+	border: 1px solid #000;
+	height: 70%;
+	overflow: scroll;
+}
+#messageContainer {
+	width: 500px;
+	border: 1px solid #000;
+	margin-right: auto;
+	margin-left: auto;
+	margin-bottom: auto;
+	/*overflow: scroll*/
+}
+
+.chatWrapper{
+	margin-left: auto;
+	margin-top: auto;
+	position: absolute;
+	bottom: 0;
+	left: 100px;
+	height: 120px;
+}
+.chatWrapper input {
+	margin-left: auto;
+	margin-top: auto;
+	position: absolute;
+	height: 100px;
+	bottom: 0;
+	height: 120px;
+	left: 100px;
+
+}

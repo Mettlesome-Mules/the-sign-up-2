@@ -64,11 +64,12 @@ exports.destroy = function(req, res) {
 
 exports.sendmessage = function(req, res) {
 
-  console.log(req.body.message)
-  // Message.create(req.body, function(err, message) {
-  //   if(err) { return handleError(res, err); }
-  //   return res.json(201, message);
-  // });
+  console.log("Message-Controller",req.body.message)
+  Message.create(req.body.message, function(err, message) {
+    console.log('Message.create', err, message)
+    if(err) { return handleError(res, err); }
+    return res.json(201, message);
+  });
 };
 
 function handleError(res, err) {

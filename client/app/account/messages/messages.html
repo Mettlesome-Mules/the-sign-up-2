@@ -1,39 +1,65 @@
-<script src="../../../bower_components/jquery/jquery.js" />
 <div ng-include="'components/navbar/navbar.html'"></div>
 
 <div class="container" ng-controller='MessagesCtrl'>
   <div class="row">
-    <div class="col-sm-12">
-      <h1>Show Messages</h1>
-    </div>
-    <form>
-    	<div class="messageInput">
-			
-</div>
-	<p class="welcome" ng-controller="MessagesCtrl">Welcome, {{message.author}}</p>
-    <div id="container" ng-repeat='message in messages'>
-    	
-			<!-- {{ message.title }} -->
-		{{ message.author }}
-			<!-- {{ message.fromUserId }} -->
-		<!-- {{ message.toUserId }} -->
-		{{ message.body}}
-		<!-- {{ message.comments }} -->
-		{{ message.date }}
-	<!-- 	{{ message.hidden }} -->
+  	
 
-		<hr>
+<!--     <div class="col-sm-12">
+      <h1>Show Messages</h1>
+    </div> -->
+    <div id="sidebar"> 
+    	<div class="lastMessageWindow" ng-repeat="message in messages"> Hii
+    		{{message.body}}
+    	</div>
+    		<div class="lastMessage"></div>
     </div>
-    <div id="wrapper" ng-controller="MessagesCtrl">
+    <div class="messagesWindow">
+			<p class="welcome" ng-model=>Welcome, {{currentUser.name}}</p>
+
+		    <div id="messageContainer" ng-repeat='message in messages'>
+    	
+    	
+					<!-- {{ message.title }} -->
+					{{ message.author }}
+					<!-- {{ message.fromUserId }} -->
+				<!-- {{ message.toUserId }} -->
+					{{ message.body}}
+				<!-- {{ message.comments }} -->
+					{{ message.date }}
+			<!-- 	{{ message.hidden }} -->
+
+				<hr>
+			</div>
+    </div>
+    <div class="chatWrapper">
 		<div id="menu">
 			       	
 			<div style="clear:both"></div>
 			    </div>
 			     
-			    <div id="chatbox"></div>
 			     
-			    <form ng-submit="submit()" ng-controller="MessagesCtrl">
-			     	<input name="usermsg" type="text" id="usermsg" size="63" />			     	<input name="submitmsg" type="submit"  id="submit" value="Submit" />
+			    <form>
+			     	<input name="usermsg" type="text" id="usermsg" size="63" ng-model="usermsg.body" 	/>
+			     	<input name="submitmsg" type="submit" ng-click="submit()"  id="submit" value="Submit" />
 			    </form>
   </div>
+<!--   <div class="chat-box">
+    <input type="checkbox" />
+    <label data-expanded="Close Chatbox" data-collapsed="Open Chatbox"></label>
+    <div class="chat-box-content">
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+    </div>
 </div>
+</div> -->

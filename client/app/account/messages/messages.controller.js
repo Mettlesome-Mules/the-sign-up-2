@@ -4,7 +4,20 @@ angular.module('theSignUp2App')
   .controller('MessagesCtrl', function ($scope, User, Auth, Message) {
     $scope.errors = {};
     $scope.message = [];
+    $scope.usermsg = {};
+    $scope.currentUser = Auth.getCurrentUser();
     $scope.submit = function() {
+        $scope.usermsg.fromUserID = $scope.currentUser._id;
+        $scope.usermsg.toUserID = 'TODO: toUserID';
+        $scope.usermsg.title = '';
+        Message.sendMessages($scope.usermsg)
+                    .then(function(data){
+                        console.log("Success")
+                        console.log('send data', data)
+                    })
+                    .catch(function(err){
+                        $scope.errors.other = err.message;
+                    })
         console.log("YES!")
     };
     //     fromUserID:,
@@ -24,12 +37,6 @@ angular.module('theSignUp2App')
     				.catch(function(err){
     					$scope.errors.other = err.message;
     				})
-    Message.sendMessages()
-                    .then(function(data){
-                        console.log("Success")
-                        console.log('send data', data)
-                    })
-                    .catch(function(err){
-                        $scope.errors.other = err.message;
-                    })
+    console.log($scope.currentUser.lastMessages)
+    
 	});

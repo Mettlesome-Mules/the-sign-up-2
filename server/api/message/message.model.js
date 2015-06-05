@@ -10,6 +10,7 @@ var MessageSchema = new Schema({
   fromUserId: String,//Schema.Types.ObjectId,
   toUserId: String,//Schema.Types.ObjectId,
   body:   String,
+  lastMessage: String,
   comments: [{ body: String, date: Date }],
   date: { type: Date, default: Date.now },
   hidden: Boolean
