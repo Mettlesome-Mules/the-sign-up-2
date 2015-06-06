@@ -13,6 +13,7 @@ module.exports = function(app) {
   app.use('/api/users', require('./api/user'));
   app.use('/api/jobs', require('./api/job'))
   app.use('/api/messages', require('./api/message'))
+  //app.use('/server/assets/profile-pictures', require('./assets/profile'))
 
   app.use('/auth', require('./auth'));
   

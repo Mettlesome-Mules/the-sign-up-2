@@ -19,6 +19,15 @@
     margin: 20px 0;
 }
 
+/*.profile-picture {
+	position:relative;
+	width:250px;
+}
+
+.picture-form {
+	position: absolute;
+}*/
+
 .profile-email {
     border-bottom: none;
     margin-top: -20px;
