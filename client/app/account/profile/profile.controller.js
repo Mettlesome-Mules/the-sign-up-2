@@ -12,6 +12,7 @@ angular.module('theSignUp2App')
     $scope.createJobPressed = false;
     $scope.jobPosted = false;
     $scope.myJobs = {};
+
     $scope.showUserInfo = function(){
       if (!$scope.isPressed){
         $scope.isPressed = true
@@ -65,4 +66,6 @@ angular.module('theSignUp2App')
           $scope.errors.other = err.message;
         });        
     };
+
+    console.log($scope.currentUser)
   });
