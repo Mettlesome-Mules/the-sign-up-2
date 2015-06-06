@@ -6,7 +6,20 @@
 		<div class="col-sm-12">
 			  <h3>Hello {{ currentUser.name }}</h3>
 		</div>
-		<img src="{{ currentUser.profileInfo.profilePicUrl }}">
+		<div class='profile-picture'>
+			<img src="{{ currentUser.profileInfo.profilePicUrl }}">
+			<form class='picture-form' name="profilePicForm">
+					<input type="file" ngf-select="" ng-model="picFile" name="file" accept="image/*" required="">
+					<br>
+					<button class="btn btn-sm btn-primary" ng-show="profilePicForm.$valid" ng-click="profilePicUpload(picFile)">Submit</button>
+					<img ng-show="picFile[0] != null" ngf-src="picFile[0]" class="thumb">
+					<span class="progress" ng-show="picFile[0].progress >= 0">
+					<div style="width:{{picFile[0].progress}}%" ng-bind="picFile[0].progress + '%'" class="ng-binding"></div>
+					</span>
+					<span ng-show="picFile[0].result">Upload Successful</span>
+			<br>
+			</form>
+		</div>
 		<div>Email: {{ currentUser.email }}</div>
 		<form>
 			<input type='textarea' rows="10" cols="70" placeholder="{{ currentUser.profileInfo.about }}" ng-model="currentUser.profileInfo.about">

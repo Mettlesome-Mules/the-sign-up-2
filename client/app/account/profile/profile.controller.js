@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('theSignUp2App')
-  .controller('ProfileCtrl', function ($scope, $http, $cookieStore, User, Auth, Profile) {
+  .controller('ProfileCtrl', function ($scope, $window, $http, $cookieStore, User, Auth, Profile, Upload) {
     $scope.errors = {};
     $scope.users = {};
     $scope.isPressed = false;
@@ -11,6 +11,7 @@ angular.module('theSignUp2App')
     $scope.updateSuccess = '';
     $scope.createJobPressed = false;
     $scope.jobPosted = false;
+    $scope.file = '';
     $scope.myJobs = {};
 
     $scope.showUserInfo = function(){
@@ -22,6 +23,27 @@ angular.module('theSignUp2App')
       // console.log($scope.currentUser)
       // console.log($scope.isPressed)
     };
+
+    $scope.profilePicUpload = function(files){
+      console.log('profilePicUpload', arguments)
+      if (files && files.length) {
+          for (var i = 0; i < files.length; i++) {
+              var file = files[i];
+              console.log(file)
+              Upload.upload({
+                  url: 'api/users/profilepic',
+                  fields: {'userId': $scope.currentUser._id},
+                  file: file
+              }).progress(function (evt) {
+                  var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
+                  console.log('progress: ' + progressPercentage + '% ' + evt.config.file.name);
+              }).success(function (data, status, headers, config) {
+                  console.log('file ' + config.file.name + 'uploaded. Response: ' + data);
+                  $window.location.reload();
+              });
+          }
+      }
+    }
     $scope.showJobsCreated = function(){
       Profile.getMyJobs()
         .then( function(data) {
