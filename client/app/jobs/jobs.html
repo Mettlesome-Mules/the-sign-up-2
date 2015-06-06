@@ -1,0 +1,32 @@
+<div ng-include="'components/navbar/navbar.html'"></div>
+
+<div class="container">
+  <div id="container" ng-controller='JobsCtrl'>
+  
+  <div class='jobs'>
+    <div class="col-md-12">
+      <h1>Jobs</h1>
+    </div>
+    <div class="col-md-12">
+      <h2>Categories</h2>
+    </div>
+    <h3 class="col-md-12">Category Filters</h3>
+    <div class="col-md-3"> <a ng-click="filters.category = ''">Clear Filters</a> </div>
+    <div ng-repeat="category in categories">
+      <div class="col-md-3">
+        <a ng-click="filters.category = category">{{category}}</a>
+      </div>
+    </div>
+    <div ng-repeat="job in jobs | filter:filters">
+      <div>
+        <div class="col-md-8"><h3>{{ job.name }}</h3><div>
+        <div class="col-md-4">Category: {{ job.category }}</div>
+        <divclass="col-md-12">Info(User): {{ job.info }}</div>
+        <div class="col-md-12">{{ job.description }}</div>
+        <div class="col-md-6">Location: {{ job.location }}</div>
+        <div class="col-md-6">Price: {{ job.price }}</div>
+        <div class="col-md-6">User: {{ job.byUserId }}</div>
+      </div>
+    </div>
+  </div>
+</div>
