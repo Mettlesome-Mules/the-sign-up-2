@@ -1,0 +1,34 @@
+.container {
+    
+    margin: 20px;
+}
+
+.create-job {
+	padding: 15px;
+	display: block;
+}
+
+.user {
+	display: inline;
+}
+
+.profile-btn {
+    padding: 10px;
+}
+.profile-username {
+    margin: 20px 0;
+}
+
+/*.profile-picture {
+	position:relative;
+	width:250px;
+}
+
+.picture-form {
+	position: absolute;
+}*/
+
+.profile-email {
+    border-bottom: none;
+    margin-top: -20px;
+}

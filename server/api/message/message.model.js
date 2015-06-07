@@ -6,11 +6,14 @@ var mongoose = require('mongoose'),
 
 var MessageSchema = new Schema({
   title:  String,
-  author: String,
+  fromUserId: String,//Schema.Types.ObjectId,
+  fromUserName: String,
+  toUserId: String,//Schema.Types.ObjectId,
+  toUserName: String,
   body:   String,
-  comments: [{ body: String, date: Date }],
   date: { type: Date, default: Date.now },
-  hidden: Boolean
+  hidden: Boolean,
+  fromUserPicUrl: String
 });
 
 module.exports = mongoose.model('Message', MessageSchema);

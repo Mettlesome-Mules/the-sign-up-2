@@ -16,9 +16,9 @@
 // to manage later on.
 //
 // As we could do something like:
-		// return $resource('/api/messages/:id/:controller')
-		// AND/OR
-		// return $resource('/api/services/:id/:controller')
+    // return $resource('/api/messages/:id/:controller')
+    // AND/OR
+    // return $resource('/api/services/:id/:controller')
 // ------------------------------------
 // ":id" and ":controller" are placeholders that get replaced
 // by angular ... when submitted they would be replaced by
@@ -30,11 +30,8 @@
 
 
 angular.module('theSignUp2App')
-  .factory('GrabStuff', function Auth($location, $rootScope, $http, User, $cookieStore, $q) {
-    var currentUser = {};
-    if($cookieStore.get('token')) {
-      currentUser = User.get();
-    }
+  .factory('Message', function Auth($location, $rootScope, $http, User, $cookieStore, $q, Auth) {
+    var currentUser = Auth.getCurrentUser();
 
     return {
 
@@ -63,6 +60,70 @@ angular.module('theSignUp2App')
         var cb = callback || angular.noop;
         var deferred = $q.defer();
         $http.get('/api/messages', {
+          // email: user.email,
+          // password: user.password
+        }).
+        success(function(data) {
+          // $cookieStore.put('token', data.token);
+          // currentUser = User.get();
+          console.log('Received Messages:', data)
+          deferred.resolve(data);
+          return cb();
+        }).
+        
+        error(function(err) {
+          // this.logout();
+          deferred.reject(err);
+          return cb(err);
+        }.bind(this));
+
+        return deferred.promise;
+      },
+      lastMessages: function(friends, _id, callback){
+        var cb = callback || angular.noop;
+        var deferred = $q.defer();
+        console.log('message-facotry, lastmessages',friends)
+        $http.post('/api/messages/lastmessage', {
+          friends: friends,
+          currentUserId: _id
+          // email: user.email,
+          // password: user.password
+        }).
+        success(function(data) {
+          // $cookieStore.put('token', data.token);
+          // currentUser = User.get();
+          console.log('Last Messages:', data)
+          deferred.resolve(data);
+          return cb();
+        }).
+        
+        error(function(err) {
+          // this.logout();
+          deferred.reject(err);
+          return cb(err);
+        }.bind(this));
+
+        return deferred.promise;
+      },
+
+      getFriends: function(callback) {
+        var cb = callback || angular.noop;
+        console.log('message-factory getFriendscurrentUser', currentUser)
+        return User.getFriends({ id: currentUser._id }, {
+         friends: currentUser.friends
+        }, function(user) {
+          return cb(user);
+        }, function(err) {
+          return cb(err);
+        }).$promise;
+      },
+
+      sendMessages: function(usermsg, callback){
+        var cb = callback || angular.noop;
+        var deferred = $q.defer();
+        console.log("message-factory", usermsg)
+        $http.post('/api/messages/sendmessage', {
+          message: usermsg
           // email: user.email,
           // password: user.password
         }).

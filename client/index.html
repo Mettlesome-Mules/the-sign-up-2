@@ -21,10 +21,13 @@
     <link rel="stylesheet" href="app/app.css">
       <!-- injector:css -->
       <link rel="stylesheet" href="app/account/login/login.css">
+      <link rel="stylesheet" href="app/account/messages/bootview.css">
+      <link rel="stylesheet" href="app/account/messages/messages.css">
+      <link rel="stylesheet" href="app/account/profile/profile.css">
       <link rel="stylesheet" href="app/admin/admin.css">
       <link rel="stylesheet" href="app/app.css">
+      <link rel="stylesheet" href="app/jobs/jobs.css">
       <link rel="stylesheet" href="app/main/main.css">
-      <link rel="stylesheet" href="app/service/service.css">
       <link rel="stylesheet" href="components/modal/modal.css">
       <!-- endinjector -->
     <!-- endbuild -->
@@ -63,6 +66,7 @@
       <script src="bower_components/lodash/dist/lodash.compat.js"></script>
       <script src="bower_components/angular-socket-io/socket.js"></script>
       <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+      <script src="bower_components/ng-file-upload/ng-file-upload.js"></script>
       <!-- endbower -->
       <script src="socket.io-client/socket.io.js"></script>
     <!-- endbuild -->
@@ -73,25 +77,27 @@
           <script src="app/account/account.js"></script>
           <script src="app/account/login/login.controller.js"></script>
           <script src="app/account/messages/messages.controller.js"></script>
+          <script src="app/account/profile/profile.controller.js"></script>
+          <script src="app/account/profile/profile.js"></script>
           <script src="app/account/settings/settings.controller.js"></script>
           <script src="app/account/signup/signup.controller.js"></script>
           <script src="app/admin/admin.controller.js"></script>
           <script src="app/admin/admin.js"></script>
+          <script src="app/jobs/jobs.controller.js"></script>
+          <script src="app/jobs/jobs.js"></script>
           <script src="app/main/main.controller.js"></script>
           <script src="app/main/main.js"></script>
-          <script src="app/profile/profile.controller.js"></script>
-          <script src="app/profile/profile.js"></script>
-          <script src="app/service/service.controller.js"></script>
-          <script src="app/service/service.js"></script>
-          <script src="app/services/services.controller.js"></script>
-          <script src="app/services/services.js"></script>
           <script src="components/auth/auth.service.js"></script>
           <script src="components/auth/user.service.js"></script>
+          <script src="components/job/job.service.js"></script>
+          <script src="components/jobs.service.js"></script>
           <script src="components/modal/modal.service.js"></script>
           <script src="components/mongoose-error/mongoose-error.directive.js"></script>
           <script src="components/navbar/navbar.controller.js"></script>
+          <script src="components/profile/profile.service.js"></script>
           <script src="components/socket/socket.service.js"></script>
           <script src="components/the-sign-up/grab-stuff.service.js"></script>
+          <script src="components/the-sign-up/message-factory.js"></script>
           <!-- endinjector -->
         <!-- endbuild -->
 </body>

@@ -1,6 +1,7 @@
 'use strict';
 
 var User = require('./user.model');
+var path = require('path')
 var passport = require('passport');
 var config = require('../../config/environment');
 var jwt = require('jsonwebtoken');
@@ -79,6 +80,101 @@ exports.changePassword = function(req, res, next) {
   });
 };
 
+//******************  //
+// update user info
+//******************** //
+exports.updateProfileInfo = function(req, res, next) {
+  console.log('user.controller.updateProfileInfo: req.user', req.body.user)
+  var userId = req.body.user._id;
+  var newProfileInfo = req.body.newProfileInfo;
+  console.log('user.controller.updateProfileInfo', typeof newProfileInfo, newProfileInfo)
+  User.findById(userId, function (err, user) {
+    if(user) {
+      console.log('user.controller.updateProfileInfo: User.findById: user',typeof user)
+      console.log(user.profileInfo)
+      user.profileInfo = newProfileInfo;
+      user.save(function(err) {
+        if (err) return validationError(res, err);
+        res.send(200);
+      });
+    } else {
+      res.send(403);
+    }
+  });
+};
+
+
+//******************  //
+// update user info "profileInfo":{"profilePicUrl":
+//******************** //
+
+exports.profilepic = function(req, res, next) {
+  console.log('user.controller.profilepic: req.body', req.body)
+  console.log('user.controller.profilepic: req.body', req.files.file.path)
+  var userId = req.body.userId;
+  var picPath = req.files.file.path.replace('server/api/user','api/users');
+  console.log('PICTURE PATH', picPath)
+  console.log('req.body.user._id', userId)
+  User.findById(userId, function (err, user) {
+    if (err){console.log(err)}
+    console.log(user)
+    if(user) {
+      console.log('user.controller.updateProfileInfo: User.findById: user',typeof user)
+      user.profileInfo.profilePicUrl = req.files.file.path.replace('server/api/user','api/users'); // THIS IS GROSS
+      console.log('UPDATED profilePicUrl', user.profileInfo)
+      user.save(function(err) {
+        if (err) return validationError(res, err);
+        res.send(200);
+      });
+    } else {
+      res.send(403);
+    }
+  });
+};
+
+
+// ****************************** //
+// getProfilPic
+// ****************************** //
+
+exports.getProfilePic = function(req, res, next){
+  console.log(req.body)
+  console.log(req.params)
+  console.log('HERE HERE HRE')
+  var options = {
+    root: __dirname + '/assets/profile-pictures/',
+    dotfiles: 'deny',
+    headers: {
+        'x-timestamp': Date.now(),
+        'x-sent': true
+    }
+  };
+  console.log('OKAY OKAY',typeof res.sendFile, typeof res.sendfile)
+  res.sendfile(req.params.fn, options, function (err) {
+    if (err) {
+      console.log(err);
+      res.status(err.status).end();
+    }
+    else {
+      console.log('Sent:', req.params.fn);
+    }
+  });
+}
+
+exports.getfriends = function(req, res, next) {
+  console.log('user.controller.getfriends: req.body req.params', req.body, req.params)
+  User.find({
+    _id: { $in: req.body.friends}
+  }, function(err, friends) {
+    if(err){
+      console.log("user.controller.js: getfriends", err)
+      res.send(403);
+     }
+     else {
+      return res.json(200, friends)
+     }
+  })
+}
 /**
  * Get my info
  */

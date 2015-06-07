@@ -16,9 +16,9 @@
 // to manage later on.
 //
 // As we could do something like:
-		// return $resource('/api/messages/:id/:controller')
-		// AND/OR
-		// return $resource('/api/services/:id/:controller')
+    // return $resource('/api/messages/:id/:controller')
+    // AND/OR
+    // return $resource('/api/services/:id/:controller')
 // ------------------------------------
 // ":id" and ":controller" are placeholders that get replaced
 // by angular ... when submitted they would be replaced by
@@ -30,7 +30,7 @@
 
 
 angular.module('theSignUp2App')
-  .factory('GrabStuff', function Auth($location, $rootScope, $http, User, $cookieStore, $q) {
+  .factory('JobsFactory', function Auth($location, $rootScope, $http, User, $cookieStore, $q) {
     var currentUser = {};
     if($cookieStore.get('token')) {
       currentUser = User.get();
@@ -38,10 +38,10 @@ angular.module('theSignUp2App')
 
     return {
 
-      getServices: function(callback){
+      getJobs: function(callback){
         var cb = callback || angular.noop;
         var deferred = $q.defer();
-        $http.get('/api/services', {
+        $http.get('/api/jobs', {
           // email: user.email,
           // password: user.password
         }).

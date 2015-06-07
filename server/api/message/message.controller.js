@@ -62,6 +62,67 @@ exports.destroy = function(req, res) {
   });
 };
 
+exports.lastMessage = function(req, res) {
+  console.log("lastMessage-controller", req.body);
+
+        Message.aggregate({ "$match": {"toUserId": req.body.currentUserId,
+                                  "fromUserId": {"$in": req.body.friends}}
+                    },
+                    {"$sort": { "date": -1 }
+                    }, 
+                    {"$group": {
+                        "_id": "$fromUserId",
+                        "body": {
+                            "$first": "$body" 
+                        },
+                      "date": {
+                        "$first": "$date" 
+                        },
+                       "fromUserName": { 
+                          "$first": "$fromUserName"
+                      },
+                      "fromUserPicUrl": {
+                        "$first": "$fromUserPicUrl"
+                      },
+
+                    },
+                  },
+
+                    function(err, message){
+                      console.log("mcl", message);
+                      console.log("mcl", err);
+                      return res.json(201, message)
+                    }
+       // Result is an array of documents
+
+);
+//   Message.aggregate({ "$match": {"toUserId": req.body.currentUserId,
+//                                   "fromUserId": {"$in": req.body.friends}}
+//                     }, 
+//                     {"$sort": { "date": -1 }
+//                     }, function(err, message){
+//                       console.log("mcl", message);
+//                       console.log("mcl", err);
+//                       return res.json(201, message)
+//                     }
+//        // Result is an array of documents
+
+// );
+
+
+  }
+
+
+exports.sendmessage = function(req, res) {
+
+  console.log("Message-Controller",req.body.message)
+  Message.create(req.body.message, function(err, message) {
+    console.log('Message.create', err, message)
+    if(err) { return handleError(res, err); }
+    return res.json(201, message);
+  });
+};
+
 function handleError(res, err) {
   return res.send(500, err);
 }

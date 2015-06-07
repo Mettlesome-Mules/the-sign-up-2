@@ -1,6 +1,4 @@
 'use strict';
-
-angular.module('theSignUp2App')
   // ********************************//
   // $resource is a high level $http
   // it handles $http.get and $http.post
@@ -15,35 +13,24 @@ angular.module('theSignUp2App')
   //   'remove': {method:'DELETE'},
   //   'delete': {method:'DELETE'} };
   // ********************************//
-  .factory('User', function ($resource) {
-    return $resource('/api/users/:id/:controller', {
+angular.module('theSignUp2App')
+  .factory('Job', function ($resource) {
+    return $resource('/api/jobs/:id/:controller', {
       id: '@_id'
     },
     {
-      changePassword: {
-        method: 'PUT',
-        params: {
-          controller:'password'
-        }
-      },
-      updateProfileInfo: {
-        method: 'PUT',
-        params: {
-          controller:'updateprofileinfo'
-        }
-      },
-      get: {
+      getMyJobs: {
         method: 'GET',
+        isArray:true,
         params: {
-          id:'me'
+          controller:'getmyjobs'
         }
       },
-      getFriends: {
+      createJob: {
         method: 'POST',
-        isArray: true,
         params: {
-          controller:'getfriends'
+          controller:'createjob'
         }
       }
-	  });
+    });
   });
