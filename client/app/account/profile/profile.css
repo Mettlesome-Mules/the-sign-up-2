@@ -3,6 +3,11 @@
     margin: 20px;
 }
 
+.create-job {
+	padding: 15px;
+	display: block;
+}
+
 .user {
 	display: inline;
 }
@@ -13,6 +18,15 @@
 .profile-username {
     margin: 20px 0;
 }
+
+/*.profile-picture {
+	position:relative;
+	width:250px;
+}
+
+.picture-form {
+	position: absolute;
+}*/
 
 .profile-email {
     border-bottom: none;

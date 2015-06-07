@@ -6,7 +6,20 @@
 		<div class="col-sm-12">
 			  <h3>Hello {{ currentUser.name }}</h3>
 		</div>
-		<img src="{{ currentUser.profileInfo.profilePicUrl }}">
+		<div class='profile-picture'>
+			<img src="{{ currentUser.profileInfo.profilePicUrl }}">
+			<form class='picture-form' name="profilePicForm">
+					<input type="file" ngf-select="" ng-model="picFile" name="file" accept="image/*" required="">
+					<br>
+					<button class="btn btn-sm btn-primary" ng-show="profilePicForm.$valid" ng-click="profilePicUpload(picFile)">Submit</button>
+					<img ng-show="picFile[0] != null" ngf-src="picFile[0]" class="thumb">
+					<span class="progress" ng-show="picFile[0].progress >= 0">
+					<div style="width:{{picFile[0].progress}}%" ng-bind="picFile[0].progress + '%'" class="ng-binding"></div>
+					</span>
+					<span ng-show="picFile[0].result">Upload Successful</span>
+			<br>
+			</form>
+		</div>
 		<div>Email: {{ currentUser.email }}</div>
 		<form>
 			<input type='textarea' rows="10" cols="70" placeholder="{{ currentUser.profileInfo.about }}" ng-model="currentUser.profileInfo.about">
@@ -15,14 +28,43 @@
 		</form>
 		<div ng-show="updateSuccess">Profile Updated</div>
 	</div>
-
+	<form>
+		<button class="btn btn-sm btn-primary" ng-click='showCreateJobs()' type="submit">Create Job</button>
+	</form>
+	<div ng-show='createJobPressed' >
+		<form>
+			<div class='create-job'>
+				<input type='textarea' placeholder="name" ng-model="job.name"><br>
+				<input type='textarea' placeholder="category" ng-model="job.category"><br>
+				<input type='textarea' placeholder="description" ng-model="job.description"><br>
+				<input type='textarea' placeholder="info" ng-model="job.info"><br>
+				<input type='textarea' placeholder="price" ng-model="job.price"><br>
+				<input type='textarea' placeholder="location" ng-model="job.location"><br>
+				<button class="btn btn-sm btn-primary" ng-click='createJob()' type="submit">Submit Job</button>
+			</div>
+		</form>
+		<div ng-show='jobPosted'>Successfully Posted!</div>
+	</div>
+	<div class='myjobs' ng-init='showJobsCreated()'>
+		<h2>My Jobs</h2>
+		<ul ng-repeat="job in myJobs">
+			<li>
+				{{ job.name }}
+				{{ job.category }}
+				{{ job.info }}
+				{{ job.location }}
+				{{ job.description }}
+				{{ job.price }}
+			</li>
+		</ul>
+	</div>
 
 
 	<hr>
 	<div class='container'>
 		<div class='profile-btn'>
 			<form >
-				<button class="btn btn-sm btn-primary" ng-click='showPassword()' type="submit">Show User Info</button>
+				<button class="btn btn-sm btn-primary" ng-click='showUserInfo()' type="submit">Show User Info</button>
 			</form>
 			<div ng-show='isPressed'>
 				<div class='profile-username'>
