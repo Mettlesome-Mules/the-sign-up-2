@@ -4,6 +4,10 @@ angular.module('theSignUp2App')
   .controller('ProfileCtrl', function ($scope, $window, $http, $cookieStore, User, Auth, Profile, Upload) {
     $scope.errors = {};
     $scope.users = {};
+    $scope.currentUser = Auth.getCurrentUser();
+    $scope.job = {byUserId: $scope.currentUser._id};
+    $scope.createJobPressed = false;
+    $scope.jobPosted = false;
 
     $scope.isPressed = false;
     $scope.currentUser.profileInfo.about = $scope.currentUser.profileInfo.about || 'About me';
@@ -11,10 +15,6 @@ angular.module('theSignUp2App')
     $scope.file = '';
     $scope.myJobs = {};
 
-    $scope.currentUser = Auth.getCurrentUser();
-    $scope.job = {byUserId: $scope.currentUser._id};
-    $scope.createJobPressed = false;
-    $scope.jobPosted = false;
 
     $scope.showUserInfo = function(){
       if (!$scope.isPressed){
