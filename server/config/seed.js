@@ -250,8 +250,8 @@ Thing.find({}).remove(function() {
   });
 });
 
-Service.find({}).remove(function() {
-  Service.create({
+Job.find({}).remove(function() {
+  Job.create({
     name: 'Pegasus',
     category: 'Transportation',
     info: '9-5 and other info',
