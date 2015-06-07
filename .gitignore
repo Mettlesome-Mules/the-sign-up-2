@@ -2,7 +2,7 @@ node_modules
 public
 .tmp
 .idea
-client.html
+client/index.html
 client/bower_components
 dist
 /server/config/local.env.js
