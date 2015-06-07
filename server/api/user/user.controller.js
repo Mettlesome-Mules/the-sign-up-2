@@ -169,7 +169,8 @@ exports.getfriends = function(req, res, next) {
      res.send(403);
     }
     else {
-     return res.json(200, friends)
+      console.log('FFFFFFFFRRRRRRIENDS', friends)
+      return res.json(200, friends)
     }
  })
 }
