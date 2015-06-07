@@ -2,7 +2,23 @@
 
 <div class="container">
   <div id="container" ng-controller='JobsCtrl'>
-  
+  <form>
+    <button class="btn btn-sm btn-primary" ng-click='showCreateJobs()' type="submit">Create Job</button>
+  </form>
+  <div ng-show='createJobPressed' >
+    <form>
+      <div class='create-job'>
+        <input type='textarea' placeholder="name" ng-model="job.name"><br>
+        <input type='textarea' placeholder="category" ng-model="job.category"><br>
+        <input type='textarea' placeholder="description" ng-model="job.description"><br>
+        <input type='textarea' placeholder="info" ng-model="job.info"><br>
+        <input type='textarea' placeholder="price" ng-model="job.price"><br>
+        <input type='textarea' placeholder="location" ng-model="job.location"><br>
+        <button class="btn btn-sm btn-primary" ng-click='createJob()' type="submit">Submit Job</button>
+      </div>
+    </form>
+    <div ng-show='jobPosted'>Successfully Posted!</div>
+  </div>
   <div class='jobs'>
     <div class="col-md-12">
       <h1>Jobs</h1>
