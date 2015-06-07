@@ -4,15 +4,17 @@ angular.module('theSignUp2App')
   .controller('ProfileCtrl', function ($scope, $window, $http, $cookieStore, User, Auth, Profile, Upload) {
     $scope.errors = {};
     $scope.users = {};
+
     $scope.isPressed = false;
-    $scope.currentUser = Auth.getCurrentUser();
-    $scope.job = {byUserId: $scope.currentUser._id};
     $scope.currentUser.profileInfo.about = $scope.currentUser.profileInfo.about || 'About me';
     $scope.updateSuccess = '';
-    $scope.createJobPressed = false;
-    $scope.jobPosted = false;
     $scope.file = '';
     $scope.myJobs = {};
+
+    $scope.currentUser = Auth.getCurrentUser();
+    $scope.job = {byUserId: $scope.currentUser._id};
+    $scope.createJobPressed = false;
+    $scope.jobPosted = false;
 
     $scope.showUserInfo = function(){
       if (!$scope.isPressed){
