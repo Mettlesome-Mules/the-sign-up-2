@@ -30,11 +30,8 @@
 
 
 angular.module('theSignUp2App')
-  .factory('Message', function Auth($location, $rootScope, $http, User, $cookieStore, $q) {
-    var currentUser = {};
-    if($cookieStore.get('token')) {
-      currentUser = User.get();
-    }
+  .factory('Message', function Auth($location, $rootScope, $http, User, $cookieStore, $q, Auth) {
+    var currentUser = Auth.getCurrentUser();
 
     return {
 
@@ -111,7 +108,7 @@ angular.module('theSignUp2App')
 
       getFriends: function(callback) {
         var cb = callback || angular.noop;
-        console.log('getFriendscurrentUser', currentUser)
+        console.log('message-factory getFriendscurrentUser', currentUser)
         return User.getFriends({ id: currentUser._id }, {
          friends: currentUser.friends
         }, function(user) {
