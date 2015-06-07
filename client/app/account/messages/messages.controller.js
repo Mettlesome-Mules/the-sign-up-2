@@ -47,7 +47,7 @@ angular.module('theSignUp2App')
     console.log($scope.currentUser.lastMessages)
     console.log('friends',$scope.currentUser.friends)
 
-    Message.getFriends()
+    Message.getFriends(null)
                     .then(function(data){
                         $scope.friends = data
                     })

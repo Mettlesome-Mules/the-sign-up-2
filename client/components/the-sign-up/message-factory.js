@@ -106,11 +106,12 @@ angular.module('theSignUp2App')
         return deferred.promise;
       },
 
-      getFriends: function(callback) {
+      getFriends: function(friendsList, callback) {
         var cb = callback || angular.noop;
+        friendsList = friendsList || currentUser.friends;
         console.log('message-factory getFriendscurrentUser', currentUser)
         return User.getFriends({ id: currentUser._id }, {
-         friends: currentUser.friends
+         friends: friendsList
         }, function(user) {
           return cb(user);
         }, function(err) {
