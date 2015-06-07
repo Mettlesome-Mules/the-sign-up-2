@@ -54,7 +54,7 @@ angular.module('theSignUp2App')
                     .catch(function(err){
                         $scope.errors.other = err.message;
                     })
-
+    console.log('FRIENDS',$scope.friends)
     Message.lastMessages($scope.currentUser.friends, $scope.currentUser._id)
                     .then(function(data){
                         $scope.lastmessages = data
