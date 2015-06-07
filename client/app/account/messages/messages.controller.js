@@ -6,6 +6,7 @@ angular.module('theSignUp2App')
     $scope.message = [];
     $scope.usermsg = {};
     $scope.currentUser = Auth.getCurrentUser();
+    $scope.messages = [];
     $scope.submit = function() {
         $scope.usermsg.fromUserID = $scope.currentUser._id;
         $scope.usermsg.toUserID = 'TODO: toUserID';
@@ -29,14 +30,25 @@ angular.module('theSignUp2App')
     //     date: { type: Date, default: Date.now() },
     //     hidden: false
     //   };
-	Message.getMessages()
-    				.then(function(data){
-    					$scope.messages = data
-                        console.log('getData', data)
-    				})
-    				.catch(function(err){
-    					$scope.errors.other = err.message;
-    				})
-    console.log($scope.currentUser.lastMessages)
+	// Message.getMessages()
+ //    				.then(function(data){
+ //    					$scope.messages = data
+ //                        console.log('getData', data)
+ //    				})
+ //    				.catch(function(err){
+ //    					$scope.errors.other = err.message;
+ //    				})
+ //    console.log($scope.currentUser.lastMessages)
+ //    console.log('friends',$scope.currentUser.friends)
+
+    Message.lastMessages($scope.currentUser.friends, $scope.currentUser._id)
+                    .then(function(data){
+                        $scope.messages = data
+                    })
+                    .catch(function(err){
+                        $scope.errors.other = err.message;
+                    })
+                    console.log('messages.controlller.js: lastMessages: ',$scope.messages)
+
     
 	});

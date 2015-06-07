@@ -82,6 +82,32 @@ angular.module('theSignUp2App')
 
         return deferred.promise;
       },
+      lastMessages: function(friends, _id, callback){
+        var cb = callback || angular.noop;
+        var deferred = $q.defer();
+        console.log('message-facotry, lastmessages',friends)
+        $http.post('/api/messages/lastmessage', {
+          friends: friends,
+          currentUserId: _id
+          // email: user.email,
+          // password: user.password
+        }).
+        success(function(data) {
+          // $cookieStore.put('token', data.token);
+          // currentUser = User.get();
+          console.log('Last Messages:', data)
+          deferred.resolve(data);
+          return cb();
+        }).
+        
+        error(function(err) {
+          // this.logout();
+          deferred.reject(err);
+          return cb(err);
+        }.bind(this));
+
+        return deferred.promise;
+      },
 
       sendMessages: function(usermsg, callback){
         var cb = callback || angular.noop;

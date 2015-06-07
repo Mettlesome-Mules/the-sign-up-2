@@ -1,6 +1,5 @@
 #sidebar {
-   	position: static;
-   	border-radius: 10px;
+   	position: absolute;
 	color: blue;
 	border: 1px solid #000;
 	width: 300px;
@@ -10,60 +9,45 @@
 .lastMessageWindow {
 	width: 280px;
 	border: 1px solid #000;
-	border-radius: 10px;
 	margin-left: auto;
 	margin-right: auto;
 	margin-top: 10px;
-	background-color: white;
 	overflow: scroll;
 }
 
 
 .messagesWindow {
-	position: static;
+	position: absolute;
 	width: 550px;
 	left: 325px;
 	color: blue;
 	border: 1px solid #000;
-	border-radius: 10px;
-	height: 600px;
+	height: 70%;
 	overflow: scroll;
 }
 #messageContainer {
 	width: 500px;
 	border: 1px solid #000;
-	border-radius: 10px;
 	margin-right: auto;
 	margin-left: auto;
 	margin-bottom: auto;
-	background-color: white;
-	overflow: scroll
+	/*overflow: scroll*/
 }
 
 .chatWrapper{
 
-	position: static;
+	position: absolute;
 	bottom: 0;
 	left: 300px;
 	height: 120px;
-	width: 550px;
-	border-radius: 10px;
 }
 .chatWrapper input {
-
-	position: static;
-	width: 450px;
+	margin-left: auto;
+	margin-top: auto;
+	position: absolute;
 	height: 100px;
 	bottom: 0;
 	height: 120px;
-	border-radius: 10px;
+	left: 100px;
 
-}
-.chatWrapper #submit{
-	width: 95px;
-	border-radius: 10px;
-}
-body {
-   /*background: #F5F5F5;*/
-   background: #F5F5F5;
 }
