@@ -109,6 +109,18 @@ angular.module('theSignUp2App')
         return deferred.promise;
       },
 
+      getFriends: function(callback) {
+        var cb = callback || angular.noop;
+        console.log('getFriendscurrentUser', currentUser)
+        return User.getFriends({ id: currentUser._id }, {
+         friends: currentUser.friends
+        }, function(user) {
+          return cb(user);
+        }, function(err) {
+          return cb(err);
+        }).$promise;
+      },
+
       sendMessages: function(usermsg, callback){
         var cb = callback || angular.noop;
         var deferred = $q.defer();

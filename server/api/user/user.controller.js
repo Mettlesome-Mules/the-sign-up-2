@@ -103,7 +103,10 @@ exports.updateProfileInfo = function(req, res, next) {
 };
 
 
-
+exports.getfriends = function(req, res, next) {
+  console.log('user.controller.getfriends: req.body req.params', req.body, req.params)
+  res.send(200);
+}
 /**
  * Get my info
  */

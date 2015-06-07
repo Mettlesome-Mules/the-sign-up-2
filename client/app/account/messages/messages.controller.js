@@ -6,6 +6,7 @@ angular.module('theSignUp2App')
     $scope.message = [];
     $scope.lastmessages = [];
     $scope.usermsg = {};
+    $scope.friends = [];
     $scope.currentUser = Auth.getCurrentUser();
     console.log('current User', $scope.currentUser);
     $scope.messages = [];
@@ -45,6 +46,14 @@ angular.module('theSignUp2App')
     				})
     console.log($scope.currentUser.lastMessages)
     console.log('friends',$scope.currentUser.friends)
+
+    Message.getFriends()
+                    .then(function(data){
+                        $scope.friends = data
+                    })
+                    .catch(function(err){
+                        $scope.errors.other = err.message;
+                    })
 
     Message.lastMessages($scope.currentUser.friends, $scope.currentUser._id)
                     .then(function(data){
