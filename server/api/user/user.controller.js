@@ -162,8 +162,17 @@ exports.getProfilePic = function(req, res, next){
 }
 
 exports.getfriends = function(req, res, next) {
-  console.log('user.controller.getfriends: req.body req.params', req.body, req.params)
-  res.send(200);
+ console.log('user.controller.getfriends: req.body req.params', req.body, req.params)
+ User.find({ _id: { $in: req.body.friends}}, function(err, friends) {
+   if(err){
+     console.log("user.controller.js: getfriends", err)
+     res.send(403);
+    }
+    else {
+      console.log('FFFFFFFFRRRRRRIENDS', friends)
+      return res.json(200, friends)
+    }
+ })
 }
 /**
  * Get my info

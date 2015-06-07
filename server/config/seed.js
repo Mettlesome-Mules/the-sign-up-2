@@ -97,15 +97,20 @@ var setupMessages = function(){
 
 var addTestFriends = function() {
     User.find({ 'name': 'Test User'}, function(err, user1){
-    if (err){console.log(err)}
-    User.find({ 'name': 'Test2 User'}, function(err, user2){
-      user1[0].friends.push(user2[0]._id)
-      user2[0].friends.push(user1[0]._id)
-      user1[0].save(function (err) {
-        if (err) { console.log(err) }
-      })
-      user2[0].save(function (err) {
-        if (err) { console.log(err) }
+      if (err){console.log(err)}
+      User.find({ 'name': 'Test2 User'}, function(err, user2){
+        if (err){console.log(err)}
+        User.find({ 'name': 'mettle'}, function(err, user3){
+
+        user1[0].friends.push(user2[0]._id)
+        user1[0].friends.push(user3[0]._id)
+        user2[0].friends.push(user1[0]._id)
+        user1[0].save(function (err) {
+          if (err) { console.log(err) }
+        })
+        user2[0].save(function (err) {
+          if (err) { console.log(err) }
+        })
       })
     })
   })

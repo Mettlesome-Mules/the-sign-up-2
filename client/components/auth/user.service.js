@@ -40,6 +40,7 @@ angular.module('theSignUp2App')
       },
       getFriends: {
         method: 'POST',
+        isArray: true,
         params: {
           controller:'getfriends'
         }
