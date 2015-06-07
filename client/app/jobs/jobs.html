@@ -41,7 +41,7 @@
         <div class="col-md-12">{{ job.description }}</div>
         <div class="col-md-6">Location: {{ job.location }}</div>
         <div class="col-md-6">Price: {{ job.price }}</div>
-        <div class="col-md-6">User: {{ job.byUserId }}</div>
+        <div class="col-md-6">User: {{ friends[job.byUserId] }}</div>
         <div class="col-md-6">Message: <input type="text"></div>
       </div>
     </div>

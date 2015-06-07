@@ -19,7 +19,7 @@ var UserSchema = new Schema({
   hashedPassword: String,
   provider: String,
   salt: String,
-  profileInfo: {about: String, joindate: Date, personalUrl: String, profilePicUrl: String, phone: String},
+  profileInfo: {about: {type: String, default: 'Say something about yourself'}, joindate: Date, personalUrl: String, profilePicUrl: String, phone: String},
   friends: [],
   lastMessages: [],
   activity: {},

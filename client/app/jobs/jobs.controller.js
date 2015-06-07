@@ -1,11 +1,12 @@
 'use strict';
 
 angular.module('theSignUp2App')
-  .controller('JobsCtrl', function ($scope, $http, $cookieStore, User, Auth, Profile, JobsFactory) {
+  .controller('JobsCtrl', function ($scope, $http, $cookieStore, User, Auth, Profile, JobsFactory, Message) {
     $scope.filters = {};
     $scope.errors = {};
     $scope.jobs = []
     $scope.categories = ['Transportation', 'Food', 'Arts & Leisure']
+    $scope.friends = {};
 
     $scope.currentUser = Auth.getCurrentUser();
     $scope.job = {byUserId: $scope.currentUser._id};
@@ -15,6 +16,22 @@ angular.module('theSignUp2App')
     JobsFactory.getJobs()
               .then(function(data){
                 $scope.jobs = data
+                $scope.jobFriends = []
+
+                $scope.jobs.forEach(function(j) {
+                  $scope.jobFriends.push(j.byUserId)
+                })
+                Message.getFriends($scope.jobFriends)
+                  .then(function(data){
+                      for (var i = 0; i < data.length; i++) {
+                        $scope.friends[data[i]._id] = data[i].name
+                      };
+                      console.log($scope.friends)
+                  })
+                  .catch(function(err){
+                      $scope.errors.other = err.message;
+                  })
+      
               })
               .catch(function(err){
                 $scope.errors.other = err.message;
@@ -46,5 +63,8 @@ angular.module('theSignUp2App')
           $scope.errors.other = err.message;
         }); 
     }
+
+
+
 
   });
