@@ -4,12 +4,17 @@ angular.module('theSignUp2App')
   .controller('MessagesCtrl', function ($scope, User, Auth, Message) {
     $scope.errors = {};
     $scope.message = [];
+    $scope.lastmessages = [];
     $scope.usermsg = {};
     $scope.currentUser = Auth.getCurrentUser();
+    console.log('current User', $scope.currentUser);
     $scope.messages = [];
+    $scope.updateToFriend = function (friendId) {
+        $scope.usermsg.toUserId = friendId;
+        console.log(arguments);
+    }
     $scope.submit = function() {
-        $scope.usermsg.fromUserID = $scope.currentUser._id;
-        $scope.usermsg.toUserID = 'TODO: toUserID';
+        $scope.usermsg.fromUserId = $scope.currentUser._id;
         $scope.usermsg.title = '';
         Message.sendMessages($scope.usermsg)
                     .then(function(data){
@@ -30,25 +35,25 @@ angular.module('theSignUp2App')
     //     date: { type: Date, default: Date.now() },
     //     hidden: false
     //   };
-	// Message.getMessages()
- //    				.then(function(data){
- //    					$scope.messages = data
- //                        console.log('getData', data)
- //    				})
- //    				.catch(function(err){
- //    					$scope.errors.other = err.message;
- //    				})
- //    console.log($scope.currentUser.lastMessages)
- //    console.log('friends',$scope.currentUser.friends)
+	Message.getMessages()
+    				.then(function(data){
+    					$scope.messages = data
+                        console.log('getData', data)
+    				})
+    				.catch(function(err){
+    					$scope.errors.other = err.message;
+    				})
+    console.log($scope.currentUser.lastMessages)
+    console.log('friends',$scope.currentUser.friends)
 
     Message.lastMessages($scope.currentUser.friends, $scope.currentUser._id)
                     .then(function(data){
-                        $scope.messages = data
+                        $scope.lastmessages = data
                     })
                     .catch(function(err){
                         $scope.errors.other = err.message;
                     })
-                    console.log('messages.controlller.js: lastMessages: ',$scope.messages)
+                    console.log('messages.controlller.js: lastMessages: ',$scope.lastmessages)
 
     
 	});

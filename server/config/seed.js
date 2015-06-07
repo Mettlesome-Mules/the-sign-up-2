@@ -19,7 +19,7 @@ var setupMessages = function(){
         body:   'this is the message',
         comments: [{ body: 'this is a comment', date: Date() }],
         date: { type: Date, default: Date.now() },
-        hidden: false 
+        hidden: false, 
       }, {
         title:  'Hello BOB',
         author: 'userIDhere',
@@ -53,22 +53,28 @@ var setupMessages = function(){
                 {
                   title:  'Hello'+user2[0].name,
                   fromUserId: user1[0]._id,
+                  fromUserName: user1[0].name,
+                  fromUserPicUrl: user1[0].profileInfo.profilePicUrl,
                   toUserId: user2[0]._id,
                   body:   'How are you doing today Test2 User from Test User',
                   comments: [{ body: 'this is a comment', date: Date() }],
                   date: { type: Date, default: Date.now() },
-                  hidden: false
+                  hidden: false,
                 }, {
                   title:  'Hello'+user2[0].name,
                   fromUserId: user1[0]._id,
+                  fromUserName: user1[0].name,
+                  fromUserPicUrl: user1[0].profileInfo.profilePicUrl,
                   toUserId: user2[0]._id,
                   body:   'How are you doing today Test2 User from Test User',
                   comments: [{ body: 'this is a comment', date: Date() }],
                   date: { type: Date, default: Date.now() },
-                  hidden: false
+                  hidden: false,
                 }, {
                   title:  'Hello'+user1[0].name,
                   fromUserId: user2[0]._id,
+                  fromUserName: user2[0].name,
+                  fromUserPicUrl: user2[0].profileInfo.profilePicUrl,
                   toUserId: user1[0]._id,
                   body:   'Test User!? WHYYY!? Sincerly Test2 User',
                   comments: [{ body: 'this is a comment', date: Date() }],
@@ -209,13 +215,21 @@ User.find({}).remove(function() {
       User.find({ 'name': 'Test User'}, function(err, user1){
         if (err){console.log(err)}
         User.find({ 'name': 'Test2 User'}, function(err, user2){
-          user1[0].friends.push(user2[0]._id)
-          user2[0].friends.push(user1[0]._id)
-          user1[0].save(function (err) {
-            if (err) { console.log(err) }
-          })
-          user2[0].save(function (err) {
-            if (err) { console.log(err) }
+          if (err){console.log(err)}
+        User.find({ 'name': 'mettle'}, function(err, user3){
+            user1[0].friends.push(user2[0]._id)
+            user1[0].friends.push(user3[0]._id)
+            user2[0].friends.push(user1[0]._id)
+            user3[0].friends.push(user1[0]._id)
+            user1[0].save(function (err) {
+              if (err) { console.log(err) }
+            })
+            user2[0].save(function (err) {
+              if (err) { console.log(err) }
+            })
+             user3[0].save(function (err) {
+              if (err) { console.log(err) }
+            })
           })
         })
       })
