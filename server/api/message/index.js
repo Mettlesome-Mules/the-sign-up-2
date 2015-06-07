@@ -7,6 +7,8 @@ var router = express.Router();
 
 
 router.get('/', controller.index);
+router.post('/lastmessage', controller.lastMessage);
+router.post('/sendmessage', controller.sendmessage);
 router.get('/:id', controller.show);
 router.post('/', controller.create);
 router.put('/:id', controller.update);

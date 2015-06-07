@@ -57,6 +57,8 @@ var setupMessages = function(){
                 {
                   title:  'Hello'+user2[0].name,
                   fromUserId: user1[0]._id,
+                  fromUserName: user1[0].name,
+                  fromUserPicUrl: user1[0].profileInfo.profilePicUrl,
                   toUserId: user2[0]._id,
                   body:   'How are you doing today Test2 User from Test User',
                   comments: [{ body: 'this is a comment', date: Date() }],
@@ -65,6 +67,8 @@ var setupMessages = function(){
                 }, {
                   title:  'Hello'+user2[0].name,
                   fromUserId: user1[0]._id,
+                  fromUserName: user1[0].name,
+                  fromUserPicUrl: user1[0].profileInfo.profilePicUrl,
                   toUserId: user2[0]._id,
                   body:   'How are you doing today Test2 User from Test User',
                   comments: [{ body: 'this is a comment', date: Date() }],
@@ -73,6 +77,8 @@ var setupMessages = function(){
                 }, {
                   title:  'Hello'+user1[0].name,
                   fromUserId: user2[0]._id,
+                  fromUserName: user2[0].name,
+                  fromUserPicUrl: user2[0].profileInfo.profilePicUrl,
                   toUserId: user1[0]._id,
                   body:   'Test User!? WHYYY!? Sincerly Test2 User',
                   comments: [{ body: 'this is a comment', date: Date() }],
@@ -244,6 +250,41 @@ Thing.find({}).remove(function() {
   });
 });
 
+Service.find({}).remove(function() {
+  Service.create({
+    name: 'Pegasus',
+    category: 'Transportation',
+    info: '9-5 and other info',
+    location: 'Downtown',
+    description: 'We give bike rides on bike pegs.',
+    price: 99,
+    active: true
+  },  {
+    name: 'Uber For Horses',
+    category: 'Transportation',
+    info: '9-5 and other info',
+    location: 'Downtown',
+    description: 'Horse rides by horse peoplee. neigh.',
+    price: 99,
+    active: false
+  },  {
+    name: 'Uber for Personal Chefs',
+    category: 'Food',
+    info: 'I make the curry',
+    location: 'My kitchen',
+    description: 'Vegetable curries on the rice.',
+    price: 99,
+    active: true
+  },  {
+    name: 'Cage Fight',
+    category: 'Arts & Leisure',
+    info: '9-5 and other info',
+    location: 'My House',
+    description: 'Rage Cage ... Nicolas Cage and You. A seminar.',
+    price: 99,
+    active: true
+  });
+});
 
 User.find({}).remove(function() {
   User.create({

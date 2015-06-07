@@ -21,6 +21,7 @@ router.put('/:id/password', auth.isAuthenticated(), controller.changePassword);
 router.put('/:id/updateprofileinfo', controller.updateProfileInfo);
 router.post('/profilepic', multipartMiddleware, controller.profilepic);
 router.get('/assets/profile-pictures/:fn', controller.getProfilePic)
+router.post('/:id/getfriends', controller.getfriends);
 router.get('/:id', auth.isAuthenticated(), controller.show);
 router.post('/', controller.create);
 

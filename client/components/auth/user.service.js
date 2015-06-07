@@ -37,6 +37,12 @@ angular.module('theSignUp2App')
         params: {
           id:'me'
         }
+      },
+      getFriends: {
+        method: 'POST',
+        params: {
+          controller:'getfriends'
+        }
       }
 	  });
   });

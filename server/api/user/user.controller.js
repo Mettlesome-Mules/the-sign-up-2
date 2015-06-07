@@ -1,10 +1,10 @@
 'use strict';
+
 var User = require('./user.model');
 var path = require('path')
 var passport = require('passport');
 var config = require('../../config/environment');
 var jwt = require('jsonwebtoken');
-
 
 var validationError = function(res, err) {
   return res.json(422, err);
@@ -161,6 +161,10 @@ exports.getProfilePic = function(req, res, next){
   });
 }
 
+exports.getfriends = function(req, res, next) {
+  console.log('user.controller.getfriends: req.body req.params', req.body, req.params)
+  res.send(200);
+}
 /**
  * Get my info
  */
