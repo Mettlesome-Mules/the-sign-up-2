@@ -6,10 +6,18 @@ angular.module('theSignUp2App')
     $scope.users = {};
     $scope.currentUser = Auth.getCurrentUser();
     $scope.allUsers = [];
-     Profile.showAll()
+    $scope.addFriend = function(friend){
+        $scope.currentUser.friends.push(friend._id)
+        User.save($scope.currentUser, function(){
+            console.log(arguments)
+        })
+    }
+    Profile.showAll()
         .then(function(data){
             data.forEach(function(friend, id){
-                $scope.allUsers.push(friend)
+                if ($scope.currentUser.friends.indexOf(friend._id) == -1){
+                    $scope.allUsers.push(friend)
+                }
 
             })
             //$scope.allUsers = data
