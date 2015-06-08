@@ -6,10 +6,10 @@
             <div id="sidebar" class="visible-md-block hidden-md"> <b> Last Message </b>
 
                 <div class="lastMessageWindow" ng-repeat="message in lastmessages">
-                    {{message.body}}
-                    {{message.fromUserName}}
-                    {{message.date}}
-                    <a ng-click="updateToFriend(message._id)">{{message._id}}</a>
+                    <div>From: {{message.fromUserName}} <img src="{{message.fromUserPicUrl}}" style="width: 25px"></img></div>
+                    <div> Message: {{message.body}}</div>
+                    <div>{{message.date}}</div>
+                    <a ng-click="updateToFriend(message._id)">{{message.fromUserName}}</a>
                 </div>
                 <div class="lastMessage"></div>
             </div>          
