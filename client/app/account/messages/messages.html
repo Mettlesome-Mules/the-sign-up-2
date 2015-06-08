@@ -3,8 +3,9 @@
 <div class="container" ng-controller='MessagesCtrl'>
     <div class="row">
         <div class="col-md-4">
-            <div id="sidebar"> Last Message
-                <div class="lastMessageWindow" ng-repeat="message in lastmessages"> Hii
+            <div id="sidebar" class="visible-md-block hidden-md"> <b> Last Message </b>
+
+                <div class="lastMessageWindow" ng-repeat="message in lastmessages">
                     {{message.body}}
                     {{message.fromUserName}}
                     {{message.date}}
@@ -15,19 +16,19 @@
         </div>
         <div class="col-md-4">
             <div class="messagesWindow">
-                <p class="welcome">Welcome, {{currentUser.name}}</p>
+                <p class="welcome"> <b>Welcome, {{currentUser.name}} </b></p>
                     <div id="messageContainer" ng-repeat='message in messages'>
                <!-- {{ message.title }} -->
-                    {{ message.fromUserName}}
+                    <div>From: {{ message.fromUserName}} <img src="{{message.fromUserPicUrl}}" style="width: 25px"></img></div>
                     <!-- {{ message.fromUserId }} -->
                 <!-- {{ message.toUserId }} -->
-                    {{ message.body}}
+                    <div>{{ message.body}} <div>{{ message.date}}</div></div>
                 <!-- {{ message.comments }} -->
-                    {{ message.date}}
-                    <img src="{{message.fromUserPicUrl}}" style="width: 25px"></img>
+                    
+                    
             <!--    {{ message.hidden }} -->
 
-                    <hr>
+            
                    </div>
             </div> 
             <div class="chatWrapper">
@@ -41,9 +42,12 @@
             </div>         
         </div>
     </div>
-
-    <div ng-repeat="friend in friends"> 
-        <!-- <a ng-click="updateToFriend(friend)"> -->{{friend}}<br><!-- </a> -->
+<div class="friendsList"> <b> Friends List </b>
+        <div class="friendsListContainer">
+            <div ng-repeat="friend in friends"> 
+                <a ng-click="updateToFriend(friend)">{{friend.name}}</a><!-- </a> -->
+            </div>
+        </div>
     </div>
 
 </div>

@@ -1,16 +1,15 @@
 #sidebar {
    	position: static;
-   	border-radius: 10px;
 	color: blue;
+	background-color: #EEEEEE;
 	border: 1px solid #000;
-	width: 300px;
-	height: 84%;
+	width: 400px;
+	height: 600px;
 	overflow: scroll
 }
 .lastMessageWindow {
-	width: 280px;
+	width: 370px;
 	border: 1px solid #000;
-	border-radius: 10px;
 	margin-left: auto;
 	margin-right: auto;
 	margin-top: 10px;
@@ -18,21 +17,20 @@
 	overflow: scroll;
 }
 
-
 .messagesWindow {
 	position: static;
-	width: 550px;
-	left: 325px;
+	width: 800px;
+	margin-left: 50px;
 	color: blue;
+	background-color: #EEEEEE;
 	border: 1px solid #000;
-	border-radius: 10px;
 	height: 600px;
 	overflow: scroll;
 }
 #messageContainer {
-	width: 500px;
+	width: 680px;
+	height: 100px;
 	border: 1px solid #000;
-	border-radius: 10px;
 	margin-right: auto;
 	margin-left: auto;
 	margin-bottom: auto;
@@ -44,26 +42,42 @@
 
 	position: static;
 	bottom: 0;
-	left: 300px;
+	margin-left: 50px;
 	height: 120px;
-	width: 550px;
-	border-radius: 10px;
+	width: 800px;
 }
 .chatWrapper input {
 
 	position: static;
-	width: 450px;
+	width: 701px;
 	height: 100px;
 	bottom: 0;
-	height: 120px;
-	border-radius: 10px;
 
 }
 .chatWrapper #submit{
 	width: 95px;
-	border-radius: 10px;
+	background-color: #3B5998;
 }
-body {
-   /*background: #F5F5F5;*/
-   background: #F5F5F5;
+.friendsList {
+	margin-top: -100px;
+	border: 1px solid #000;
+	background-color: #EEEEEE;
+	color: blue;
+	width: 400px;
+	height: 200px;
+	vertical-align: text-top;
+	text-align: center;
+	
 }
+.friendsListContainer {
+	width: 370px;
+	border: 1px solid #000;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 10px;
+	background-color: white;
+	overflow: scroll;
+}
+
+
+
