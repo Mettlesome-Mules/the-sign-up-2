@@ -55,19 +55,7 @@ angular.module('theSignUp2App')
                 $scope.errors.other = err.message;
               })
 
-    $scope.showCreateJobs = function(){
-      if (!$scope.createJobPressed){
-        $scope.createJobPressed = true
-      } else {
-        $scope.createJobPressed = false
-      }
-      $scope.job.name = 'THISI IS A TEST JOB'
-      $scope.job.category = 'HORSES'
-      $scope.job.info = 'ohwo'
-      $scope.job.location = 'myplace'
-      $scope.job.description = 'gonna make a taco'
-      $scope.job.price = 1
-    }
+
     $scope.createJob = function() {
       console.log('profile.controller.js: createJob', $scope.job)
       $scope.jobs.push($scope.job)

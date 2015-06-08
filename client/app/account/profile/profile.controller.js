@@ -4,6 +4,7 @@ angular.module('theSignUp2App')
   .controller('ProfileCtrl', function ($scope, $window, $http, $cookieStore, User, Auth, Profile, Upload) {
     $scope.errors = {};
     $scope.users = {};
+    $scope.categories = ['Transportation', 'Food', 'Arts & Leisure']
     $scope.currentUser = Auth.getCurrentUser();
     $scope.job = {byUserId: $scope.currentUser._id};
     $scope.createJobPressed = false;
@@ -13,7 +14,7 @@ angular.module('theSignUp2App')
     $scope.currentUser.profileInfo.about = $scope.currentUser.profileInfo.about || 'About me';
     $scope.updateSuccess = '';
     $scope.file = '';
-    $scope.myJobs = {};
+    $scope.myJobs = [];
 
 
     $scope.showUserInfo = function(){
@@ -63,19 +64,17 @@ angular.module('theSignUp2App')
       } else {
         $scope.createJobPressed = false
       }
-      $scope.job.name = 'THISI IS A TEST JOB'
-      $scope.job.category = 'HORSES'
-      $scope.job.info = 'ohwo'
-      $scope.job.location = 'myplace'
-      $scope.job.description = 'gonna make a taco'
-      $scope.job.price = 1
+      
     }
+    
     $scope.createJob = function() {
       console.log('profile.controller.js: createJob', $scope.job)
+      $scope.myJobs.push($scope.job)
       Profile.createJob($scope.job)
         .then( function(data) {
           $scope.jobPosted = data;
-          $scope.createJobPressed = false
+          $scope.createJobPressed = false;
+          $scope.job = {}
         })
         .catch( function(err) {
           $scope.errors.other = err.message;
