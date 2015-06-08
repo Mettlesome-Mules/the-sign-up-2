@@ -49,6 +49,17 @@ exports.show = function (req, res, next) {
 };
 
 /**
+ * Get all users
+ */
+exports.showAll = function (req, res, next) {
+  User.find({}, function (err, users) {
+    if (err) return next(err);
+    if (!users) return res.send(401);
+    res.json(200, users);
+  });
+};
+
+/**
  * Deletes a user
  * restriction: 'admin'
  */
