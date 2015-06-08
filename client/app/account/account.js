@@ -44,5 +44,10 @@ angular.module('theSignUp2App')
         templateUrl: 'app/account/messages/messages.html',
         controller: 'MessagesCtrl',
         authenticate: true,
+      })
+      .state('friendfinder', {
+        url: '/friendfinder',
+        templateUrl: 'app/account/friendfinder/friendfinder.html',
+        controller: 'FriendFinderCtrl'
       });
   });
