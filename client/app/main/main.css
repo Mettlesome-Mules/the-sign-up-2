@@ -13,6 +13,10 @@
     letter-spacing: -1px;
 }
 
+.btn-primary {
+    background: #3b5998;
+}
+
 .hero-unit {
     position: relative;
     padding: 30px 15px;
