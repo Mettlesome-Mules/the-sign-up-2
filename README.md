@@ -23,19 +23,52 @@
 
 ## Usage
 
-> Some usage instructions
+> 1. Clone down Repo
+  2. Install dependencies
+  3. Launch db daemon: sudo mongod
+  4. Launch db: mongo
+  5. Launch server: grunt serve
 
 ## Requirements
-
-- Node 0.10.x
-- Redis 2.6.x
-- Postgresql 9.1.x
-- etc
-- etc
+>
+    "node": ">=0.10.0"
+    "grunt": "~0.4.4"
+    "body-parser": "~1.5.0",
+    "composable-middleware": "^0.3.0",
+    "compression": "~1.0.1",
+    "connect-mongo": "^0.4.1",
+    "connect-multiparty": "^1.2.5",
+    "cookie-parser": "~1.0.1",
+    "ejs": "~0.8.4",
+    "errorhandler": "~1.0.0",
+    "express": "~4.0.0",
+    "express-jwt": "^0.1.3",
+    "express-session": "~1.0.2",
+    "jsonwebtoken": "^0.3.0",
+    "lodash": "~2.4.1",
+    "method-override": "~1.0.0",
+    "mongoose": "~3.8.8",
+    "morgan": "~1.0.0",
+    "passport": "~0.2.0",
+    "passport-facebook": "latest",
+    "passport-google-oauth": "latest",
+    "passport-local": "~0.1.6",
+    "passport-twitter": "latest",
+    "serve-favicon": "~2.0.1",
+    "socket.io": "^1.0.6",
+    "socket.io-client": "^1.0.6",
+    "socketio-jwt": "^2.0.2"
 
 ## Development
+> Stack Used
+  - MEAN
+>Deployment
+  - Grunt 
+  - Heroku
+  
 
 ### Installing Dependencies
+
 
 From within the root directory:
 
@@ -44,12 +77,3 @@ sudo npm install -g bower
 npm install
 bower install
 ```
-
-### Roadmap
-
-View the project roadmap [here](LINK_TO_PROJECT_ISSUES)
-
-
-## Contributing
-
-See [CONTRIBUTING.md](https://github.com/unexpected-lion/ourglass/blob/master/contributing.md) for contribution guidelines.
