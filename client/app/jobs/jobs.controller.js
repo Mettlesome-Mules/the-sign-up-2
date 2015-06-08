@@ -8,10 +8,28 @@ angular.module('theSignUp2App')
     $scope.categories = ['Transportation', 'Food', 'Arts & Leisure']
     $scope.friends = {};
 
+    $scope.usermsg = {};
+    $scope.friends = [];
+    $scope.currentUser = Auth.getCurrentUser();
+
     $scope.currentUser = Auth.getCurrentUser();
     $scope.job = {byUserId: $scope.currentUser._id};
     $scope.createJobPressed = false;
     $scope.jobPosted = false;
+
+    $scope.submit = function() {
+        $scope.usermsg.fromUserId = $scope.currentUser._id;
+        $scope.usermsg.title = '';
+        Message.sendMessages($scope.usermsg)
+                    .then(function(data){
+                        console.log("Success")
+                        console.log('send data', data)
+                    })
+                    .catch(function(err){
+                        $scope.errors.other = err.message;
+                    })
+        console.log("YES!")
+    };
 
     JobsFactory.getJobs()
               .then(function(data){
@@ -53,11 +71,11 @@ angular.module('theSignUp2App')
     $scope.createJob = function() {
       console.log('profile.controller.js: createJob', $scope.job)
       $scope.jobs.push($scope.job)
-      $scope.job = {}
       Profile.createJob($scope.job)
         .then( function(data) {
           $scope.jobPosted = data;
           $scope.createJobPressed = false;
+          $scope.job = {}
         })
         .catch( function(err) {
           $scope.errors.other = err.message;
