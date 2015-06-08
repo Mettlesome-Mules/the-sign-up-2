@@ -6,4 +6,5 @@ client/bower_components
 dist
 /server/config/local.env.js
 /server/config/environment/db/*
+/server/config/enviornment/production.js
 /server/api/user/assets/profile-pictures/*.png
