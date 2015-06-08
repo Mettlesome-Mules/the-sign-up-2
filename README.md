@@ -1,12 +1,13 @@
-# Space Kitten
+[![Build Status](https://travis-ci.org/Mettlesome-Mules/the-sign-up-2.svg)](https://travis-ci.org/Mettlesome-Mules/the-sign-up-2)
+# CraigsBook
 
-> Pithy project description
+> Craigsbook hybrid: Synergistic services for Horses
 
 ## Team
 
-  - __Product Owner__: space cat
-  - __Scrum Master__: space cat
-  - __Development Team Members__: space cat, space cat
+  - __Product Owner__: Steven Braunstein
+  - __Scrum Master__: Justin Hernandez
+  - __Development Team Members__: James Munsch
 
 ## Table of Contents
 
