@@ -2,32 +2,34 @@
 
 <div class="container">
 	<div id="container" ng-controller='ProfileCtrl'>
-	<div class="user">
-		<div class="col-sm-12">
-			  <h3>Hello {{ currentUser.name }}</h3>
-		</div>
-		<div class='profile-picture'>
-			<img src="{{ currentUser.profileInfo.profilePicUrl }}">
-			<form class='picture-form' name="profilePicForm">
-					<input type="file" ngf-select="" ng-model="picFile" name="file" accept="image/*" required="">
-					<br>
-					<button class="btn btn-sm btn-primary" ng-show="profilePicForm.$valid" ng-click="profilePicUpload(picFile)">Submit</button>
-					<img ng-show="picFile[0] != null" ngf-src="picFile[0]" class="thumb">
-					<span class="progress" ng-show="picFile[0].progress >= 0">
-					<div style="width:{{picFile[0].progress}}%" ng-bind="picFile[0].progress + '%'" class="ng-binding"></div>
-					</span>
-					<span ng-show="picFile[0].result">Upload Successful</span>
-			<br>
+		<div class="user">
+
+			<div class="col-sm-12">
+				  <h3>Hello {{ currentUser.name }}</h3>
+			</div>
+			<div class='profile-picture col-sm-12'>
+				<img src="{{ currentUser.profileInfo.profilePicUrl }}">
+				<form class='picture-form' name="profilePicForm">
+						<input type="file" ngf-select="" ng-model="picFile" name="file" accept="image/*" required="">
+						<br>
+						<button class="btn btn-sm btn-primary" ng-show="profilePicForm.$valid" ng-click="profilePicUpload(picFile)">Submit</button>
+						<img ng-show="picFile[0] != null" ngf-src="picFile[0]" class="thumb">
+						<span class="progress" ng-show="picFile[0].progress >= 0">
+						<div style="width:{{picFile[0].progress}}%" ng-bind="picFile[0].progress + '%'" class="ng-binding"></div>
+						</span>
+						<span ng-show="picFile[0].result">Upload Successful</span>
+				<br>
+				</form>
+			</div>
+			<div>Email: {{ currentUser.email }}</div>
+			<form>
+				<textarea type='textarea' class='about' rows="10" cols="70" placeholder="{{ currentUser.profileInfo.about }}" ng-model="currentUser.profileInfo.about"></textarea>
+				<input type='textarea' rows="10" cols="70" placeholder="Phone Number">
+				<button class="btn btn-sm btn-primary" ng-click='updateProfileInfo()' type="submit">Update Profile Info</button>
 			</form>
+			<div ng-show="updateSuccess" class="blue">Profile Updated</div>
 		</div>
-		<div>Email: {{ currentUser.email }}</div>
-		<form>
-			<input type='textarea' rows="10" cols="70" placeholder="{{ currentUser.profileInfo.about }}" ng-model="currentUser.profileInfo.about">
-			<input type='textarea' rows="10" cols="70" placeholder="Phone Number">
-			<button class="btn btn-sm btn-primary" ng-click='updateProfileInfo()' type="submit">Update Profile Info</button>
-		</form>
-		<div ng-show="updateSuccess">Profile Updated</div>
-	</div>
+	<hr>
 	<form>
 		<button class="btn btn-sm btn-primary" ng-click='showCreateJobs()' type="submit">Create Job</button>
 	</form>
@@ -45,23 +47,25 @@
 		</form>
 		<div ng-show='jobPosted'>Successfully Posted!</div>
 	</div>
+	<hr>
 	<div class='myjobs' ng-init='showJobsCreated()'>
 		<h2>My Jobs</h2>
 		<ul ng-repeat="job in myJobs">
-			<li>
-				{{ job.name }}
-				{{ job.category }}
-				{{ job.info }}
-				{{ job.location }}
-				{{ job.description }}
-				{{ job.price }}
-			</li>
+			<div class='job-card col-md-1'>
+				<div>{{ job.name }}</div>
+				<div>{{ job.category }}</div>
+				<div>{{ job.info }}</div>
+				<div>{{ job.location }}</div>
+				<div>{{ job.description }}</div>
+				<div>{{ job.price }}</div>
+			</div>
 		</ul>
 	</div>
 
 
 	<hr>
-	<div class='container'>
+	<br>
+<!-- 	<div class='container'>
 		<div class='profile-btn'>
 			<form >
 				<button class="btn btn-sm btn-primary" ng-click='showUserInfo()' type="submit">Show User Info</button>
@@ -73,15 +77,6 @@
 				<div class='profile-email'>
 					<p>User email: {{ currentUser.email }}</p>
 				</div>
-				<!-- <div>
-					<p>role: {{ currentUser.role }}</p>
-				</div> -->
-				<!-- <div>
-					<p>hashedPassword: {{ currentUser.hashedPassword }}</p>
-				</div>
-				<div>
-					<p>provider: {{ currentUser.provider }}</p>
-				</div> -->
 				<div>
 					<p>profileInfo: {{ currentUser.profileInfo }}</p>
 				</div>
@@ -91,10 +86,7 @@
 				<div>
 					<p>activity: {{ currentUser.activity }}</p>
 				</div>
-	<!-- 			<div>
-					<p>google: {{ currentUser.google }}</p>
-				</div> -->
 			</div>
 		</div>
-	</div>
+	</div> -->
 </div>

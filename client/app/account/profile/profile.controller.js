@@ -75,6 +75,7 @@ angular.module('theSignUp2App')
       Profile.createJob($scope.job)
         .then( function(data) {
           $scope.jobPosted = data;
+          $scope.createJobPressed = false
         })
         .catch( function(err) {
           $scope.errors.other = err.message;
