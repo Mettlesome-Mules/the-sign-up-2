@@ -17,6 +17,7 @@ var router = express.Router();
 router.get('/', auth.hasRole('admin'), controller.index);
 router.delete('/:id', auth.hasRole('admin'), controller.destroy);
 router.get('/me', auth.isAuthenticated(), controller.me);
+router.get('/:id/showall', controller.showAll);
 router.put('/:id/password', auth.isAuthenticated(), controller.changePassword);
 router.put('/:id/updateprofileinfo', controller.updateProfileInfo);
 router.post('/profilepic', multipartMiddleware, controller.profilepic);

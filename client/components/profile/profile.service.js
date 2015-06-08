@@ -28,6 +28,22 @@ angular.module('theSignUp2App')
           return cb(err);
         }).$promise;
       },
+      showAll: function(callback) {
+        var cb = callback || angular.noop;
+        // **********************************//
+        // This is using angulars $resource injector
+        // to handle $http as a $promise
+        // See user.service.js
+        // **********************************//
+        console.log('profile.service.js: showAll: currentUser._id', currentUser._id)
+        return User.showAll({ id: currentUser._id }, {
+        }, function() {
+          console.log('profile.service.js: showAll: success callback', arguments)
+          return cb();
+        }, function(err) {
+          return cb(err);
+        }).$promise;
+      },
       createJob: function(job, callback) {
         var cb = callback || angular.noop;
         // **********************************//

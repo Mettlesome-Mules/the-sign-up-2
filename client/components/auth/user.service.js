@@ -44,6 +44,13 @@ angular.module('theSignUp2App')
         params: {
           controller:'getfriends'
         }
+      },
+      showAll: {
+        method: 'GET',
+        isArray: true,
+        params: {
+          controller:'showall'
+        }
       }
 	  });
   });
