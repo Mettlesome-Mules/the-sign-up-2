@@ -2,13 +2,13 @@
 
 <div class="container">
 	<div id="container" ng-controller='ProfileCtrl'>
-		<div class="user">
+		<div class="user container">
 
 			<div class="col-sm-12">
 				  <h3>Hello {{ currentUser.name }}</h3>
 			</div>
-			<div class='profile-picture col-sm-12'>
-				<img src="{{ currentUser.profileInfo.profilePicUrl }}">
+			<div class='col-md-4'>
+				<img src="{{ currentUser.profileInfo.profilePicUrl }}" class="profPic">
 				<form class='picture-form' name="profilePicForm">
 						<input type="file" ngf-select="" ng-model="picFile" name="file" accept="image/*" required="">
 						<br>
@@ -20,17 +20,30 @@
 						<span ng-show="picFile[0].result">Upload Successful</span>
 				<br>
 				</form>
+					<div>Email: {{ currentUser.email }}</div>
+					<form>
+						<input type='textarea' placeholder="{{ currentUser.profileInfo.about }}" ng-model="currentUser.profileInfo.about"></input>
+						<button class="btn btn-sm btn-primary" ng-click='updateProfileInfo()' type="submit">Update Profile Info</button>
+					</form>
+					<div ng-show="updateSuccess" class="blue">Profile Updated</div>
+				</div>
+				
+					<div class='myjobs container col-md-7' ng-init='showJobsCreated()'>
+						<h2>My Jobs</h2>
+						<div class="col-md-6" ng-repeat="job in myJobs">
+							<div class='job-card'>
+								<div><strong>Job</strong>: {{ job.name }}</div>
+								<div><strong>Category</strong>: {{ job.category }}</div>
+								<div><strong>Location</strong>: {{ job.location }}</div>
+								<div><strong>Description</strong>: {{ job.description }}</div>
+								<div><strong>Price</strong>: {{ job.price }}</div>
+							</div>
+						</div>
+					</div>
+
 			</div>
-			<div>Email: {{ currentUser.email }}</div>
-			<form>
-				<textarea type='textarea' class='about' rows="10" cols="70" placeholder="{{ currentUser.profileInfo.about }}" ng-model="currentUser.profileInfo.about"></textarea>
-				<input type='textarea' rows="10" cols="70" placeholder="Phone Number">
-				<button class="btn btn-sm btn-primary" ng-click='updateProfileInfo()' type="submit">Update Profile Info</button>
-			</form>
-			<div ng-show="updateSuccess" class="blue">Profile Updated</div>
-		</div>
 	<hr>
-	<form>
+<!-- 	<form>
 		<button class="btn btn-sm btn-primary" ng-click='showCreateJobs()' type="submit">Create Job</button>
 	</form>
 	<div ng-show='createJobPressed' >
@@ -46,47 +59,36 @@
 			</div>
 		</form>
 		<div ng-show='jobPosted'>Successfully Posted!</div>
-	</div>
-	<hr>
-	<div class='myjobs' ng-init='showJobsCreated()'>
-		<h2>My Jobs</h2>
-		<ul ng-repeat="job in myJobs">
-			<div class='job-card col-md-1'>
-				<div>{{ job.name }}</div>
-				<div>{{ job.category }}</div>
-				<div>{{ job.info }}</div>
-				<div>{{ job.location }}</div>
-				<div>{{ job.description }}</div>
-				<div>{{ job.price }}</div>
-			</div>
-		</ul>
-	</div>
-
-
-	<hr>
-	<br>
-<!-- 	<div class='container'>
-		<div class='profile-btn'>
-			<form >
-				<button class="btn btn-sm btn-primary" ng-click='showUserInfo()' type="submit">Show User Info</button>
-			</form>
-			<div ng-show='isPressed'>
-				<div class='profile-username'>
-					<p>Hello: {{ currentUser.name }}</p>
-				</div>
-				<div class='profile-email'>
-					<p>User email: {{ currentUser.email }}</p>
-				</div>
-				<div>
-					<p>profileInfo: {{ currentUser.profileInfo }}</p>
-				</div>
-				<div>
-					<p>friends: {{ currentUser.friends.length }}</p>
-				</div>
-				<div>
-					<p>activity: {{ currentUser.activity }}</p>
-				</div>
-			</div>
-		</div>
 	</div> -->
+	<h3>Create a Job!</h3>
+	<form>
+	  <div class="form-group">
+	    <label for="exampleInputEmail1">Job Name</label>
+	    <input type='textarea' class="form-control" placeholder="name" ng-model="job.name">
+	  </div>
+	  <label for="exampleInputEmail1">Category</label>
+	  <div class="form-group">
+	    <label data-ng-repeat="category in categories" class="radioButton">
+	        <input
+	            name="currentActivity"
+	            type="radio"
+	            value="{{category}}"
+	            ng-model="job.category" />
+	            {{category}}
+	    </label>
+	  </div>
+	  <div class="form-group">
+	    <label>Description</label>
+	    <input type='textarea' class="form-control" placeholder="Description" ng-model="job.description" rows="5">
+	  </div>
+	  <div class="form-group">
+	    <label>Price</label>
+	    <input type='textarea' class="form-control" placeholder="Cost per hour" ng-model="job.price">
+	  </div>
+	  <div class="form-group">
+	    <label>Location</label>
+	    <input type='textarea' class="form-control" placeholder="category" ng-model="job.location">
+	  </div>
+	  <button type="submit" class="btn btn-primary" ng-click='createJob()'>Create Job</button>
+	</form>
 </div>
