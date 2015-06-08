@@ -24,7 +24,6 @@
 			<div>Email: {{ currentUser.email }}</div>
 			<form>
 				<textarea type='textarea' class='about' rows="10" cols="70" placeholder="{{ currentUser.profileInfo.about }}" ng-model="currentUser.profileInfo.about"></textarea>
-				<input type='textarea' rows="10" cols="70" placeholder="Phone Number">
 				<button class="btn btn-sm btn-primary" ng-click='updateProfileInfo()' type="submit">Update Profile Info</button>
 			</form>
 			<div ng-show="updateSuccess" class="blue">Profile Updated</div>

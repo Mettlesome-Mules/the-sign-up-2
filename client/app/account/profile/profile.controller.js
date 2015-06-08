@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('theSignUp2App')
-  .controller('ProfileCtrl', function ($scope, $window, $http, $cookieStore, User, Auth, Profile, Upload) {
+  .controller('ProfileCtrl', function ($scope, $window, $http, $cookieStore, User, Auth, Profile, Upload, $state) {
     $scope.errors = {};
     $scope.users = {};
     $scope.currentUser = Auth.getCurrentUser();
@@ -13,7 +13,7 @@ angular.module('theSignUp2App')
     $scope.currentUser.profileInfo.about = $scope.currentUser.profileInfo.about || 'About me';
     $scope.updateSuccess = '';
     $scope.file = '';
-    $scope.myJobs = {};
+    $scope.myJobs = [];
 
 
     $scope.showUserInfo = function(){
@@ -72,6 +72,8 @@ angular.module('theSignUp2App')
     }
     $scope.createJob = function() {
       console.log('profile.controller.js: createJob', $scope.job)
+      $scope.myJobs.push($scope.job)
+      consolee.log('PUSHED $scope.job to $scope.myJobs', $scope.job, $scope.myJobs)
       Profile.createJob($scope.job)
         .then( function(data) {
           $scope.jobPosted = data;
