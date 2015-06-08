@@ -1,4 +1,6 @@
 [![Build Status](https://travis-ci.org/Mettlesome-Mules/the-sign-up-2.svg)](https://travis-ci.org/Mettlesome-Mules/the-sign-up-2)
+
+<img alt="https://badge.waffle.io/mettlesome-mules/the-sign-up-2.png?label=ready&amp;title=Ready" src="https://badge.waffle.io/mettlesome-mules/the-sign-up-2.png?label=ready&amp;title=Ready">
 # CraigsBook
 
 > Craigsbook hybrid: Synergistic services for Horses
