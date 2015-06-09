@@ -18,6 +18,7 @@
 1. [Development](#development)
     1. [Installing Dependencies](#installing-dependencies)
     1. [Tasks](#tasks)
+    1. [Getting into Code Base] (#getting-into-code-base)
 1. [Team](#team)
 1. [Contributing](#contributing)
 
@@ -77,3 +78,35 @@ sudo npm install -g bower
 npm install
 bower install
 ```
+
+### Getting Into Code Base
+
+ Client
+    -Views
+      - login, message, profile, etc.
+        -client -> app -> account
+      -scaffold View
+        -client -> app
+
+    -Services
+      -Scaffold components
+        -client -> app -> components
+      -Message Services
+        -client -> app -> components -> the signup
+Server
+  -app.js
+  -routes.js
+  
+  -config
+    -where environment exists
+    -environement
+    -seed.js
+
+  -index
+  -server -> api -> [thing] folder -> index.js
+
+  -Controllers
+    -server -> api -> [thing] folder -> [thing] controller
+
+  -Models
+    -server -> api -> [thing] folder -> [thing] model
