@@ -151,7 +151,7 @@ exports.profilepic = function(req, res, next) {
 exports.getProfilePic = function(req, res, next){
   console.log(req.body)
   console.log(req.params)
-  console.log('HERE HERE HRE')
+  console.log('Profile Picture')
   var options = {
     root: __dirname + '/assets/profile-pictures/',
     dotfiles: 'deny',
@@ -160,7 +160,7 @@ exports.getProfilePic = function(req, res, next){
         'x-sent': true
     }
   };
-  console.log('OKAY OKAY',typeof res.sendFile, typeof res.sendfile)
+  console.log('OKAY OKAY',typeof res.sendFile)
   res.sendfile(req.params.fn, options, function (err) {
     if (err) {
       console.log(err);
