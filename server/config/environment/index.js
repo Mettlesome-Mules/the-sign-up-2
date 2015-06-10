@@ -42,8 +42,8 @@ var all = {
   },
 
   facebook: {
-    clientID:     process.env.FACEBOOK_ID || 'id',
-    clientSecret: process.env.FACEBOOK_SECRET || 'secret',
+    clientID:     process.env.FACEBOOK_ID || '946589325393753',
+    clientSecret: process.env.FACEBOOK_SECRET || '004b61bbf560bfaad38a84220efc15aa',
     callbackURL:  (process.env.DOMAIN || '') + '/auth/facebook/callback'
   },
 
@@ -55,8 +55,8 @@ var all = {
 
   google: {
     // this is not correct it should be in ../local.env.js and grunt is suppose to pull this in with grunt env:all
-    clientID:     process.env.GOOGLE_ID || 'THISSHOULDBETHEGOOGLEID',
-    clientSecret: process.env.GOOGLE_SECRET || 'THISSHOULDBETHEGOOGLESECRET',
+    clientID:     process.env.GOOGLE_ID || '1345640996-bfk2kik33tokrintn7602bfu3lnfgrfr.apps.googleusercontent.com',
+    clientSecret: process.env.GOOGLE_SECRET || 'YyvLdLj3apnFLIyID08dcFO3',
     callbackURL:  (process.env.DOMAIN || '') + '/auth/google/callback'
   }
 };
