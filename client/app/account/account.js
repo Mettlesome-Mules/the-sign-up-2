@@ -44,6 +44,11 @@ angular.module('theSignUp2App')
         templateUrl: 'app/account/messages/messages.html',
         controller: 'MessagesCtrl',
         authenticate: true,
+        resolve: {
+          'currentUserData': function (Auth) {
+            return Auth.getCurrentUser().$promise;
+          }
+        }
       })
       .state('friendfinder', {
         url: '/friendfinder',
