@@ -7,7 +7,8 @@ angular.module('theSignUp2App', [
   'btford.socket-io',
   'ui.router',
   'ui.bootstrap',
-  'ngFileUpload'
+  'ngFileUpload',
+  'uiGmapgoogle-maps'
 ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
     $urlRouterProvider
