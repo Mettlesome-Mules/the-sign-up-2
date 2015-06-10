@@ -6,15 +6,4 @@ client/bower_components
 dist
 /server/config/local.env.js
 /server/config/environment/db/*
-/server/api/user/assets/profile-pictures/*.pngclient/app/account/profile/profile.controller.js
-client/app/account/profile/profile.html
-client/app/account/profile/profile.js
-client/components/navbar/navbar.html
-server/api/job/job.model.js
-server/config/environment/development.js
-server/config/environment/index.js
-server/config/environment/production.js
-server/api/user/assets/profile-pictures/54631-sakpl0.JPG
-server/api/user/assets/profile-pictures/54666-zy6epi.JPG
-server/api/user/assets/profile-pictures/62585-mx3i5t.JPG
-server/api/user/assets/profile-pictures/63428-1o8sz5z.JPG
+/server/api/user/assets/profile-pictures/*
