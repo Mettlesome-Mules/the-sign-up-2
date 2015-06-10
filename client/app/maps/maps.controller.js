@@ -12,45 +12,59 @@ angular.module('theSignUp2App')
  .controller("mapsController", function($scope, uiGmapGoogleMapApi) {
  	console.log('heelo!')
   // Define variables for our Map object
-  var areaLat      = 44.2126995,
-      areaLng      = -100.2471641,
-      areaZoom     = 3;
+  var areaLat      = 30.2500,
+      areaLng      = 97.7500,
+      areaZoom     = 14;
 
+      //promise that runs after gMaps is fully loaded
   uiGmapGoogleMapApi.then(function(maps) {
+  	
     $scope.map     = { center: { latitude: areaLat, longitude: areaLng }, zoom: areaZoom };
     $scope.options = { scrollwheel: false };
 
-  var browserSupportFlag =  new Boolean();
-  var initialLocation;
-  var siberia = new google.maps.LatLng(60, 105);
-  var newyork = new google.maps.LatLng(40.69847032728747, -73.9514422416687);
+    //geolocating function
+   var onSuccess = function(position) {
+    $scope.map.center = {
+        latitude: position.coords.latitude,
+        longitude: position.coords.longitude
+    };
+    $scope.$apply();
+}
+
+function onError(error) {
+    console.log('code: '    + error.code    + '\n' + 'message: ' + error.message + '\n');
+}
+
+navigator.geolocation.getCurrentPosition(onSuccess, onError);
+
+$scope.myMarkers = [];
+
+$scope.addMarker = function($event, $params) {
+  $scope.myMarkers.push(new google.maps.Marker({
+    map: $scope.myMap,
+    position: $params[0].latLng
+  }));
+};
+
+$scope.openMarkerInfo = function(marker) {
+  $scope.currentMarker = marker;
+  $scope.currentMarkerLat = marker.getPosition().lat();
+  $scope.currentMarkerLng = marker.getPosition().lng();
+  $scope.myInfoWindow.open($scope.myMap, marker);
+};
+
+$scope.setMarkerPosition = function(marker, lat, lng) {
+  marker.setPosition(new google.maps.LatLng(lat, lng));
+};
+
+$scope.setZoomMessage = function(zoom) {
+  $scope.zoomMessage = 'You just zoomed to '+zoom+'!';
+  console.log(zoom,'zoomed')
+};
 
 
-    if(navigator.geolocation) {
-    browserSupportFlag = true;
-    navigator.geolocation.getCurrentPosition(function(position) {
-      initialLocation = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
-      $scope.map.setCenter(initialLocation);
-    }, function() {
-      handleNoGeolocation(browserSupportFlag);
-    });
-  }
-  // Browser doesn't support Geolocation
-  else {
-    browserSupportFlag = false;
-    handleNoGeolocation(browserSupportFlag);
-  }
 
-  function handleNoGeolocation(errorFlag) {
-    if (errorFlag == true) {
-      alert("Geolocation service failed.");
-      initialLocation = newyork;
-    } else {
-      alert("Your browser doesn't support geolocation. We've placed you in Siberia.");
-      initialLocation = siberia;
-    }
-    map.setCenter(initialLocation);
-  }
-})
 
+
+  });
 });
