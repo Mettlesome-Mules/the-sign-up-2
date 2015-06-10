@@ -8,5 +8,5 @@ module.exports = {
     uri: 'mongodb://dapperdingo:dapperpw@ds037812.mongolab.com:37812/legacy'
   },
 
-  seedDB: true
+  seedDB: false
 };
