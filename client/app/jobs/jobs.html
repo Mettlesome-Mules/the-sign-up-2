@@ -5,44 +5,83 @@
   <!-- Compiled and minified JavaScript -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.96.1/js/materialize.min.js"></script>
 
+<script type='text/javascript'>   
+    $('.datepicker').pickadate({
+        selectMonths: true, // Creates a dropdown to control month
+        selectYears: 15 // Creates a dropdown of 15 years to control year
+  });
+</script>
 
+<h1 class='center-align'>Volunteer Gigs</h1>
+  <div class="container">
+    <p class='center-align' Gigs that need a hand. </p>
+  </div>
 
-<h1>Volunteer Gigs</h1>
-<div class="container">
-    <p> Gigs that need a hand. </p>
-        
-    
-    </div>
     <form>
       <div class="container" id="form-group">
-        <div class="col s6">
-          <label for="exampleInputEmail1">Job Name</label>
-          <input type='textarea' class="form-control" placeholder="name" ng-model="job.name">
+          <div class="center-align">
+          <div class="row">
+            <div class="col s8 offset-s2">
+
+            <label for="exampleInputEmail1" class="text"> Job Name </label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col s8 offset-s2">
+            <input type='textarea' class="form-control" placeholder="name" ng-model="job.name">
+            </div>
+          </div>
+      </div>
+    </div>
+   
+      <div class="container">
+        <h5 class='center-align'> Category </h5>
+    </div>
+
+     
+    <div class="row">
+      <div class="container">
+          <div class="center-align">
+            <div class="col s12">
+                <label data-ng-repeat="category in categories" class="category">
+                <a name="currentActivity" value="{{category}}" ng-model="job.category" class="waves-effect waves-light btn"><i class="mdi-file-cloud left"></i> {{ category }} </a>
+                </label>
+            </div>
+          </div>
         </div>
       </div>
-      <label for="exampleInputEmail1" class=".center-align"> <h5 class="center-align"> Category </a> </label>
 
-      <div class="container" id="form-group">
 
-        <label data-ng-repeat="category in categories" class="category">
 
-            <a name="currentActivity" value="{{category}}" ng-model="job.category" class="waves-effect waves-light btn"><i class="mdi-file-cloud left"></i> {{category}} </a>
-        </label>
-      </div>
-      <div class="container" id="form-group">
-        <label>Description</label>
-        <input type='textarea' class="form-control" placeholder="Description" ng-model="job.description" rows="5">
-      </div>
-      <div class="container" id="form-group">
-        <label>Price</label>
-        <input type='textarea' class="form-control" placeholder="Cost per hour" ng-model="job.price">
-      </div>
-      <div class="container" id="form-group">
-        <label>Location</label>
-        <input type='textarea' class="form-control" placeholder="category" ng-model="job.location">
-      </div>
       <div class="container">
-        <button classtype="submit" id="submit" class="btn waves-effect waves-light" ng-click='createJob()'> <i class="mdi-content-send center"></i>Submit</button>
+       <div class="row">
+          <div class="col s8 offset-s2" id="form-group">
+            <label class="text"> Task Description </label>
+            <input type='textarea' class="form-control" placeholder="What do you need help with?" ng-model="job.description" rows="5">
+          </div>
+        </div>
+      </div>
+
+      
+        <div class="row">
+          <div class="container">
+            <div class="col s4 offset-s2" id="form-group">
+              <label class="text"> Date </label>
+              <!-- <input type='textarea' class="form-control" placeholder="Cost per hour" ng-model="job.price"> -->
+               <input type="date" class="datepicker">
+          </div>
+
+          <div class="col s4" id="form-group">
+            <label class="text"> Address </label>
+            <input type='textarea' class="form-control" placeholder="Address" ng-model="job.location">
+          </div>
+        </div>
+      </div>
+      
+      <div class="container">
+        <div class="center-align">
+          <button classtype="submit" id="submit" class="btn waves-effect waves-light" ng-click='createJob()'> <i class="mdi-content-send center"></i> Submit</button>
+        </div>
       </div>
     </form>
     <div ng-show='jobPosted'>Successfully Posted!</div>
@@ -51,27 +90,35 @@
     <div class="col-md-12">
       <h1 class="center-align">Jobs</h1>
     </div>
-    <div class="col-md-12">
+    <!-- <div class="col-md-12">
       <h2 class="center-align">Categories</h2>
-    </div>
-    <div class="form-group container">
-      <label class="radioButton">
-        <input
-            name="currentActivity"
-            type="radio"
-            value=""
-            ng-model="filters.category" />
+    </div> -->
+    <div class="center-align">
+      <div class="row">
+          <label class="radioButton">
+            <input
+              name="currentActivity"
+              type="radio"
+              value=""
+              ng-model="filters.category" />
             <strong>All</strong>
+            </div>
+          </div>
       </label>
+
+      <div class="center-align">
       <label data-ng-repeat="category in categories" class="radioButton">
-          <input class="center-align"
+          <input
+              class="center-align"
               name="currentActivity"
               type="radio"
               value="{{category}}"
               ng-model="filters.category" />
               {{category}}
+          </div>
       </label>
     </div>
+    <div class="center-align">
     <div class="col-md-6" ng-repeat="job in jobs | filter:filters">
       <div class="col-md-2">
         <div class="col-md-6"><h3>{{ job.name }}</h3><div>
@@ -79,8 +126,9 @@
         <div class="col-md-6"><strong>Description</strong>: {{ job.description }}</div>
         <div class="col-md-6"><strong>Location</strong>: {{ job.location }}</div>
         <div class="col-md-6"><strong>Date</strong>: {{ job.price }}</div>
-        <div class="col-md-6"><strong>User</strong>: {{ friends[job.byUserId] }}</div>
-        <div class="col-md-6"><strong>Message</strong>: <input type="text"></div>
+        <div class="col-md-6"><strong>Name</strong>: {{ friends[job.byUserId] }}</div>
+       <!--  <div class="col-md-6"><strong>Message</strong>: <input type="text"></div> -->
+      </div>
       </div>
     </div>
   </div>
