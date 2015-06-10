@@ -5,7 +5,7 @@ angular.module('theSignUp2App')
     $scope.filters = {};
     $scope.errors = {};
     $scope.jobs = []
-    $scope.categories = ['Transportation', 'Food', 'Arts & Leisure']
+    $scope.categories = ['Transportation', 'Food', 'Handy Work']
     $scope.friends = {};
 
     $scope.usermsg = {};
