@@ -13,6 +13,18 @@
 .category {
 	margin-top: 10px;
 }
+
+.alltext {
+	color: white;
+	position: relative;
+}
+
+.jobtitle {
+	font-size: 35px;
+	top: -25px;
+	position: relative;
+	color: white;
+}
 /*
 label.text {
 	color: #f4511e;
@@ -23,3 +35,4 @@ label.text {
 h5 {
 	color: #f4511e;
 }
+
