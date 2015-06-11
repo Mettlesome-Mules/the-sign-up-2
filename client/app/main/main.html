@@ -1,27 +1,125 @@
-<!-- <div ng-include="'components/navbar/navbar.html'"></div> -->
- <nav>
-    <div class="nav-wrapper">
-      <a href="#" class="brand-logo">Logo</a>
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a href="sass.html">Sass</a></li>
-        <li><a href="components.html">Components</a></li>
-        <li><a href="javascript.html">JavaScript</a></li>
+<!-- <nav class='blue-grey darken-1'>
+  <ul id="slide-out" class="side-nav blue-grey darken-1">
+    <li><a href="#!" class="white-text">First Sidebar Link</a></li>
+    <li><a href="#!" class="white-text">Second Sidebar Link</a></li>
+    <li class="no-padding">
+      <ul class="collapsible collapsible-accordion">
+        <li>
+          <a class="collapsible-header white-text">Dropdown<i class="mdi-navigation-arrow-drop-down"></i></a>
+          <div class="collapsible-body">
+              <ul>
+                  <li><a href="#!">First</a></li>
+                  <li><a href="#!">Second</a></li>
+                  <li><a href="#!">Third</a></li>
+                  <li><a href="#!">Fourth</a></li>
+              </ul>
+          </div>
+          <div class="bob"> HELLO THERE</div>
+        </li>
       </ul>
-    </div>
-  </nav>
+    </li>
+  </ul>
+    <a href="#" data-activates="slide-out" class="button-collapse show-on-large"><i class="mdi-navigation-menu"></i></a>
+</nav> -->
 
+<div class="buffer"></div>
 
-<!-- THIS IS THE ORIGINAL CODE
-<div ng-include="'components/navbar/navbar.html'"></div>
+<div class="slider">
+  <ul class="slides">
+    <li>
+      <img src="http://lorempixel.com/580/250/nature/1"> 
+      <div class="caption center-align white-text">
+        <h3 class="white-text">Welcome to HeroHire!</h3>
+        <h5 class="light grey-text text-lighten-3">A modern approach to communal outreach.</h5>
+      	  <a class="waves-effect waves-light btn modal-trigger blue-grey darken-1" href="#modal1">Click here to sign in</a>
+      	  <a class="waves-effect waves-light btn modal-trigger blue-grey darken-3" href="#modal2">Not a member?  Sign up here!</a>
+  					
+      </div>
+    </li>
+    <li>
+      <img src="http://lorempixel.com/580/250/nature/2"> 
+      <div class="caption center-align white-text">
+        <h3 class="white-text">Welcome to HeroHire!</h3>
+        <h5 class="light grey-text text-lighten-3">A modern approach to communal outreach.</h5>
+        <a class="waves-effect waves-light btn modal-trigger blue-grey darken-1" href="#modal1">Click here to sign in</a>
+        <a class="waves-effect waves-light btn modal-trigger blue-grey darken-3" href="#modal2">Not a member?  Sign up here!</a>
+      </div>
+    </li>
+    <li>
+      <img src="http://lorempixel.com/580/250/nature/3"> 
+      <div class="caption center-align white-text">
+        <h3 class="white-text">Welcome to HeroHire!</h3>
+        <h5 class="light grey-text text-lighten-3">A modern approach to communal outreach.</h5>
+        <a class="waves-effect waves-light btn modal-trigger blue-grey darken-1" href="#modal1">Click here to sign in</a>
+        <a class="waves-effect waves-light btn modal-trigger blue-grey darken-3" href="#modal2">Not a member?  Sign up here!</a>
+      </div>
+    </li>
+    <li>
+      <img src="http://lorempixel.com/580/250/nature/4"> 
+      <div class="caption center-align white-text">
+        <h3 class="white-text">Welcome to HeroHire!</h3>
+        <h5 class="light grey-text text-lighten-3">A modern approach to communal outreach.</h5>
+        <a class="waves-effect waves-light btn modal-trigger blue-grey darken-1" href="#modal1">Click here to sign in</a>
+        <a class="waves-effect waves-light btn modal-trigger blue-grey darken-3" href="#modal2">Not a member?  Sign up here!</a>
+      </div>
+    </li>
+    </ul>
+</div>
 
-<header class="hero-unit" id="banner">
-  <div class="container">
-    <h1>Craigs-Book</h1>
-    <p class="lead">Synergistic Services For Horses</p>
-    <img src="assets/images/yeoman.png" alt="I'm Yeoman">
+<div class="row center-align">
+
+  <div class="col s4">
+  	<i class="mdi-action-favorite-outline"></i>
+    <!-- Promo Content 1 goes here -->
+  	<h3 class='blue-grey-text text-darken-1' id="hg">Local outeach</h4>
   </div>
-</header>
 
-<footer class="footer">
-</footer>
- -->
+  <div class="col s4">
+  	<i class="mdi-social-group"></i>
+    <!-- Promo Content 2 goes here -->
+  	<h3 class='blue-grey-text text-darken-1' id="hg">Social trust</h4>
+  </div>
+
+  <div class="col s4">
+  	<i class="mdi-communication-chat"></i>
+    <!-- Promo Content 3 goes here -->
+  	<h3 class='blue-grey-text text-darken-1' id="hg">Helping others</h4>
+  </div>
+
+</div>
+
+      <!-- Modal Trigger -->
+  <!-- <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Modal</a> -->
+
+  <!-- Modal Structure -->
+  <div id="modal1" class="modal" ng-include="'app/account/login/login.html'">
+			</div>
+
+	  <div id="modal2" class="modal "ng-include="'app/account/signup/signup.html'">
+			<h4>This is the second modal</h4>
+			<p>Modal #2 text goes here</p>
+	</div>
+
+<!-- style="position: absolute; z-index: 3" -->
+<!-- <h4 class='amber-text text-accent-4'> //Example of setting the text color via class, orange-->
+<!-- <h4 class='blue-grey-text text-darken-1'> //Same as above with gray color-->
+
+
+
+<script>
+	$(document).ready(function() {
+ 			console.log('sliding')
+    	$('.slider').slider({full_width: true});
+
+
+	    $('.button-collapse').sideNav({
+	        menuWidth: 300,
+	        edge: 'left', 
+	        closeOnClick: true
+	    });
+
+	    $('.collapsible').collapsible();
+
+	    $('.modal-trigger').leanModal();
+	});
+</script>
