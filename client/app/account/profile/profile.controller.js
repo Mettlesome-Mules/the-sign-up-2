@@ -82,6 +82,11 @@ angular.module('theSignUp2App')
     }
 
     $scope.updateProfileInfo = function(){
+      if( $scope.currentUser.profileInfo.newSkill && event.keyCode == 13 ) {
+        $scope.currentUser.profileInfo.skills.push($scope.currentUser.profileInfo.newSkill);
+        $scope.currentUser.profileInfo.newSkill = '';
+        console.log($scope.currentUser.profileInfo.skills);
+      }
       Profile.updateProfileInfo($scope.currentUser.profileInfo)
         .then( function(data) {
           $scope.updateSuccess = true;
@@ -90,6 +95,16 @@ angular.module('theSignUp2App')
           $scope.errors.other = err.message;
         });        
     };
+
+    // $scope.updateProfileSkills = function(){
+    //   Profile.updateProfileSkills($scope.currentUser.profileInfo)
+    //     .then( function(data) {
+    //       $scope.updateSuccess = true;
+    //     })
+    //     .catch( function(err) {
+    //       $scope.errors.other = err.message;
+    //     });        
+    // };
 
     console.log($scope.currentUser)
   });
