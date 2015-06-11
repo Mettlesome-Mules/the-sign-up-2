@@ -2,22 +2,16 @@
 
 
 angular.module('theSignUp2App')
-  .controller('mapsController', function ($scope, $log, $timeout) {
+  .controller('mapsController', function ($scope, $log, $timeout, JobsFactory) {
     $scope.map = {center: {latitude: 40.1451, longitude: -99.6680 }, zoom: 12 };
-    $scope.geocoder = new google.maps.Geocoder();
     $scope.options = {scrollwheel: false};
     $scope.coordsUpdates = 0;
     $scope.dynamicMoveCtr = 0;
     $scope.message = 'Its working!!!!';
     $scope.geocoder;
+    $scope.jobsList;
     $scope.marker = {
-      id: 0,
-      coords: {
-        latitude: 30.267153,
-        longitude: -97.74306079999997
-      },
-      events: {
-        }
+      id: 0
       }
       
     //function for taking 
@@ -44,5 +38,27 @@ angular.module('theSignUp2App')
 	    console.log('code: '    + error.code    + '\n' + 'message: ' + error.message + '\n');
 	}
 	navigator.geolocation.getCurrentPosition(onSuccess, onError);
+
+
+
+
+
+
+	$scope.markerJobs = function(){
+		JobsFactory.getJobs()
+              .then(function(data){
+              	data.forEach(function(job){
+              	job.coords = {
+              		latitude: job.latitude,
+              		longitude: job.longitude
+              	}
+              })
+                $scope.jobsList = data;
+                console.log($scope.jobsList)
+			})
+	}
+
+	$scope.markerJobs();
+
 
   });
