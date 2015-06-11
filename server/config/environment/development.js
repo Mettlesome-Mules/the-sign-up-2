@@ -9,5 +9,5 @@ module.exports = {
     port: 27017
   },
 
-  seedDB: true
+  seedDB: false
 };
