@@ -5,6 +5,12 @@
 
 > Craigsbook hybrid: Synergistic services for Horses
 
+installing: 
+  npm install
+  bower install
+    choose 4 for angular version
+    choose 1 for lodash
+
 ## Team
 
   - __Product Owner__: Steven Braunstein
