@@ -1,4 +1,4 @@
-<!-- <div ng-include="'components/navbar/navbar.html'"></div> -->
+<div ng-include="'components/navbar/navbar.html'"></div>
 
 <div class="container center-align">
   <div class="row center-align">
@@ -6,7 +6,7 @@
       <h5 class='blue-grey-text text-darken-1'>Create a new account below:</h5>
     </div>
     <div class="col-sm-12">
-      <form class="form" name="form" ng-submit="register(form)" novalidate>
+      <form class="form" name="form" novalidate>
 
         <div class="form-group" ng-class="{ 'has-success': form.name.$valid && submitted,
                                             'has-error': form.name.$invalid && submitted }">
@@ -55,9 +55,11 @@
         </div>
 
         <div>
-          <button class="btn btn-inverse btn-lg btn-login" type="submit">
-            Sign up
-          </button>
+          <!-- <button class="btn btn-inverse btn-lg btn-login" type="submit"> -->
+          <!-- <button class="btn btn-inverse btn-lg btn-login" ng-click="register(form)"> -->
+            <a class="waves-effect waves-light btn blue-grey darken-1" ng-click="register(form)">Register</a>
+        <!--     Sign up
+          </button> -->
 <!--           <a class="btn btn-default btn-lg btn-register" href="/login">
             Login
           </a> #DD: Removed login button (problems with linking to modal login window)-->

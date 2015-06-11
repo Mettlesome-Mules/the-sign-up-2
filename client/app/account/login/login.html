@@ -1,22 +1,22 @@
 <!-- <div ng-include="'components/navbar/navbar.html'"></div> -->
 
-<div class="container valign-wrapper">
-  <div class="row center-align valign"> 
-    <div class="col-sm-12 valign">
+<div class="container">
+  <div class="row center-align"> 
+    <div class="col-sm-12 ">
       <h5 class='blue-grey-text text-darken-1'>Log in with your account:</h5>
     </div>
     <div class="col-sm-12">
-      <form class="form" name="form" ng-submit="login(form)" novalidate>
+      <form class="form" name="form" novalidate>
 
-        <div class="form-group">
-<!--           <label>Email</label> -->
+        <!--   <div class="form-group">
+        <label>Email</label>
 
           <input type="email" name="email" class="form-control" ng-model="user.email" placeholder="Email address" required>
         </div>
 
         <div class="form-group">
-     <!--      <label>Password</label> -->
-    <!--  #DD: Removed labels, added placeholders to necessary fields to clean up form -->
+           <label>Password</label>
+      #DD: Removed labels, added placeholders to necessary fields to clean up form
 
           <input type="password" name="password" class="form-control" ng-model="user.password" placeholder="Password" required>
         </div>
@@ -33,21 +33,21 @@
         </div>
 
         <div class="center-align">
-          <a class="waves-effect waves-light btn blue-grey darken-1">Login</a>
-         <!--  <a class="btn btn-default btn-lg btn-register" href="/signup">
+          <a class="waves-effect waves-light btn blue-grey darken-1" ng-click="login(form)">Login</a>
+           <a class="btn btn-default btn-lg btn-register" href="/signup">
             Register
-          </a> -->
+          </a>
         </div>
 
-        <!-- <hr> -->
+         <hr>
         <div class="row center-align">
-          <h5 class='blue-grey-text text-darken-1'>You can also log in with one of these services:</h5>
-         <!--  <a class="btn btn-facebook" href="" ng-click="loginOauth('facebook')">
+          <h5 class='blue-grey-text text-darken-1'>Please log in with one of these services:</h5>
+           <a class="btn btn-facebook" href="" ng-click="loginOauth('facebook')">
             <i class="fa fa-facebook"></i></a> -->
 
-          <a class="btn-floating btn-medium waves-effect waves-light blue-grey darken-1" href="" ng-click="loginOauth('facebook')"><i class="mdi-action-account-child"></i></a><!-- Facebook -->
-          <a class="btn-floating btn-medium waves-effect waves-light blue-grey darken-1" href="" ng-click="loginOauth('google')"><i class="mdi-action-backup"></i></a><!-- Google -->
-          <a class="btn-floating btn-medium waves-effect waves-light blue-grey darken-1" href="" ng-click="loginOauth('twitter')"><i class="mdi-notification-sms-failed"></i></a><!-- Twitter -->
+          <a class="btn-floating btn-large waves-effect waves-light blue-grey darken-1" href="" ng-click="loginOauth('facebook')"><i class="mdi-action-account-child"></i></a><!-- Facebook -->
+          <a class="btn-floating btn-large waves-effect waves-light blue-grey darken-1" href="" ng-click="loginOauth('google')"><i class="mdi-action-backup"></i></a><!-- Google -->
+          <a class="btn-floating btn-large waves-effect waves-light blue-grey darken-1" href="" ng-click="loginOauth('twitter')"><i class="mdi-notification-sms-failed"></i></a><!-- Twitter -->
           
        <!--    <a class="btn btn-google-plus" href="" ng-click="loginOauth('google')">
             <i class="fa fa-google-plus"></i> Connect with Google+

@@ -19,8 +19,9 @@ angular.module('theSignUp2App')
     $scope.getCurrentUser = Auth.getCurrentUser;
 
     $scope.logout = function() {
+      console.log('logging out')
       Auth.logout();
-      $location.path('/login');
+      $location.path('/'); //#DD: Changed from '/login' to '/'
     };
 
     $scope.isActive = function(route) {
