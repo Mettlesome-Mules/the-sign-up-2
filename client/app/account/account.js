@@ -4,13 +4,13 @@ angular.module('theSignUp2App')
   .config(function ($stateProvider) {
     $stateProvider
       .state('login', {
-        url: '/login',
-        templateUrl: 'app/account/login/login.html',
+        url: '/',
+        templateUrl: 'app/main/main.html',
         controller: 'LoginCtrl'
       })
       .state('signup', {
-        url: '/signup',
-        templateUrl: 'app/account/signup/signup.html',
+        url: '/',
+        templateUrl: 'app/main/main.html',
         controller: 'SignupCtrl'
       })
       .state('settings', {
@@ -44,6 +44,11 @@ angular.module('theSignUp2App')
         templateUrl: 'app/account/messages/messages.html',
         controller: 'MessagesCtrl',
         authenticate: true,
+        resolve: {
+          'currentUserData': function (Auth) {
+            return Auth.getCurrentUser().$promise;
+          }
+        }
       })
       .state('friendfinder', {
         url: '/friendfinder',

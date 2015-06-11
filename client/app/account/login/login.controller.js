@@ -7,6 +7,7 @@ angular.module('theSignUp2App')
 
     $scope.login = function(form) {
       $scope.submitted = true;
+      console.log("Login attempted")
 
       if(form.$valid) {
         Auth.login({
@@ -15,7 +16,7 @@ angular.module('theSignUp2App')
         })
         .then( function() {
           // Logged in, redirect to home
-          $location.path('/');
+          // $location.path('/profile');
         })
         .catch( function(err) {
           $scope.errors.other = err.message;

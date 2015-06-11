@@ -10,6 +10,7 @@ router
   .get('/', passport.authenticate('facebook', {
     scope: ['email', 'user_about_me'],
     failureRedirect: '/signup',
+    successRedirect: '/profile',
     session: false
   }))
 

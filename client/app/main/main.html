@@ -1,38 +1,125 @@
-<div ng-include="'components/navbar/navbar.html'"></div>
-
-<header class="hero-unit" id="banner">
-  <div class="container">
-    <h1>Craigs-Book</h1>
-    <p class="lead">Synergistic Services For Horses</p>
-    <img src="assets/images/yeoman.png" alt="I'm Yeoman">
-  </div>
-</header>
-
-<!-- <div class="container">
-  <div class="row">
-    <div class="col-lg-12">
-      <h1 class="page-header">Features:</h1>
-      <ul class="nav nav-tabs nav-stacked col-md-4 col-lg-4 col-sm-6" ng-repeat="thing in awesomeThings">
-        <li><a href="#" tooltip="{{thing.info}}">{{thing.name}}<button type="button" class="close" ng-click="deleteThing(thing)">&times;</button></a></li>
+<!-- <nav class='blue-grey darken-1'>
+  <ul id="slide-out" class="side-nav blue-grey darken-1">
+    <li><a href="#!" class="white-text">First Sidebar Link</a></li>
+    <li><a href="#!" class="white-text">Second Sidebar Link</a></li>
+    <li class="no-padding">
+      <ul class="collapsible collapsible-accordion">
+        <li>
+          <a class="collapsible-header white-text">Dropdown<i class="mdi-navigation-arrow-drop-down"></i></a>
+          <div class="collapsible-body">
+              <ul>
+                  <li><a href="#!">First</a></li>
+                  <li><a href="#!">Second</a></li>
+                  <li><a href="#!">Third</a></li>
+                  <li><a href="#!">Fourth</a></li>
+              </ul>
+          </div>
+          <div class="bob"> HELLO THERE</div>
+        </li>
       </ul>
-    </div>
+    </li>
+  </ul>
+    <a href="#" data-activates="slide-out" class="button-collapse show-on-large"><i class="mdi-navigation-menu"></i></a>
+</nav> -->
+
+<div class="buffer"></div>
+
+<div class="slider">
+  <ul class="slides">
+    <li>
+      <img src="http://lorempixel.com/580/250/nature/1"> 
+      <div class="caption center-align white-text">
+        <h3 class="white-text">Welcome to HeroHire!</h3>
+        <h5 class="light grey-text text-lighten-3">A modern approach to communal outreach.</h5>
+      	  <a class="waves-effect waves-light btn modal-trigger blue-grey darken-1" href="#modal1">Click here to sign in</a>
+      	  <!-- <a class="waves-effect waves-light btn modal-trigger blue-grey darken-3" href="#modal2">Not a member?  Sign up here!</a> -->
+  					
+      </div>
+    </li>
+    <li>
+      <img src="http://lorempixel.com/580/250/nature/2"> 
+      <div class="caption center-align white-text">
+        <h3 class="white-text">Welcome to HeroHire!</h3>
+        <h5 class="light grey-text text-lighten-3">A modern approach to communal outreach.</h5>
+        <a class="waves-effect waves-light btn modal-trigger blue-grey darken-1" href="#modal1">Click here to sign in</a>
+        <!-- <a class="waves-effect waves-light btn modal-trigger blue-grey darken-3" href="#modal2">Not a member?  Sign up here!</a> -->
+      </div>
+    </li>
+    <li>
+      <img src="http://lorempixel.com/580/250/nature/3"> 
+      <div class="caption center-align white-text">
+        <h3 class="white-text">Welcome to HeroHire!</h3>
+        <h5 class="light grey-text text-lighten-3">A modern approach to communal outreach.</h5>
+        <a class="waves-effect waves-light btn modal-trigger blue-grey darken-1" href="#modal1">Click here to sign in</a>
+        <!-- <a class="waves-effect waves-light btn modal-trigger blue-grey darken-3" href="#modal2">Not a member?  Sign up here!</a> -->
+      </div>
+    </li>
+    <li>
+      <img src="http://lorempixel.com/580/250/nature/4"> 
+      <div class="caption center-align white-text">
+        <h3 class="white-text">Welcome to HeroHire!</h3>
+        <h5 class="light grey-text text-lighten-3">A modern approach to communal outreach.</h5>
+        <a class="waves-effect waves-light btn modal-trigger blue-grey darken-1" href="#modal1">Click here to sign in</a>
+        <!-- <a class="waves-effect waves-light btn modal-trigger blue-grey darken-3" href="#modal2">Not a member?  Sign up here!</a> -->
+      </div>
+    </li>
+    </ul>
+</div>
+
+<div class="row center-align">
+
+  <div class="col s4">
+  	<i class="mdi-action-favorite-outline"></i>
+    <!-- Promo Content 1 goes here -->
+  	<h3 class='blue-grey-text text-darken-1' id="hg">Local outeach</h4>
   </div>
 
-  <form class="thing-form">
-    <label>Syncs in realtime across clients</label>
-    <p class="input-group">
-      <input type="text" class="form-control" placeholder="Add a new thing here." ng-model="newThing">
-      <span class="input-group-btn">
-        <button type="submit" class="btn btn-primary" ng-click="addThing()">Add New</button>
-      </span>
-    </p>
-  </form>
-</div> -->
+  <div class="col s4">
+  	<i class="mdi-social-group"></i>
+    <!-- Promo Content 2 goes here -->
+  	<h3 class='blue-grey-text text-darken-1' id="hg">Social trust</h4>
+  </div>
 
-<footer class="footer">
-<!--   <div class="container">
-      <p>Angular Fullstack v2.0.13 |
-        <a href="https://twitter.com/tyhenkel">@tyhenkel</a> |
-         <a href="https://github.com/DaftMonk/generator-angular-fullstack/issues?state=open">Issues</a></p>
-  </div> -->
-</footer>
+  <div class="col s4">
+  	<i class="mdi-communication-chat"></i>
+    <!-- Promo Content 3 goes here -->
+  	<h3 class='blue-grey-text text-darken-1' id="hg">Helping others</h4>
+  </div>
+
+</div>
+
+      <!-- Modal Trigger -->
+  <!-- <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Modal</a> -->
+
+  <!-- Modal Structure -->
+  <div id="modal1" class="modal" ng-include="'app/account/login/login.html'">
+			</div>
+
+<!-- 	  <div id="modal2" class="modal "ng-include="'app/account/signup/signup.html'">
+			<h4>This is the second modal</h4>
+			<p>Modal #2 text goes here</p>
+	</div> -->
+
+<!-- style="position: absolute; z-index: 3" -->
+<!-- <h4 class='amber-text text-accent-4'> //Example of setting the text color via class, orange-->
+<!-- <h4 class='blue-grey-text text-darken-1'> //Same as above with gray color-->
+
+
+
+<script>
+	$(document).ready(function() {
+ 			console.log('sliding')
+    	$('.slider').slider({full_width: true});
+
+
+	    $('.button-collapse').sideNav({
+	        menuWidth: 300,
+	        edge: 'left', 
+	        closeOnClick: true
+	    });
+
+	    $('.collapsible').collapsible();
+
+	    $('.modal-trigger').leanModal();
+	});
+</script>

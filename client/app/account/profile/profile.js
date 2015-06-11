@@ -6,6 +6,11 @@ angular.module('theSignUp2App')
       .state('profile', {
         url: '/profile',
         templateUrl: 'app/account/profile/profile.html',
-        controller: 'ProfileCtrl'
+        controller: 'ProfileCtrl',
+        resolve: {
+          'currentUserData': function (Auth) {
+            return Auth.getCurrentUser().$promise;
+          }
+        }
       });
   });
