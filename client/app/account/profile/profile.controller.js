@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('theSignUp2App')
-  .controller('ProfileCtrl', function ($scope, $window, $http, $cookieStore, User, Auth, Profile, Upload) {
+  .controller('ProfileCtrl', function ($scope, $window, $http, $cookieStore, Auth, Profile, Upload) {
     $scope.errors = {};
     $scope.users = {};
     $scope.categories = ['Transportation', 'Food', 'Arts & Leisure']

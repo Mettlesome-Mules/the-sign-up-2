@@ -6,12 +6,12 @@ var mongoose = require('mongoose'),
 var JobSchema = new Schema({
   byUserId: String,
   name: String,
-  category: String,
-  info: String,
-  location: String,
-  description: String,
-  price: Number,
-  active: Boolean
+  // category: String,
+  // info: String,
+  // location: String,
+  // description: String,
+  // price: Number,
+  // active: Boolean
 });
 
 module.exports = mongoose.model('Job', JobSchema);
