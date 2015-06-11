@@ -1,26 +1,66 @@
 'use strict';
 
+
 angular.module('theSignUp2App')
-	.config(function(uiGmapGoogleMapApiProvider) {
-	    uiGmapGoogleMapApiProvider.configure({
-	           key: 'AIzaSyBRJ0SRxiRrFdjX1M-Ot08teFZ24qUZf2o',
-	        v: '3.17',
-	        libraries: 'weather,geometry,visualization'
-	    });
-	})
+  .controller('mapsController', function ($scope, $log, $timeout) {
+    $scope.map = {center: {latitude: 40.1451, longitude: -99.6680 }, zoom: 12 };
+    $scope.options = {scrollwheel: false};
+    $scope.coordsUpdates = 0;
+    $scope.dynamicMoveCtr = 0;
+    $scope.message = 'Its working!!!!';
+    $scope.marker = {
+      id: 0,
+      coords: {
+        latitude: 40.1451,
+        longitude: -99.6680
+      },
+      message: 'Its working!!!!',
+      options: { draggable: true },
+      events: {
+        dragend: function (marker, eventName, args) {
+          $log.log('marker dragend');
+          var lat = marker.getPosition().lat();
+          var lon = marker.getPosition().lng();
+          $log.log(lat);
+          $log.log(lon);
 
- .controller("mapsController", function($scope, uiGmapGoogleMapApi) {
- 	console.log('heelo!')
-  // Define variables for our Map object
-  var areaLat      = 30.2500,
-      areaLng      = 97.7500,
-      areaZoom     = 14;
+          $scope.marker.options = {
+            draggable: true,
+            labelContent: "lat: " + $scope.marker.coords.latitude + ' ' + 'lon: ' + $scope.marker.coords.longitude,
+            labelAnchor: "100 0",
+            labelClass: "marker-labels"
+          };
+        }
+      }
+    };
+    $scope.$watchCollection("marker.coords", function (newVal, oldVal) {
+      if (_.isEqual(newVal, oldVal))
+        return;
+      $scope.coordsUpdates++;
+    });
+    $timeout(function () {
+      $scope.marker.coords = {
+        latitude: 42.1451,
+        longitude: -100.6680
+      };
+      $scope.dynamicMoveCtr++;
+      $timeout(function () {
+        $scope.marker.coords = {
+          latitude: 43.1451,
+          longitude: -102.6680
+        };
+        $scope.dynamicMoveCtr++;
+      }, 2000);
+    }, 1000);
 
-      //promise that runs after gMaps is fully loaded
-  uiGmapGoogleMapApi.then(function(maps) {
-  	
-    $scope.map     = { center: { latitude: areaLat, longitude: areaLng }, zoom: areaZoom };
-    $scope.options = { scrollwheel: false };
+
+
+
+
+
+
+
+
 
     //geolocating function
    var onSuccess = function(position) {
@@ -29,42 +69,11 @@ angular.module('theSignUp2App')
         longitude: position.coords.longitude
     };
     $scope.$apply();
+    console.log('centering')
 }
-
 function onError(error) {
     console.log('code: '    + error.code    + '\n' + 'message: ' + error.message + '\n');
 }
-
 navigator.geolocation.getCurrentPosition(onSuccess, onError);
 
-$scope.myMarkers = [];
-
-$scope.addMarker = function($event, $params) {
-  $scope.myMarkers.push(new google.maps.Marker({
-    map: $scope.myMap,
-    position: $params[0].latLng
-  }));
-};
-
-$scope.openMarkerInfo = function(marker) {
-  $scope.currentMarker = marker;
-  $scope.currentMarkerLat = marker.getPosition().lat();
-  $scope.currentMarkerLng = marker.getPosition().lng();
-  $scope.myInfoWindow.open($scope.myMap, marker);
-};
-
-$scope.setMarkerPosition = function(marker, lat, lng) {
-  marker.setPosition(new google.maps.LatLng(lat, lng));
-};
-
-$scope.setZoomMessage = function(zoom) {
-  $scope.zoomMessage = 'You just zoomed to '+zoom+'!';
-  console.log(zoom,'zoomed')
-};
-
-
-
-
-
   });
-});
