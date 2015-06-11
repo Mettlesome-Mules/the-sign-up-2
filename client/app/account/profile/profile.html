@@ -1,94 +1,51 @@
 <div ng-include="'components/navbar/navbar.html'"></div>
-
 <div class="container">
 	<div id="container" ng-controller='ProfileCtrl'>
 		<div class="user container">
 
 			<div class="col-sm-12">
-				  <h3>Hello {{ currentUser.name }}</h3>
+				<h3>Hello {{ currentUser.name }}</h3>
 			</div>
 			<div class='col-md-4'>
 				<img src="{{ currentUser.profileInfo.profilePicUrl }}" class="profPic">
 				<form class='picture-form' name="profilePicForm">
-						<input type="file" ngf-select="" ng-model="picFile" name="file" accept="image/*" required="">
-						<br>
-						<button class="btn btn-sm btn-primary" ng-show="profilePicForm.$valid" ng-click="profilePicUpload(picFile)">Submit</button>
-						<img ng-show="picFile[0] != null" ngf-src="picFile[0]" class="thumb">
-						<span class="progress" ng-show="picFile[0].progress >= 0">
+					<input type="file" ngf-select="" ng-model="picFile" name="file" accept="image/*" required="">
+					<br>
+					<button class="btn btn-sm btn-primary" ng-show="profilePicForm.$valid" ng-click="profilePicUpload(picFile)">Submit</button>
+					<img ng-show="picFile[0] != null" ngf-src="picFile[0]" class="thumb">
+					<span class="progress" ng-show="picFile[0].progress >= 0">
 						<div style="width:{{picFile[0].progress}}%" ng-bind="picFile[0].progress + '%'" class="ng-binding"></div>
-						</span>
-						<span ng-show="picFile[0].result">Upload Successful</span>
-				<br>
+					</span>
+					<span ng-show="picFile[0].result">Upload Successful</span>
+					<br>
 				</form>
-					<div>Email: {{ currentUser.email }}</div>
-					<form>
-						<input type='textarea' placeholder="{{ currentUser.profileInfo.about }}" ng-model="currentUser.profileInfo.about"></input>
-						<button class="btn btn-sm btn-primary" ng-click='updateProfileInfo()' type="submit">Update Profile Info</button>
-					</form>
-					<div ng-show="updateSuccess" class="blue">Profile Updated</div>
-				</div>
-				
-					<div class='myjobs container col-md-7' ng-init='showJobsCreated()'>
-						<h2>My Jobs</h2>
-						<div class="col-md-6" ng-repeat="job in myJobs">
-							<div class='job-card'>
-								<div><strong>Job</strong>: {{ job.name }}</div>
-								<div><strong>Category</strong>: {{ job.category }}</div>
-								<div><strong>Location</strong>: {{ job.location }}</div>
-								<div><strong>Description</strong>: {{ job.description }}</div>
-								<div><strong>Price</strong>: {{ job.price }}</div>
-							</div>
-						</div>
+				<div>Email: {{ currentUser.email }}</div>
+				<form>
+					<input type='textarea' placeholder="{{ currentUser.profileInfo.about }}" ng-model="currentUser.profileInfo.about"></input>
+					<button class="btn btn-sm btn-primary" ng-click='updateProfileInfo()' type="submit">Update Profile Info</button>
+				</form>
+				<div ng-show="updateSuccess" class="blue">Profile Updated</div>
+			</div>
+			
+			<div class='myjobs container col-md-7' ng-init='showJobsCreated()'>
+				<h2>My Skills</h2>
+				<div class="col-md-6" ng-repeat="job in myJobs">
+					<div class='job-card'>
+						<div{{ job.name }}</div>
 					</div>
+				</div>
+			</div>
 
-			</div>
-	<hr>
-<!-- 	<form>
-		<button class="btn btn-sm btn-primary" ng-click='showCreateJobs()' type="submit">Create Job</button>
-	</form>
-	<div ng-show='createJobPressed' >
+		</div>
+		<hr>
+
+		<h3>Add a skill!</h3>
 		<form>
-			<div class='create-job'>
-				<input type='textarea' placeholder="name" ng-model="job.name"><br>
-				<input type='textarea' placeholder="category" ng-model="job.category"><br>
-				<input type='textarea' placeholder="description" ng-model="job.description"><br>
-				<input type='textarea' placeholder="info" ng-model="job.info"><br>
-				<input type='textarea' placeholder="price" ng-model="job.price"><br>
-				<input type='textarea' placeholder="location" ng-model="job.location"><br>
-				<button class="btn btn-sm btn-primary" ng-click='createJob()' type="submit">Submit Job</button>
+			<div class="form-group">
+				<label for="exampleInputEmail1">Skill</label>
+				<input type='textarea' class="form-control" placeholder="nunchuks" ng-model="job.name">
 			</div>
+			
+			<button type="submit" class="btn btn-primary" ng-click='createJob()'>Create Job</button>
 		</form>
-		<div ng-show='jobPosted'>Successfully Posted!</div>
-	</div> -->
-	<h3>Create a Job!</h3>
-	<form>
-	  <div class="form-group">
-	    <label for="exampleInputEmail1">Job Name</label>
-	    <input type='textarea' class="form-control" placeholder="name" ng-model="job.name">
-	  </div>
-	  <label for="exampleInputEmail1">Category</label>
-	  <div class="form-group">
-	    <label data-ng-repeat="category in categories" class="radioButton">
-	        <input
-	            name="currentActivity"
-	            type="radio"
-	            value="{{category}}"
-	            ng-model="job.category" />
-	            {{category}}
-	    </label>
-	  </div>
-	  <div class="form-group">
-	    <label>Description</label>
-	    <input type='textarea' class="form-control" placeholder="Description" ng-model="job.description" rows="5">
-	  </div>
-	  <div class="form-group">
-	    <label>Price</label>
-	    <input type='textarea' class="form-control" placeholder="Cost per hour" ng-model="job.price">
-	  </div>
-	  <div class="form-group">
-	    <label>Location</label>
-	    <input type='textarea' class="form-control" placeholder="category" ng-model="job.location">
-	  </div>
-	  <button type="submit" class="btn btn-primary" ng-click='createJob()'>Create Job</button>
-	</form>
-</div>
+	</div>
