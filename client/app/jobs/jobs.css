@@ -10,6 +10,12 @@
 	margin-left: 0px;
 }
 */
+
+.box {
+	width: 1000pxx;
+	height: 250px;
+	overflow: auto;
+}
 .category {
 	margin-top: 10px;
 }

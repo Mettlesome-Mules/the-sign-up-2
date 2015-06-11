@@ -4,13 +4,8 @@
 
   <!-- Compiled and minified JavaScript -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.96.1/js/materialize.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 
-<script type='text/javascript'>   
-    $('.datepicker').pickadate({
-        selectMonths: true, // Creates a dropdown to control month
-        selectYears: 15 // Creates a dropdown of 15 years to control year
-  });
-</script>
 
 <h1 class='center-align'>Volunteer Gigs</h1>
   <div class="container">
@@ -34,8 +29,8 @@
       </div>
     </div>
    
-      <div class="container">
-        <h5 class='center-align'> Category </h5>
+    <div class="container">
+      <h5 class='center-align'> Category </h5>
     </div>
 
      
@@ -45,8 +40,6 @@
             <div class="col s12">
                 <label data-ng-repeat="category in categories" class="category">
                 <a name="currentActivity" value="{{category}}" ng-model="job.category" class="waves-effect waves-light btn"><i class="mdi-file-cloud left"></i> 
-
-
                 {{ category }} </a>
                 </label>
             </div>
@@ -92,24 +85,23 @@
     <div ng-show='jobPosted'>Successfully Posted!</div>
   </div>
   <!-- <div class='container'> -->
+
+  <div class="box">
+
     <div class="row">
       <div class="center-align">
        <div class="card-panel teal">
-        <div class="col s12">
+          <div class="col s12">
             <span class="jobtitle">
                <!--  <p class="z-depth-2"> -->
                     Volunteer Gigs Near You
              <!--    <p> -->
-              </span>
-            </div>
+            </span>
           </div>
         </div>
       </div>
     </div>
-  <!-- </div> -->
-    <!-- <div class="col-md-12">
-      <h2 class="center-align">Categories</h2>
-    </div> -->
+
     <div class="center-align">
       <div class="row">
         <div class="waves-effect waves-light btn">
@@ -121,12 +113,13 @@
               value=""
               ng-model="filters.category" />
             <strong><span class="white-text">  All </span> </strong>
-            </div>
-            </div>
-          </div>
-      </label>
+          </label>
+        </div>
+      </div>
+    </div>
+         
 
-      <div class="center-align">
+    <div class="center-align">
       <label data-ng-repeat="category in categories" class="radioButton">
           <input
               class="center-align"
@@ -137,12 +130,9 @@
               <p class="waves-effect waves-light btn">
               {{category}}
               </p>
-          </div>
-      </label>
+      </label>        
     </div>
-
-
-
+   
    
     <div class="col s6" ng-repeat="job in jobs | filter:filters">
       <div class="card blue-grey darken-1">
@@ -150,18 +140,18 @@
           <span class="card-title">
             <div class="row"> 
               <div class="right-align">
-                  <div class="col s4 offset-s2"> {{ job.name }}</div>
-            </span>
+                <div class="col s4 offset-s2"> {{ job.name }}
+                </div>
+          </span>
                   <div class="col s4 offset-s2"><strong>Category</strong> <a name="currentActivity" value="{{category}}" ng-model="job.category" class="waves-effect waves-light btn"> {{ job.category }} </a> </div> 
-                  </div> 
+        </div> 
                  
-                 <div class="right-align">
-                 <div class="col s4 offset-s2"><strong>Name</strong>: {{ friends[job.byUserId] }}</div>
+              <div class="right-align">
+                <div class="col s4 offset-s2"><strong>Name</strong>: {{ friends[job.byUserId] }}</div>
                 <div class="col s4 offset-s2"><strong>Description</strong>: {{ job.description }}</div>
                 <div class="col s4 offset-s2"><strong>Address</strong>: {{ job.location }}</div>
                 <div class="col s4 offset-s2"><strong>Date Needed</strong>: {{ job.price }}</div>
-                
-               </div>
-            </div>
+              </div>
       </div>
     </div>
+  
