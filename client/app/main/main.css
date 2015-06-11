@@ -7,6 +7,41 @@
     margin-top: -20px;
 }
 
+.buffer{
+    height: 20px;
+    display: block;
+}
+
+.bob{
+    background-color: red;
+    border: 1px solid black;
+}
+
+#hg{
+    margin-top: -40px;
+}
+
+#modal1{
+    height: 160px;
+    /*width: 425px;*/
+    color: #78909c;
+}
+
+.mdi-action-favorite-outline{
+    font-size: 130px;
+    color: #78909c;
+}
+
+.mdi-social-group{
+    font-size: 130px;
+    color: #78909c;
+}
+
+.mdi-communication-chat{
+    font-size: 130px;
+    color: #78909c;
+}
+
 #banner h1 {
     font-size: 60px;
     line-height: 1;
@@ -31,9 +66,4 @@
     padding: 30px 0;
     margin-top: 70px;
     border-top: 1px solid #E5E5E5;
-}
-
-
-.valign{
-    .left-align
 }

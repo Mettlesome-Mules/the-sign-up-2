@@ -9,3 +9,4 @@ angular.module('theSignUp2App')
         controller: 'MainCtrl'
       });
   });
+  

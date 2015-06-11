@@ -66,7 +66,8 @@ module.exports = function (grunt) {
       },
       injectCss: {
         files: [
-          '<%= yeoman.client %>/{app,components}/**/*.css'
+          '<%= yeoman.client %>/{app,components}/**/*.css',
+          '<%= yeoman.client %>/bower_components/materialize/bin/materialize.css'
         ],
         tasks: ['injector:css']
       },
