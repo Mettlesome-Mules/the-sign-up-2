@@ -1,0 +1,163 @@
+<div ng-include="'components/navbar/navbar.html'"></div>
+<!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.96.1/css/materialize.min.css">
+
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.96.1/js/materialize.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+
+<h1 class='center-align'>Volunteer Gigs</h1>
+  <div class="container">
+    <p class='center-align' Gigs that need a hand. </p>
+  </div>
+
+    <form>
+      <div class="container" id="form-group">
+          <div class="center-align">
+          <div class="row">
+            <div class="col s8 offset-s2">
+
+            <label for="exampleInputEmail1" class="text"> Give your gig a name. </label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col s8 offset-s2">
+            <input type='textarea' class="form-control" placeholder="This will show up in our gig list" ng-model="job.name">
+            </div>
+          </div>
+      </div>
+    </div>
+   
+    <div class="container">
+      <h5 class='center-align'> Category </h5>
+    </div>
+
+     
+    <div class="row">
+      <div class="container">
+          <div class="center-align">
+            <div class="col s12">
+                <label data-ng-repeat="category in categories" class="category">
+                <a name="currentActivity" value="{{category}}" ng-model="job.category" class="waves-effect waves-light btn"><i class="mdi-file-cloud left"></i> 
+                {{ category }} </a>
+                </label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+      <div class="container">
+       <div class="row">
+          <div class="col s8 offset-s2" id="form-group">
+            <label class="text"> Task Description </label>
+            <input type='textarea' class="form-control" placeholder="What do you need help with?" ng-model="job.description" rows="5">
+          </div>
+        </div>
+      </div>
+
+      
+        <div class="row">
+          <div class="container">
+            <div class="col s4 offset-s2" id="form-group">
+              <label class="text"> Date </label>
+              <!-- <input type='textarea' class="form-control" placeholder="Cost per hour" ng-model="job.price"> -->
+               <input type="date" class="datepicker">
+          </div>
+
+          <div class="col s4" id="form-group">
+            <label class="text"> Address </label>
+            <input type='textarea' class="form-control" placeholder="Address" ng-model="job.location">
+          </div>
+        </div>
+      </div>
+<<<<<<< HEAD
+      
+      <div class="container">
+        <div class="row">
+        <div class="center-align">
+          <button classtype="submit" id="submit" class="btn waves-effect waves" ng-click='createJob()'> <i class="mdi-content-send center"></i> Submit</button>
+          </div>
+        </div>
+=======
+      <div class="form-group">
+        <label>Location</label>
+        <input id='address' type='textarea' class="form-control" placeholder="category" ng-model="job.location">
+>>>>>>> Locatioan in jobs submit
+      </div>
+    </form>
+    <div ng-show='jobPosted'>Successfully Posted!</div>
+  </div>
+  <!-- <div class='container'> -->
+
+  <div class="box">
+
+    <div class="row">
+      <div class="center-align">
+       <div class="card-panel teal">
+          <div class="col s12">
+            <span class="jobtitle">
+               <!--  <p class="z-depth-2"> -->
+                    Volunteer Gigs Near You
+             <!--    <p> -->
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="center-align">
+      <div class="row">
+        <div class="waves-effect waves-light btn">
+          <label class="radioButton">
+            <input
+              class="waves-effect waves-light btn"
+              name="currentActivity"
+              type="radio"
+              value=""
+              ng-model="filters.category" />
+            <strong><span class="white-text">  All </span> </strong>
+          </label>
+        </div>
+      </div>
+    </div>
+         
+
+    <div class="center-align">
+      <label data-ng-repeat="category in categories" class="radioButton">
+          <input
+              class="center-align"
+              name="currentActivity"
+              type="radio"
+              value="{{category}}"
+              ng-model="filters.category" />
+              <p class="waves-effect waves-light btn">
+              {{category}}
+              </p>
+      </label>        
+    </div>
+   
+   
+    <div class="col s6" ng-repeat="job in jobs | filter:filters">
+      <div class="card blue-grey darken-1">
+        <div class="card-content white-text">
+          <span class="card-title">
+            <div class="row"> 
+              <div class="right-align">
+                <div class="col s4 offset-s2"> {{ job.name }}
+                </div>
+          </span>
+                  <div class="col s4 offset-s2"><strong>Category</strong> <a name="currentActivity" value="{{category}}" ng-model="job.category" class="waves-effect waves-light btn"> {{ job.category }} </a> </div> 
+        </div> 
+                 
+              <div class="right-align">
+                <div class="col s4 offset-s2"><strong>Name</strong>: {{ friends[job.byUserId] }}</div>
+                <div class="col s4 offset-s2"><strong>Description</strong>: {{ job.description }}</div>
+                <div class="col s4 offset-s2"><strong>Address</strong>: {{ job.location }}</div>
+                <div class="col s4 offset-s2"><strong>Date Needed</strong>: {{ job.price }}</div>
+              </div>
+      </div>
+    </div>
+  
