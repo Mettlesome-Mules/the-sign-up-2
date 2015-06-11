@@ -8,6 +8,9 @@ angular.module('theSignUp2App')
     $scope.categories = ['Transportation', 'Food', 'Handy Work']
     $scope.friends = {};
 
+    $scope.geocoder;
+    $scope.geocoder = new google.maps.Geocoder();
+
     $scope.usermsg = {};
     $scope.friends = [];
     $scope.currentUser = Auth.getCurrentUser();
@@ -28,7 +31,7 @@ angular.module('theSignUp2App')
                     .catch(function(err){
                         $scope.errors.other = err.message;
                     })
-        console.log("YES!")
+        console.log("Job Submitted!")
     };
 
     JobsFactory.getJobs()
@@ -49,7 +52,6 @@ angular.module('theSignUp2App')
                   .catch(function(err){
                       $scope.errors.other = err.message;
                   })
-      
               })
               .catch(function(err){
                 $scope.errors.other = err.message;
@@ -57,6 +59,16 @@ angular.module('theSignUp2App')
 
 
     $scope.createJob = function() {
+      //geolocates and saves GPS coordinates of location provided
+      var address = document.getElementById('address').value;
+      $scope.geocoder.geocode( { 'address': address}, function(results, status) {
+        if (status == google.maps.GeocoderStatus.OK) {
+         $scope.job.latitude = results[0].geometry.location.A;
+         $scope.job.longitude = results[0].geometry.location.F;
+         console.log($scope.job.lat, $scope.job.lng)
+        } else {
+          alert('Please enter a valid location');
+        }
       console.log('profile.controller.js: createJob', $scope.job)
       $scope.jobs.push($scope.job)
       Profile.createJob($scope.job)
@@ -67,10 +79,7 @@ angular.module('theSignUp2App')
         })
         .catch( function(err) {
           $scope.errors.other = err.message;
-        }); 
+        });
+        }) 
     }
-
-
-
-
   });

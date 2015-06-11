@@ -69,10 +69,11 @@
 
           <div class="col s4" id="form-group">
             <label class="text"> Address </label>
-            <input id='address' type='textarea' class="form-control" placeholder="Address" ng-model="job.location">
+            <input type='textarea' class="form-control" placeholder="Address" ng-model="job.location">
           </div>
         </div>
       </div>
+<<<<<<< HEAD
       
       <div class="container">
         <div class="row">
@@ -80,6 +81,11 @@
           <button classtype="submit" id="submit" class="btn waves-effect waves" ng-click='createJob()'> <i class="mdi-content-send center"></i> Submit</button>
           </div>
         </div>
+=======
+      <div class="form-group">
+        <label>Location</label>
+        <input id='address' type='textarea' class="form-control" placeholder="category" ng-model="job.location">
+>>>>>>> Locatioan in jobs submit
       </div>
     </form>
     <div ng-show='jobPosted'>Successfully Posted!</div>
