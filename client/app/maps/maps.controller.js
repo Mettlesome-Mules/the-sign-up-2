@@ -13,51 +13,24 @@ angular.module('theSignUp2App')
     $scope.marker = {
       id: 0,
       coords: {
-        latitude: 40.1451,
-        longitude: -99.6680
+        latitude: 30.267153,
+        longitude: -97.74306079999997
       },
       events: {
-        dragend: function (marker, eventName, args) {
-          $log.log('marker dragend');
-          var lat = marker.getPosition().lat();
-          var lon = marker.getPosition().lng();
-          $log.log(lat);
-          $log.log(lon);
-
-          $scope.marker.options = {
-            draggable: true,
-            labelContent: "lat: " + $scope.marker.coords.latitude + ' ' + 'lon: ' + $scope.marker.coords.longitude,
-            labelAnchor: "100 0",
-            labelClass: "marker-labels"
-          };
         }
       }
-    };
+      
+    //function for taking 
 	$scope.codeAddress = function() {
 	  var address = document.getElementById('address').value;
 	  $scope.geocoder.geocode( { 'address': address}, function(results, status) {
-	
 	    if (status == google.maps.GeocoderStatus.OK) {
-	    	console.log(results[0].geometry.location)
-	      var marker = new google.maps.Marker({
-	          map: map,
-	          position: results[0].geometry.location
-	      });
+	    	console.log(results[0].geometry.location);
 	    } else {
 	      alert('Geocode was not successful for the following reason: ' + status);
 	    }
 	  });
 	}
-
-
-
-
-
-
-
-
-
-
 	    //geolocating function
 	   var onSuccess = function(position) {
 	    $scope.map.center = {

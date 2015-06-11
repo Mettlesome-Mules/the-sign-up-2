@@ -8,6 +8,9 @@ angular.module('theSignUp2App')
     $scope.categories = ['Transportation', 'Food', 'Handy Work']
     $scope.friends = {};
 
+    $scope.geocoder;
+    $scope.geocoder = new google.maps.Geocoder();
+
     $scope.usermsg = {};
     $scope.friends = [];
     $scope.currentUser = Auth.getCurrentUser();
@@ -57,6 +60,15 @@ angular.module('theSignUp2App')
 
 
     $scope.createJob = function() {
+      console.log(this.location)
+      var address = document.getElementById('address').value;
+      $scope.geocoder.geocode( { 'address': address}, function(results, status) {
+        if (status == google.maps.GeocoderStatus.OK) {
+         this.location = results[0].geometry.location;
+        } else {
+          alert('Geocode was not successful for the following reason: ' + status);
+        }
+      });
       console.log('profile.controller.js: createJob', $scope.job)
       $scope.jobs.push($scope.job)
       Profile.createJob($scope.job)

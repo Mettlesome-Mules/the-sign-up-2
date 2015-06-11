@@ -6,6 +6,7 @@ angular.module('theSignUp2App')
       .state('maps', {
         url: '/maps',
         templateUrl: 'app/maps/maps.html',
-        controller: 'mapsController',
+        controller: 'mapsController'
       });
+    console.log('routed to maps')
   });
