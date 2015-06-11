@@ -4,18 +4,18 @@
 angular.module('theSignUp2App')
   .controller('mapsController', function ($scope, $log, $timeout) {
     $scope.map = {center: {latitude: 40.1451, longitude: -99.6680 }, zoom: 12 };
+    $scope.geocoder = new google.maps.Geocoder();
     $scope.options = {scrollwheel: false};
     $scope.coordsUpdates = 0;
     $scope.dynamicMoveCtr = 0;
     $scope.message = 'Its working!!!!';
+    $scope.geocoder;
     $scope.marker = {
       id: 0,
       coords: {
         latitude: 40.1451,
         longitude: -99.6680
       },
-      message: 'Its working!!!!',
-      options: { draggable: true },
       events: {
         dragend: function (marker, eventName, args) {
           $log.log('marker dragend');
@@ -33,25 +33,21 @@ angular.module('theSignUp2App')
         }
       }
     };
-    $scope.$watchCollection("marker.coords", function (newVal, oldVal) {
-      if (_.isEqual(newVal, oldVal))
-        return;
-      $scope.coordsUpdates++;
-    });
-    $timeout(function () {
-      $scope.marker.coords = {
-        latitude: 42.1451,
-        longitude: -100.6680
-      };
-      $scope.dynamicMoveCtr++;
-      $timeout(function () {
-        $scope.marker.coords = {
-          latitude: 43.1451,
-          longitude: -102.6680
-        };
-        $scope.dynamicMoveCtr++;
-      }, 2000);
-    }, 1000);
+	$scope.codeAddress = function() {
+	  var address = document.getElementById('address').value;
+	  $scope.geocoder.geocode( { 'address': address}, function(results, status) {
+	
+	    if (status == google.maps.GeocoderStatus.OK) {
+	    	console.log(results[0].geometry.location)
+	      var marker = new google.maps.Marker({
+	          map: map,
+	          position: results[0].geometry.location
+	      });
+	    } else {
+	      alert('Geocode was not successful for the following reason: ' + status);
+	    }
+	  });
+	}
 
 
 
@@ -62,18 +58,18 @@ angular.module('theSignUp2App')
 
 
 
-    //geolocating function
-   var onSuccess = function(position) {
-    $scope.map.center = {
-        latitude: position.coords.latitude,
-        longitude: position.coords.longitude
-    };
-    $scope.$apply();
-    console.log('centering')
-}
-function onError(error) {
-    console.log('code: '    + error.code    + '\n' + 'message: ' + error.message + '\n');
-}
-navigator.geolocation.getCurrentPosition(onSuccess, onError);
+	    //geolocating function
+	   var onSuccess = function(position) {
+	    $scope.map.center = {
+	        latitude: position.coords.latitude,
+	        longitude: position.coords.longitude
+	    };
+	    $scope.$apply();
+	    console.log('centering')
+	}
+	function onError(error) {
+	    console.log('code: '    + error.code    + '\n' + 'message: ' + error.message + '\n');
+	}
+	navigator.geolocation.getCurrentPosition(onSuccess, onError);
 
   });

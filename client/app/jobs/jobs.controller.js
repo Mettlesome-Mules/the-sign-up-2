@@ -28,7 +28,7 @@ angular.module('theSignUp2App')
                     .catch(function(err){
                         $scope.errors.other = err.message;
                     })
-        console.log("YES!")
+        console.log("Job Submitted!")
     };
 
     JobsFactory.getJobs()
