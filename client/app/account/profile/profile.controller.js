@@ -12,7 +12,7 @@ angular.module('theSignUp2App')
 
     $scope.isPressed = false;
     $scope.currentUser.profileInfo.about = $scope.currentUser.profileInfo.about || 'About me';
-    $scope.updateSuccess = '';
+    $scope.updateSuccess = false;
     $scope.file = '';
     $scope.myJobs = [];
 
@@ -84,7 +84,7 @@ angular.module('theSignUp2App')
     $scope.updateProfileInfo = function(){
       Profile.updateProfileInfo($scope.currentUser.profileInfo)
         .then( function(data) {
-          $scope.updateSuccess = data;
+          $scope.updateSuccess = true;
         })
         .catch( function(err) {
           $scope.errors.other = err.message;
