@@ -5,7 +5,8 @@
 module.exports = {
   // MongoDB connection options
   mongo: {
-    uri: 'mongodb://dapperdingo:dapperpw@ds037812.mongolab.com:37812/legacy'
+    uri: 'mongodb://localhost',
+    port: 27017
   },
 
   seedDB: true
