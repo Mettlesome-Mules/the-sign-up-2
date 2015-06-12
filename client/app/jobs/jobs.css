@@ -1,6 +1,11 @@
 .radioButton {
   padding-right: 1.5em;
 }
+
+
+body{
+	background-image: url('http://www.creattor.com/files/37/2806/brick-pattern-set-2-screenshots-3.png')
+}
 /*
 #submit {
 	margin-top: 20px;
@@ -12,10 +17,11 @@
 */
 
 .box {
-	width: 1000pxx;
-	height: 250px;
+	width: 600px;
+	height: 722px;
 	overflow: auto;
 }
+
 .category {
 	margin-top: 10px;
 }
@@ -31,6 +37,7 @@
 	position: relative;
 	color: white;
 }
+
 /*
 label.text {
 	color: #f4511e;
@@ -42,3 +49,21 @@ h5 {
 	color: #f4511e;
 }
 
+*/
+
+#modalCore{
+    height: 500px;
+    width: auto;
+    color: #78909c;
+}
+
+#jobList{
+	width: 600px;
+	height: 722px;
+	overflow: auto;
+}
+
+.maps{
+	width:auto;
+	height: 100%;
+}

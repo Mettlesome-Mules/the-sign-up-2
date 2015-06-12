@@ -1,106 +1,73 @@
-<div ng-include="'components/navbar/navbar.html'"></div>
-<!-- Compiled and minified CSS -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.96.1/css/materialize.min.css">
-
-  <!-- Compiled and minified JavaScript -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.96.1/js/materialize.min.js"></script>
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-
-
-<h1 class='center-align'>Volunteer Gigs</h1>
-  <div class="container">
-    <p class='center-align' Gigs that need a hand. </p>
-  </div>
-
-    <form>
-      <div class="container" id="form-group">
-          <div class="center-align">
-          <div class="row">
-            <div class="col s8 offset-s2">
-
-            <label for="exampleInputEmail1" class="text"> Give your gig a name. </label>
+<a class="waves-effect waves-light btn modalCore right-align" id='addJob'  href="#modalCore">Add a Community Project</a>
+<div class='wholePage'>
+<div id='newJob' class="container">
+<div id="modalCore" class="modal bottom-sheet modal-fixed-footer">
+    <form class="modal-content">
+        <div class="container" id="form-group">
+            <div class="center-align">
+                <div class="row">
+                    <div class="col s8 offset-s2">
+                        <label for="exampleInputEmail1" class="text">Give your gig a name.</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s8 offset-s2">
+                        <input type='textarea' class="form-control" placeholder="This will show up in our gig list" ng-model="job.name">
+                    </div>
+                </div>
             </div>
-          </div>
-          <div class="row">
-            <div class="col s8 offset-s2">
-            <input type='textarea' class="form-control" placeholder="This will show up in our gig list" ng-model="job.name">
-            </div>
-          </div>
-      </div>
-    </div>
-   
-    <div class="container">
-      <h5 class='center-align'> Category </h5>
-    </div>
+        </div>
+        <div class="container">
+             <h5 class='center-align'> Category </h5>
 
-     
-    <div class="row">
-      <div class="container">
-          <div class="center-align">
-            <div class="col s12">
-                <label data-ng-repeat="category in categories" class="category">
-                <a name="currentActivity" value="{{category}}" ng-model="job.category" class="waves-effect waves-light btn"><i class="mdi-file-cloud left"></i> 
+        </div>
+        <div class="row">
+            <div class="container">
+                <div class="align-left">
+                    <div class="col s12">
+                        <label data-ng-repeat="category in categories" class="category"> <a name="currentActivity" value="{{category}}" ng-model="job.category" class="waves-effect waves-light btn"><i class="mdi-file-cloud left"></i> 
                 {{ category }} </a>
-                </label>
+
+                        </label>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
-
-
-
-      <div class="container">
-       <div class="row">
-          <div class="col s8 offset-s2" id="form-group">
-            <label class="text"> Task Description </label>
-            <input type='textarea' class="form-control" placeholder="What do you need help with?" ng-model="job.description" rows="5">
-          </div>
+        <div class="container">
+            <div class="row">
+                <div class="col s8 offset-s2" id="form-group">
+                    <label class="text">Task Description</label>
+                    <input type='textarea' class="form-control" placeholder="What do you need help with?" ng-model="job.description" rows="5">
+                </div>
+            </div>
         </div>
-      </div>
-
-      
         <div class="row">
-          <div class="container">
-            <div class="col s4 offset-s2" id="form-group">
-              <label class="text"> Date </label>
-              <!-- <input type='textarea' class="form-control" placeholder="Cost per hour" ng-model="job.price"> -->
-               <input type="date" class="datepicker">
-          </div>
-
-          <div class="col s4" id="form-group">
-            <label class="text"> Address </label>
-            <input id='address' type='textarea' class="form-control" placeholder="Address" ng-model="job.location">
-          </div>
+            <div class="container">
+                <div class="col s4 offset-s2" id="form-group">
+                    <label class="text">Date</label>
+                    <!-- <input type='textarea' class="form-control" placeholder="Cost per hour" ng-model="job.price"> -->
+                    <input type="date" class="datepicker">
+                </div>
+                <div class="col s4" id="form-group">
+                    <label class="text">Address</label>
+                    <input id='address' type='textarea' class="form-control" placeholder="Address" ng-model="job.location">
+                </div>
+            </div>
         </div>
-      </div>
-      
-      <div class="container">
-        <div class="row">
-        <div class="center-align">
-          <button classtype="submit" id="submit" class="btn waves-effect waves" ng-click='createJob()'> <i class="mdi-content-send center"></i> Submit</button>
-          </div>
-        </div>
-      </div>
+        <div id='jobSubmit'>
+                <div class="modal-footer">
+                    <button classtype="submit" id="submit" class="modal-action modal-close waves-effect waves-green btn-flat" ng-click='createJob()'> <i class="mdi-content-send center"></i> Submit</button>
+                </div>
+            </div>
     </form>
     <div ng-show='jobPosted'>Successfully Posted!</div>
   </div>
+</div>
   <!-- <div class='container'> -->
 
-  <div class="box">
-
-    <div class="row">
-      <div class="center-align">
-       <div class="card-panel teal">
-          <div class="col s12">
-            <span class="jobtitle">
-               <!--  <p class="z-depth-2"> -->
-                    Volunteer Gigs Near You
-             <!--    <p> -->
-            </span>
-          </div>
-        </div>
-      </div>
-    </div>
+<div class='row'>
+<div class='col s6' ng-include="'app/maps/maps.html'"></div>
+  <div class="box offset-s6">
 
     <div class="center-align">
       <div class="row">
@@ -132,9 +99,10 @@
               </p>
       </label>        
     </div>
+
    
-   
-    <div class="col s6" ng-repeat="job in jobs | filter:filters">
+    <div id='jobList'>
+    <div class="col" ng-repeat="job in jobs | filter:filters">
       <div class="card blue-grey darken-1">
         <div class="card-content white-text">
           <span class="card-title">
@@ -152,6 +120,38 @@
                 <div class="col s4 offset-s2"><strong>Address</strong>: {{ job.location }}</div>
                 <div class="col s4 offset-s2"><strong>Date Needed</strong>: {{ job.price }}</div>
               </div>
-      </div>
-    </div>
+            </div>
+          </div>
+        </div>
+        </div>
+</div>
+
+
+
+
+
+
+<script>
+  $(document).ready(function() {
+      console.log('sliding')
+      $('.slider').slider({full_width: true});
+
+
+      $('.button-collapse').sideNav({
+          menuWidth: 300,
+          edge: 'left', 
+          closeOnClick: true
+      });
+
+      $('.collapsible').collapsible();
+
+      $('.modalCore').leanModal({
+      dismissible: true, // Modal can be dismissed by clicking outside of the modal
+      opacity: .2, // Opacity of modal background
+      in_duration: 400, // Transition in duration
+      out_duration: 200, // Transition out duration
+    }
+  );
+  });
+</script>
   

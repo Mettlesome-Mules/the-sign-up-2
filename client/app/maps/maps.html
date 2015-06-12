@@ -1,17 +1,7 @@
-<div ng-include="'components/navbar/navbar.html'"></div>
 <section id='map'>
-<header class="hero-unit" id="banner">
-</header>
-    <h1>Map of Efforts</h1>
 	<div id="map_canvas" ng-controller="mapsController">
-	  <input id="address" type="textbox" value="Austin, Tx">
-      <input type="button" value="Find Location" ng-click="codeAddress()">
       <ui-gmap-google-map center="map.center" zoom="map.zoom" draggable="true" options="options">
         <ui-gmap-marker data-ng-repeat='job in jobsList' coords="job.coords" idkey='job._id'>
         </ui-gmap-marker>
     </ui-gmap-google-map>
 </div>
-
-
-
-</template>

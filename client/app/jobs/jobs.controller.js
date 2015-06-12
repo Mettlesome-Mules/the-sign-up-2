@@ -7,14 +7,11 @@ angular.module('theSignUp2App')
     $scope.jobs = []
     $scope.categories = ['Transportation', 'Food', 'Handy Work']
     $scope.friends = {};
-
     $scope.geocoder;
     $scope.geocoder = new google.maps.Geocoder();
 
     $scope.usermsg = {};
     $scope.friends = [];
-    $scope.currentUser = Auth.getCurrentUser();
-
     $scope.currentUser = Auth.getCurrentUser();
     $scope.job = {byUserId: $scope.currentUser._id};
     $scope.createJobPressed = false;
@@ -47,7 +44,7 @@ angular.module('theSignUp2App')
                       for (var i = 0; i < data.length; i++) {
                         $scope.friends[data[i]._id] = data[i].name
                       };
-                      console.log($scope.friends)
+                      console.log($scope.friends + 'friends!')
                   })
                   .catch(function(err){
                       $scope.errors.other = err.message;
@@ -57,8 +54,8 @@ angular.module('theSignUp2App')
                 $scope.errors.other = err.message;
               })
 
-
     $scope.createJob = function() {
+      console.log('creating!')
       //geolocates and saves GPS coordinates of location provided
       var address = document.getElementById('address').value;
       $scope.geocoder.geocode( { 'address': address}, function(results, status) {
