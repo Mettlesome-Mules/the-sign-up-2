@@ -3,7 +3,7 @@
 
 angular.module('theSignUp2App')
   .controller('mapsController', function ($scope, $log, $timeout, JobsFactory) {
-    $scope.map = {center: {latitude: 40.1451, longitude: -99.6680 }, zoom: 12 };
+    $scope.map = {center: {latitude: 30.2500, longitude: 97.7500}, zoom: 12 };
     $scope.options = {scrollwheel: false};
     $scope.coordsUpdates = 0;
     $scope.dynamicMoveCtr = 0;
