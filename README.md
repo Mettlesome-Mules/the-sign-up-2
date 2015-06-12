@@ -2,9 +2,9 @@
 
 ## Team
 
-  - __Product Owner__: Dan Corman
-  - __Scrum Master__: Garrett Fitzgerald
-  - __Development Team Members__: Charlie Harding and Robert Snodgrass
+  - __Product Owner__: Charlie Harding
+  - __Scrum Master__: Dan Corman
+  - __Development Team Members__: Garrett Fitzgeraldand Robert Snodgrass
 
 HeroHire: A Dapper Dingos Joint
 
