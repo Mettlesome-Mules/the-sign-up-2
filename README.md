@@ -1,85 +1,40 @@
-[![Build Status](https://travis-ci.org/Mettlesome-Mules/the-sign-up-2.svg)](https://travis-ci.org/Mettlesome-Mules/the-sign-up-2)
-
-<img alt="https://badge.waffle.io/mettlesome-mules/the-sign-up-2.png?label=ready&amp;title=Ready" src="https://badge.waffle.io/mettlesome-mules/the-sign-up-2.png?label=ready&amp;title=Ready">
-# CraigsBook
-
-> Craigsbook hybrid: Synergistic services for Horses
-
-installing: 
-  npm install
-  bower install
-    choose 4 for angular version
-    choose 1 for lodash
+# HeroHire
 
 ## Team
 
-  - __Product Owner__: Steven Braunstein
-  - __Scrum Master__: Justin Hernandez
-  - __Development Team Members__: James Munsch
+  - __Product Owner__: Dan Corman
+  - __Scrum Master__: Garrett Fitzgerald
+  - __Development Team Members__: Charlie Harding and Robert Snodgrass
 
-## Table of Contents
+HeroHire: A Dapper Dingos Joint
 
-1. [Usage](#Usage)
-1. [Requirements](#requirements)
-1. [Development](#development)
-    1. [Installing Dependencies](#installing-dependencies)
-    1. [Tasks](#tasks)
-1. [Team](#team)
-1. [Contributing](#contributing)
+![alt tag](http://i62.tinypic.com/2vxmzdc.jpg)
 
-## Usage
+An MEAN stack application that employs the Materialize frontend framework to create a centralized application for users to post local jobs asking for volunteers.  Users who complete jobs can be awarded Karma points, which helps rank the outreach of community participants.  Highly rated personnel are given special access to have their own job requests placed prominently in the application, which encourages sincere utilization of HeroHire. 
 
-> 1. Clone down Repo
-  2. Install dependencies
-  3. Launch db daemon: sudo mongod
-  4. Launch db: mongo
-  5. Launch server: grunt serve
+This application utilizes [MongoDB](http://www.mongodb.org/), [Node.js](http://www.nodejs.org/), [Express](http://expressjs.com/), and [AngularJS](http://angularjs.org/), and [Materilize](http://materializecss.com/).
 
-## Requirements
->
-    "node": ">=0.10.0"
-    "grunt": "~0.4.4"
-    "body-parser": "~1.5.0",
-    "composable-middleware": "^0.3.0",
-    "compression": "~1.0.1",
-    "connect-mongo": "^0.4.1",
-    "connect-multiparty": "^1.2.5",
-    "cookie-parser": "~1.0.1",
-    "ejs": "~0.8.4",
-    "errorhandler": "~1.0.0",
-    "express": "~4.0.0",
-    "express-jwt": "^0.1.3",
-    "express-session": "~1.0.2",
-    "jsonwebtoken": "^0.3.0",
-    "lodash": "~2.4.1",
-    "method-override": "~1.0.0",
-    "mongoose": "~3.8.8",
-    "morgan": "~1.0.0",
-    "passport": "~0.2.0",
-    "passport-facebook": "latest",
-    "passport-google-oauth": "latest",
-    "passport-local": "~0.1.6",
-    "passport-twitter": "latest",
-    "serve-favicon": "~2.0.1",
-    "socket.io": "^1.0.6",
-    "socket.io-client": "^1.0.6",
-    "socketio-jwt": "^2.0.2"
+## Credits
+Inspired by the need for all people to safely ask for help to complete various tasks and chores locally through a centralized and controlled network of dedicated individuals. 
 
-## Development
-> Stack Used
-  - MEAN
->Deployment
-  - Grunt 
-  - Heroku
-  
+## License
+(The MIT License)
 
-### Installing Dependencies
+Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the
+'Software'), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:
 
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
 
-From within the root directory:
-
-```sh
-sudo npm install -g bower
-npm install
-bower install
-```
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.

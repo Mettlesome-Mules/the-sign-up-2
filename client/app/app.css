@@ -1,8 +1,4 @@
-
-/**
- * Bootstrap Fonts
- */
-
+/*** Bootstrap Fonts*/
 @font-face {
     font-family: 'Glyphicons Halflings';
     src: url('../bower_components/bootstrap/fonts/glyphicons-halflings-regular.eot');
@@ -12,10 +8,7 @@
     url('../bower_components/bootstrap/fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
 }
 
-/**
- *Font Awesome Fonts
- */
-
+/***Font Awesome Fonts*/
 @font-face {
     font-family: 'FontAwesome';
     src: url('../bower_components/font-awesome/fonts/fontawesome-webfont.eot?v=4.1.0');
@@ -27,10 +20,7 @@
     font-style: normal;
 }
 
-/**
- * App-wide Styles
- */
-
+/*** App-wide Styles*/
 .browsehappy {
     margin: 0.2em 0;
     background: #ccc;

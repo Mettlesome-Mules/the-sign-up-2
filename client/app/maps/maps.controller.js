@@ -1,6 +1,5 @@
 'use strict';
 
-
 angular.module('theSignUp2App')
   .controller('mapsController', function ($scope, $log, $timeout, JobsFactory) {
     $scope.map = {center: {latitude: 30.2500, longitude: 97.7500}, zoom: 12 };

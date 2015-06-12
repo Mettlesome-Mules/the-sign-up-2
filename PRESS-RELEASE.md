@@ -1,5 +1,6 @@
-# Project Name #
+# Welcome to HeroHire #
 
+![alt tag](http://i62.tinypic.com/29lbrlw.png)
 <!-- 
 > This material was originally posted [here](http://www.quora.com/What-is-Amazons-approach-to-product-development-and-product-management). It is reproduced here for posterities sake.
 
@@ -16,29 +17,26 @@ Oh, and I also like to write press-releases in what I call "Oprah-speak" for mai
 Once the project moves into development, the press release can be used as a touchstone; a guiding light. The product team can ask themselves, "Are we building what is in the press release?" If they find they're spending time building things that aren't in the press release (overbuilding), they need to ask themselves why. This keeps product development focused on achieving the customer benefits and not building extraneous stuff that takes longer to build, takes resources to maintain, and doesn't provide real customer benefit (at least not enough to warrant inclusion in the press release).
  -->
  
-## Heading ##
-  > Name the product in a way the reader (i.e. your target customers) will understand.
-
-## Sub-Heading ##
-  > Describe who the market for the product is and what benefit they get. One sentence only underneath the title.
-
-## Summary ##
-  > Give a summary of the product and the benefit. Assume the reader will not read anything else so make this paragraph good.
-
+## An outreach hub powered by volunteerism. ##
+  
 ## Problem ##
-  > Describe the problem your product solves.
+  In this digital age, people often forget the trials their neighbors endure on a daily basis.  Despite the ability to communicate with an endless online population, tangible problems - large and small - still arise throughout life.  There is no centralized location to ask for - and receive - help when it is really needed, which hurts communities worldwide.  The elderly, alone, and disabled often have little available options when completing tasks such as shopping for groceries, raking leaves, and other jobs.  They need help; we all sometimes do.
 
 ## Solution ##
-  > Describe how your product elegantly solves the problem.
+  HeroHire sets out to ease the life of the needy through a powerful volunteer based communal network that encourages helping  neighbors.  Once logged in, users can post jobs that they need completed through a clean, simple interface.  Authenticated users can volunteer through each posting, cultivating a powerful local support system. 
 
 ## Quote from You ##
-  > A quote from a spokesperson in your company.
+  "We have found that despite options such as Google, Craigslist, Facebook, and countless other social networks being available, there was no easy way to ask for someone to simply ask for help.  As we have moved further into an always-on, always-connected era, personal communication has become inversely absent, resulting in further isolation between people living within the same neighborhoods, towns, and cities.  HeroHire helps remove these boundaries and give users a safe, effective set of tools to ask for and receive help.  It also rewards those who continually demonstrate their sincerety, encouraging a social network to be extended into the tangible world."
 
 ## How to Get Started ##
-  > Describe how easy it is to get started.
+  Users can access https://herohire.herokuapp.com, sign up with their existing Twitter, Gmail, or Facebook accounts, and  immediately begin posting jobs or helping enrich the lives of those around them. 
 
 ## Customer Quote ##
-  > Provide a quote from a hypothetical customer that describes how they experienced the benefit.
+  "In my advanced age, it's always difficult to complete some of the chores around my house, which is an unfortunate byproduct of living alone.  Thankfully, HeroHire gives me the chance to ask for help.  People show up with smiles on their faces and happily take care of whatever I need.  It's so nice to know that there are still people who care in this world, willing to take time out of their day to help strangers in need."
 
 ## Closing and Call to Action ##
-  > Wrap it up and give pointers where the reader should go next.
+  HeroHire is meant to give people the chance to help and be helped, filling an emotional void.  Our product is a small step toward ushering in a new time of understanding and sympathetic outreach.  We bring people together to improve the well-being of individuals, strengthening everyone as a whole.
+
+
+
+

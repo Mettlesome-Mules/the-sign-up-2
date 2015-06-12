@@ -1,6 +1,4 @@
-/**
- * Error responses
- */
+/*** Error responses*/
 
 'use strict';
 
