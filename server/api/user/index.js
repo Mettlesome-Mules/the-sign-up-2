@@ -20,6 +20,7 @@ router.get('/me', auth.isAuthenticated(), controller.me);
 router.get('/:id/showall', controller.showAll);
 router.put('/:id/password', auth.isAuthenticated(), controller.changePassword);
 router.put('/:id/updateprofileinfo', controller.updateProfileInfo);
+// router.put('/:id/updateprofileskills', controller.updateProfileSkills);
 router.post('/profilepic', multipartMiddleware, controller.profilepic);
 router.get('/assets/profile-pictures/:fn', controller.getProfilePic)
 router.post('/:id/getfriends', controller.getfriends);

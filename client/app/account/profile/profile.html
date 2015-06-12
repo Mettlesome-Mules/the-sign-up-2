@@ -1,13 +1,58 @@
 <div ng-include="'components/navbar/navbar.html'"></div>
+
 <div class="container">
+
 	<div id="container" ng-controller='ProfileCtrl'>
+
 		<div class="user container">
 
-			<div class="col-sm-12">
-				<h3>Hello {{ currentUser.name }}</h3>
+
+			<div class="row">
+
+				<div class="col s6">
+					<div class="card large">
+						<div class="card-image waves-effect waves-block waves-light">
+							<img src="{{ currentUser.profileInfo.profilePicUrl }}" class="profPic activator">
+						</div>
+						<div class="card-content">
+          		<span class="card-title activator grey-text text-darken-4">{{ currentUser.name }} <i class="mdi-navigation-more-vert right"></i></span>
+          		<p>Karma level: {{ currentUser.karma }}<br>{{ currentUser.email }}<br>(click picture for more info)</p>
+        		</div>
+						<div class="card-reveal">
+          		<span class="card-title grey-text text-darken-4">About {{ currentUser.name }}:<i class="mdi-navigation-close right"></i></span>
+          		<textarea ng-model="currentUser.profileInfo.about" contenteditable='true' ng-blur='updateProfileInfo()'>{{ currentUser.profileInfo.about }}</textarea>
+        		</div>
+					</div>
+				</div>
+
+				<div class='col s6'>
+					<h4>Skills</h4><br><h7>Please list a few unique skills that you have (i.e. - woodworking, painting, heavy lifting)</h7>
+
+					<div ng-model="currentUser.profileInfo.skills" class="input-field col s6">
+          	<input id="skill_name" type="text" class="validate" ng-model='currentUser.profileInfo.newSkill' ng-keyup="updateProfileInfo()">
+          	<label for="skill_name">New Skill</label>
+          	<ul class='collection'>
+          		<li ng-repeat='skill in currentUser.profileInfo.skills' class="collection-item">{{ skill }}</li>
+          	</ul>
+        	</div>
+        	<div>
+
+        	</div>
+				</div>
+
 			</div>
+
+
+
+<!-- 
+
+			<div class="col-sm-12">
+				<h3>{{ currentUser.name }}</h3>
+			</div>
+
 			<div class='col-md-4'>
 				<img src="{{ currentUser.profileInfo.profilePicUrl }}" class="profPic">
+
 				<form class='picture-form' name="profilePicForm">
 					<input type="file" ngf-select="" ng-model="picFile" name="file" accept="image/*" required="">
 					<br>
@@ -19,11 +64,14 @@
 					<span ng-show="picFile[0].result">Upload Successful</span>
 					<br>
 				</form>
+
 				<div>Email: {{ currentUser.email }}</div>
+
 				<form>
-					<input type='textarea' placeholder="{{ currentUser.profileInfo.about }}" ng-model="currentUser.profileInfo.about"></input>
 					<button class="btn btn-sm btn-primary" ng-click='updateProfileInfo()' type="submit">Update Profile Info</button>
+					<input type='textarea' placeholder="{{ currentUser.profileInfo.about }}" ng-model="currentUser.profileInfo.about"></input>
 				</form>
+
 				<div ng-show="updateSuccess" class="blue">Profile Updated</div>
 			</div>
 			
@@ -36,16 +84,20 @@
 				</div>
 			</div>
 
-		</div>
+		</div> -->
+
 		<hr>
 
-		<h3>Add a skill!</h3>
+		<h3>Add a job</h3>
 		<form>
 			<div class="form-group">
-				<label for="exampleInputEmail1">Skill</label>
+				<label for="exampleInputEmail1">Jobs</label>
 				<input type='textarea' class="form-control" placeholder="nunchuks" ng-model="job.name">
 			</div>
 			
 			<button type="submit" class="btn btn-primary" ng-click='createJob()'>Create Job</button>
 		</form>
 	</div>
+
+</div>
+
