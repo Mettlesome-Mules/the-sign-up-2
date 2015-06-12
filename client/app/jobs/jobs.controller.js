@@ -13,8 +13,6 @@ angular.module('theSignUp2App')
     $scope.usermsg = {};
     $scope.friends = [];
     $scope.currentUser = Auth.getCurrentUser();
-
-    $scope.currentUser = Auth.getCurrentUser();
     $scope.job = {byUserId: $scope.currentUser._id};
     $scope.createJobPressed = false;
     $scope.jobPosted = false;
@@ -47,7 +45,6 @@ angular.module('theSignUp2App')
                         $scope.friends[data[i]._id] = data[i].name
                       };
                       console.log($scope.friends + 'friends!')
-                console.log('gettings jobs')
                   })
                   .catch(function(err){
                       $scope.errors.other = err.message;
@@ -56,7 +53,6 @@ angular.module('theSignUp2App')
               .catch(function(err){
                 $scope.errors.other = err.message;
               })
-
 
     $scope.createJob = function() {
       console.log('creating!')
